@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -115,161 +114,160 @@ let currentDash='ceo';
 const DB={
 data:null,
 defaults:{
-company:{name:‘WEDO’,logo:‘W’},currentUser:‘u1’,
-users:[{id:‘u1’,name:‘Alex’,initials:‘A’,role:‘CEO’,color:‘linear-gradient(135deg,#8b5cf6,#ec4899)’},{id:‘u2’,name:‘Fran’,initials:‘F’,role:‘Comercial’,color:‘linear-gradient(135deg,#3b82f6,#06b6d4)’},{id:‘u3’,name:‘Sara’,initials:‘S’,role:‘Diseño’,color:‘linear-gradient(135deg,#ec4899,#f59e0b)’},{id:‘u4’,name:‘David’,initials:‘D’,role:‘Dev’,color:‘linear-gradient(135deg,#10b981,#06b6d4)’}],
+company:{name:'WEDO',logo:'W'},currentUser:'u1',
+users:[{id:'u1',name:'Alex',initials:'A',role:'CEO',color:'linear-gradient(135deg,#8b5cf6,#ec4899)'},{id:'u2',name:'Fran',initials:'F',role:'Comercial',color:'linear-gradient(135deg,#3b82f6,#06b6d4)'},{id:'u3',name:'Sara',initials:'S',role:'Diseño',color:'linear-gradient(135deg,#ec4899,#f59e0b)'},{id:'u4',name:'David',initials:'D',role:'Dev',color:'linear-gradient(135deg,#10b981,#06b6d4)'}],
 tasks:[
-{id:‘t1’,title:‘Definir pricing aitomeiton’,assignee:‘u1’,priority:‘urgent’,status:‘pending’,due:‘2024-10-30’,oppId:‘o1’,projectId:null},
-{id:‘t2’,title:‘Landing page aitomeiton’,assignee:‘u4’,priority:‘high’,status:‘in-progress’,due:‘2024-11-05’,oppId:‘o1’,projectId:null},
-{id:‘t3’,title:‘Estudiar competencia autoescuelas’,assignee:‘u1’,priority:‘medium’,status:‘pending’,due:‘2024-11-10’,oppId:‘o2’,projectId:null},
-{id:‘t4’,title:‘Llamar leads Amazonia’,assignee:‘u2’,priority:‘high’,status:‘pending’,due:‘2024-10-28’,oppId:null,projectId:null},
-{id:‘t5’,title:‘Diseñar nueva home’,assignee:‘u3’,priority:‘high’,status:‘in-progress’,due:‘2024-11-20’,oppId:null,projectId:‘pr2’},
-{id:‘t6’,title:‘Maquetar secciones’,assignee:‘u4’,priority:‘medium’,status:‘pending’,due:‘2024-12-01’,oppId:null,projectId:‘pr2’}
+{id:'t1',title:'Definir pricing aitomeiton',assignee:'u1',priority:'urgent',status:'pending',due:'2024-10-30',oppId:'o1',projectId:null},
+{id:'t2',title:'Landing page aitomeiton',assignee:'u4',priority:'high',status:'in-progress',due:'2024-11-05',oppId:'o1',projectId:null},
+{id:'t3',title:'Estudiar competencia autoescuelas',assignee:'u1',priority:'medium',status:'pending',due:'2024-11-10',oppId:'o2',projectId:null},
+{id:'t4',title:'Llamar leads Amazonia',assignee:'u2',priority:'high',status:'pending',due:'2024-10-28',oppId:null,projectId:null},
+{id:'t5',title:'Diseñar nueva home',assignee:'u3',priority:'high',status:'in-progress',due:'2024-11-20',oppId:null,projectId:'pr2'},
+{id:'t6',title:'Maquetar secciones',assignee:'u4',priority:'medium',status:'pending',due:'2024-12-01',oppId:null,projectId:'pr2'}
 ],
-leads:[{id:‘l1’,name:‘Restaurante Marina’,company:‘Marina SL’,stage:‘proposal’,value:3500,source:‘web’,referrerId:null,assignee:‘u2’},{id:‘l2’,name:‘Clínica Dental Sol’,company:‘Dental Sol’,stage:‘negotiation’,value:8000,source:‘referral’,referrerId:‘r1’,assignee:‘u2’},{id:‘l3’,name:‘Gimnasio PowerFit’,company:‘PowerFit’,stage:‘new’,value:4500,source:‘social’,referrerId:null,assignee:‘u2’},{id:‘l4’,name:‘Inmobiliaria Costa’,company:‘Costa Homes’,stage:‘contacted’,value:12000,source:‘referral’,referrerId:‘r2’,assignee:‘u2’},{id:‘l5’,name:‘Autoescuela Express’,company:‘Express’,stage:‘won’,value:5000,source:‘web’,referrerId:null,assignee:‘u2’},{id:‘l6’,name:‘Floristería Jardín’,company:‘Jardín’,stage:‘lost’,value:2000,source:‘cold’,referrerId:null,assignee:‘u2’}],
-referrers:[{id:‘r1’,name:‘Antonio García’,company:‘Asesoría García’,type:‘partner’},{id:‘r2’,name:‘Lucía Moreno’,company:‘Arco Arquitectos’,type:‘client’}],
+leads:[{id:'l1',name:'Restaurante Marina',company:'Marina SL',stage:'proposal',value:3500,source:'web',referrerId:null,assignee:'u2'},{id:'l2',name:'Clínica Dental Sol',company:'Dental Sol',stage:'negotiation',value:8000,source:'referral',referrerId:'r1',assignee:'u2'},{id:'l3',name:'Gimnasio PowerFit',company:'PowerFit',stage:'new',value:4500,source:'social',referrerId:null,assignee:'u2'},{id:'l4',name:'Inmobiliaria Costa',company:'Costa Homes',stage:'contacted',value:12000,source:'referral',referrerId:'r2',assignee:'u2'},{id:'l5',name:'Autoescuela Express',company:'Express',stage:'won',value:5000,source:'web',referrerId:null,assignee:'u2'},{id:'l6',name:'Floristería Jardín',company:'Jardín',stage:'lost',value:2000,source:'cold',referrerId:null,assignee:'u2'}],
+referrers:[{id:'r1',name:'Antonio García',company:'Asesoría García',type:'partner'},{id:'r2',name:'Lucía Moreno',company:'Arco Arquitectos',type:'client'}],
 opportunities:[
-{id:‘o1’,title:‘Servicio IA para clientes’,desc:‘Consultoría de automatización con IA. Aitomeiton como producto estrella.’,status:‘building’,potential:50000,effort:‘high’,lead:‘u1’},
-{id:‘o2’,title:‘SaaS autoescuelas’,desc:‘Producto propio para gestión de autoescuelas’,status:‘idea’,potential:100000,effort:‘high’,lead:‘u1’},
-{id:‘o3’,title:‘Expansión inmobiliario’,desc:‘Especialización en webs para inmobiliarias’,status:‘research’,potential:30000,effort:‘medium’,lead:‘u2’},
-{id:‘o4’,title:‘Servicio foto/video’,desc:‘Producción audiovisual para clientes’,status:‘validated’,potential:20000,effort:‘low’,lead:‘u3’}
+{id:'o1',title:'Servicio IA para clientes',desc:'Consultoría de automatización con IA. Aitomeiton como producto estrella.',status:'building',potential:50000,effort:'high',lead:'u1'},
+{id:'o2',title:'SaaS autoescuelas',desc:'Producto propio para gestión de autoescuelas',status:'idea',potential:100000,effort:'high',lead:'u1'},
+{id:'o3',title:'Expansión inmobiliario',desc:'Especialización en webs para inmobiliarias',status:'research',potential:30000,effort:'medium',lead:'u2'},
+{id:'o4',title:'Servicio foto/video',desc:'Producción audiovisual para clientes',status:'validated',potential:20000,effort:'low',lead:'u3'}
 ],
-decisions:[{id:‘d1’,title:’¿Contratar developer senior?’,context:‘Carga alta, David saturado. ~35k/año’,options:‘1) Fijo 2) Freelance 3) Esperar’,deadline:‘2024-11-15’,decided:false,decision:’’},{id:‘d2’,title:’¿Subir precios 2025?’,context:‘No subimos en 2 años’,options:‘1) +15% 2) +10% nuevos 3) Mantener’,deadline:‘2024-12-01’,decided:false,decision:’’}],
+decisions:[{id:'d1',title:'¿Contratar developer senior?',context:'Carga alta, David saturado. ~35k/año',options:'1) Fijo 2) Freelance 3) Esperar',deadline:'2024-11-15',decided:false,decision:''},{id:'d2',title:'¿Subir precios 2025?',context:'No subimos en 2 años',options:'1) +15% 2) +10% nuevos 3) Mantener',deadline:'2024-12-01',decided:false,decision:''}],
 projects:[
-{id:‘pr1’,title:‘Lanzamiento aitomeiton’,desc:‘Landing, pricing, primeros clientes beta’,status:‘active’,progress:40,lead:‘u1’,due:‘2024-12-15’},
-{id:‘pr2’,title:‘Web WEDO 2.0’,desc:‘Rediseño completo web corporativa’,status:‘planning’,progress:10,lead:‘u3’,due:‘2025-01-30’}
+{id:'pr1',title:'Lanzamiento aitomeiton',desc:'Landing, pricing, primeros clientes beta',status:'active',progress:40,lead:'u1',due:'2024-12-15'},
+{id:'pr2',title:'Web WEDO 2.0',desc:'Rediseño completo web corporativa',status:'planning',progress:10,lead:'u3',due:'2025-01-30'}
 ],
 inbox:[
-{id:‘i1’,text:‘Revisar pricing de TODOCAMA - llevan 2 años igual’,tags:[‘clientes’,‘finanzas’],created:‘2024-10-28’,processed:false},
-{id:‘i2’,text:’¿Y si hacemos webinars sobre IA para clientes?’,tags:[‘producto’,‘comercial’],created:‘2024-10-27’,processed:false},
-{id:‘i3’,text:‘Hablar con Sara sobre automatizar proceso de diseño’,tags:[‘equipo’,‘ops’],created:‘2024-10-26’,processed:false}
+{id:'i1',text:'Revisar pricing de TODOCAMA - llevan 2 años igual',tags:['clientes','finanzas'],created:'2024-10-28',processed:false},
+{id:'i2',text:'¿Y si hacemos webinars sobre IA para clientes?',tags:['producto','comercial'],created:'2024-10-27',processed:false},
+{id:'i3',text:'Hablar con Sara sobre automatizar proceso de diseño',tags:['equipo','ops'],created:'2024-10-26',processed:false}
 ],
 clients:[
-{id:‘c1’,name:‘Enter Properties’,status:‘ok’,services:[‘web’,‘seo’,‘paid’],mrr:2500,since:‘2023-01’,aiNeeds:‘Chatbot WhatsApp en desarrollo’,notes:‘Cliente estrella, muy activo’,risk:‘low’},
-{id:‘c2’,name:‘Aventura Amazonia’,status:‘review’,services:[‘paid’,‘social’],mrr:1800,since:‘2023-06’,aiNeeds:‘Pendiente propuesta automatización emails’,notes:‘Lanzamiento Valencia pronto’,risk:‘low’},
-{id:‘c3’,name:‘TODOCAMA’,status:‘review’,services:[‘web’,‘seo’],mrr:800,since:‘2022-03’,aiNeeds:‘No explorado aún’,notes:‘Revisar si necesitan más servicios’,risk:‘medium’},
-{id:‘c4’,name:‘Autoescuelas AVAE’,status:‘ok’,services:[‘web’,‘paid’,‘social’],mrr:1500,since:‘2023-09’,aiNeeds:‘Interesados en chatbot’,notes:‘Potencial para SaaS propio’,risk:‘low’},
-{id:‘c5’,name:‘Restaurante Marina’,status:‘new’,services:[‘social’],mrr:400,since:‘2024-10’,aiNeeds:‘Por evaluar’,notes:‘Cliente nuevo, en onboarding’,risk:‘low’}
+{id:'c1',name:'Enter Properties',status:'ok',services:['web','seo','paid'],mrr:2500,since:'2023-01',aiNeeds:'Chatbot WhatsApp en desarrollo',notes:'Cliente estrella, muy activo',risk:'low'},
+{id:'c2',name:'Aventura Amazonia',status:'review',services:['paid','social'],mrr:1800,since:'2023-06',aiNeeds:'Pendiente propuesta automatización emails',notes:'Lanzamiento Valencia pronto',risk:'low'},
+{id:'c3',name:'TODOCAMA',status:'review',services:['web','seo'],mrr:800,since:'2022-03',aiNeeds:'No explorado aún',notes:'Revisar si necesitan más servicios',risk:'medium'},
+{id:'c4',name:'Autoescuelas AVAE',status:'ok',services:['web','paid','social'],mrr:1500,since:'2023-09',aiNeeds:'Interesados en chatbot',notes:'Potencial para SaaS propio',risk:'low'},
+{id:'c5',name:'Restaurante Marina',status:'new',services:['social'],mrr:400,since:'2024-10',aiNeeds:'Por evaluar',notes:'Cliente nuevo, en onboarding',risk:'low'}
 ],
 objectives:[
-{id:‘obj1’,title:‘Alcanzar 15K MRR’,area:‘comercial’,year:2024,target:15000,current:7000,unit:‘€’,keyResults:[
-{id:‘kr1’,title:‘Cerrar 5 clientes nuevos’,target:5,current:2},
-{id:‘kr2’,title:‘Upsell a 3 clientes existentes’,target:3,current:1},
-{id:‘kr3’,title:‘Reducir churn a <5%’,target:5,current:8}
+{id:'obj1',title:'Alcanzar 15K MRR',area:'comercial',year:2024,target:15000,current:7000,unit:'€',keyResults:[
+{id:'kr1',title:'Cerrar 5 clientes nuevos',target:5,current:2},
+{id:'kr2',title:'Upsell a 3 clientes existentes',target:3,current:1},
+{id:'kr3',title:'Reducir churn a <5%',target:5,current:8}
 ]},
-{id:‘obj2’,title:‘Lanzar 2 productos propios’,area:‘producto’,year:2024,target:2,current:0,unit:‘productos’,keyResults:[
-{id:‘kr4’,title:‘Lanzar aitomeiton’,target:1,current:0},
-{id:‘kr5’,title:‘Validar SaaS autoescuelas’,target:1,current:0}
+{id:'obj2',title:'Lanzar 2 productos propios',area:'producto',year:2024,target:2,current:0,unit:'productos',keyResults:[
+{id:'kr4',title:'Lanzar aitomeiton',target:1,current:0},
+{id:'kr5',title:'Validar SaaS autoescuelas',target:1,current:0}
 ]},
-{id:‘obj3’,title:‘Equipo de 6 personas’,area:‘equipo’,year:2024,target:6,current:4,unit:‘personas’,keyResults:[
-{id:‘kr6’,title:‘Contratar developer senior’,target:1,current:0},
-{id:‘kr7’,title:‘Contratar comercial’,target:1,current:0}
+{id:'obj3',title:'Equipo de 6 personas',area:'equipo',year:2024,target:6,current:4,unit:'personas',keyResults:[
+{id:'kr6',title:'Contratar developer senior',target:1,current:0},
+{id:'kr7',title:'Contratar comercial',target:1,current:0}
 ]},
-{id:‘obj4’,title:‘Implementar IA en todos los clientes’,area:‘producto’,year:2024,target:100,current:40,unit:’%’,keyResults:[
-{id:‘kr8’,title:‘Auditar necesidades IA’,target:5,current:2},
-{id:‘kr9’,title:‘Implementar 3 chatbots’,target:3,current:1}
+{id:'obj4',title:'Implementar IA en todos los clientes',area:'producto',year:2024,target:100,current:40,unit:'%',keyResults:[
+{id:'kr8',title:'Auditar necesidades IA',target:5,current:2},
+{id:'kr9',title:'Implementar 3 chatbots',target:3,current:1}
 ]}
 ],
 history:[
-{date:‘2024-10’,metrics:{mrr:7000,clients:5,leads:12,won:2,tasks:45}},
-{date:‘2024-09’,metrics:{mrr:6200,clients:4,leads:10,won:1,tasks:38}},
-{date:‘2024-08’,metrics:{mrr:5800,clients:4,leads:8,won:1,tasks:32}}
+{date:'2024-10',metrics:{mrr:7000,clients:5,leads:12,won:2,tasks:45}},
+{date:'2024-09',metrics:{mrr:6200,clients:4,leads:10,won:1,tasks:38}},
+{date:'2024-08',metrics:{mrr:5800,clients:4,leads:8,won:1,tasks:32}}
 ]
 },
-init(){const s=localStorage.getItem(‘ceo_v9’);if(s)try{this.data=JSON.parse(s)}catch(e){this.data=JSON.parse(JSON.stringify(this.defaults))}else this.data=JSON.parse(JSON.stringify(this.defaults));this.save()},
-save(){localStorage.setItem(‘ceo_v9’,JSON.stringify(this.data))},
+init(){const s=localStorage.getItem('ceo_v9');if(s)try{this.data=JSON.parse(s)}catch(e){this.data=JSON.parse(JSON.stringify(this.defaults))}else this.data=JSON.parse(JSON.stringify(this.defaults));this.save()},
+save(){localStorage.setItem('ceo_v9',JSON.stringify(this.data))},
 reset(){this.data=JSON.parse(JSON.stringify(this.defaults));this.save()},
 get(t,id){return this.data[t]?.find(x=>x.id===id)},
-me(){return this.get(‘users’,this.data.currentUser)},
+me(){return this.get('users',this.data.currentUser)},
 byStage(s){return this.data.leads.filter(l=>l.stage===s)},
 byRef(r){return this.data.leads.filter(l=>l.referrerId===r)},
 tasksByUser(u){return this.data.tasks.filter(t=>t.assignee===u)},
 tasksByOpp(o){return this.data.tasks.filter(t=>t.oppId===o)},
 tasksByProj(p){return this.data.tasks.filter(t=>t.projectId===p)},
-stats(){const t=this.data.tasks,l=this.data.leads,o=this.data.opportunities,d=this.data.decisions,i=this.data.inbox||[],c=this.data.clients||[];return{tasks:t.filter(x=>x.status!==‘done’).length,activeLeads:l.filter(x=>![‘won’,‘lost’].includes(x.stage)).length,pipeline:l.filter(x=>![‘won’,‘lost’].includes(x.stage)).reduce((s,x)=>s+(x.value||0),0),won:l.filter(x=>x.stage===‘won’).reduce((s,x)=>s+(x.value||0),0),opps:o.filter(x=>![‘launched’].includes(x.status)).length,decisions:d.filter(x=>!x.decided).length,projects:this.data.projects.filter(x=>x.status===‘active’).length,inbox:i.filter(x=>!x.processed).length,clientsReview:c.filter(x=>x.status===‘review’).length}},
+stats(){const t=this.data.tasks,l=this.data.leads,o=this.data.opportunities,d=this.data.decisions,i=this.data.inbox||[],c=this.data.clients||[];return{tasks:t.filter(x=>x.status!=='done').length,activeLeads:l.filter(x=>!['won','lost'].includes(x.stage)).length,pipeline:l.filter(x=>!['won','lost'].includes(x.stage)).reduce((s,x)=>s+(x.value||0),0),won:l.filter(x=>x.stage==='won').reduce((s,x)=>s+(x.value||0),0),opps:o.filter(x=>!['launched'].includes(x.status)).length,decisions:d.filter(x=>!x.decided).length,projects:this.data.projects.filter(x=>x.status==='active').length,inbox:i.filter(x=>!x.processed).length,clientsReview:c.filter(x=>x.status==='review').length}},
 add(t,item){item.id=t[0]+Date.now();this.data[t].unshift(item);this.save();return item},
-update(t,id,u){const i=this.data[t].findIndex(x=>x.id===id);if(i>-1){this.data[t][i]={…this.data[t][i],…u};this.save()}},
+update(t,id,u){const i=this.data[t].findIndex(x=>x.id===id);if(i>-1){this.data[t][i]={...this.data[t][i],...u};this.save()}},
 del(t,id){this.data[t]=this.data[t].filter(x=>x.id!==id);this.save()}
 };
 
 const U={
-money(n){return new Intl.NumberFormat(‘es-ES’,{style:‘currency’,currency:‘EUR’,maximumFractionDigits:0}).format(n||0)},
-date(d){if(!d)return’-’;return new Date(d).toLocaleDateString(‘es-ES’,{day:‘numeric’,month:‘short’})},
+money(n){return new Intl.NumberFormat('es-ES',{style:'currency',currency:'EUR',maximumFractionDigits:0}).format(n||0)},
+date(d){if(!d)return'-';return new Date(d).toLocaleDateString('es-ES',{day:'numeric',month:'short'})},
 pct(a,b){return b>0?Math.round((a/b)*100):0},
-progCol(p){return p>=75?‘var(–green)’:p>=50?‘var(–blue)’:p>=25?‘var(–orange)’:‘var(–red)’}
+progCol(p){return p>=75?'var(--green)':p>=50?'var(--blue)':p>=25?'var(--orange)':'var(--red)'}
 };
 
-let page=‘dashboard’;
-let detailView=null; // {type:‘opp’|‘proj’, id:‘xxx’}
+let page='dashboard';
+let detailView=null; // {type:'opp'|'proj', id:'xxx'}
 
 const UI={
-toast(msg,type=‘success’){const c=document.getElementById(‘toasts’);const t=document.createElement(‘div’);t.className=‘toast ‘+type;t.innerHTML=’<span>’+(type===‘success’?‘✓’:‘✕’)+’</span>’+msg;c.appendChild(t);setTimeout(()=>t.remove(),3e3)},
-modal(title,body,footer=’’,size=’’){document.getElementById(‘modals’).innerHTML=`<div class="modal-bg active" onclick="if(event.target===this)UI.closeModal()"><div class="modal ${size}"><div class="modal-header"><span class="modal-title">${title}</span><button class="modal-close" onclick="UI.closeModal()">✕</button></div><div class="modal-body">${body}</div>${footer?`<div class="modal-footer">${footer}</div>`:''}</div></div>`},
-closeModal(){document.getElementById(‘modals’).innerHTML=’’},
-confirm(msg,fn){this.modal(‘Confirmar’,`<p style="text-align:center;padding:14px">${msg}</p>`,`<button class="btn btn-secondary" onclick="UI.closeModal()">No</button><button class="btn btn-danger" onclick="(${fn})();UI.closeModal()">Sí</button>`)},
-badges(){const s=DB.stats();[‘tasksBadge’,‘leadsBadge’,‘oppBadge’,‘decBadge’,‘inboxBadge’,‘clientsBadge’].forEach(id=>{const el=document.getElementById(id);if(el){const v={tasksBadge:s.tasks,leadsBadge:s.activeLeads,oppBadge:s.opps,decBadge:s.decisions,inboxBadge:s.inbox,clientsBadge:s.clientsReview}[id];el.textContent=v;el.style.display=v>0?‘inline’:‘none’}})}
+toast(msg,type='success'){const c=document.getElementById('toasts');const t=document.createElement('div');t.className='toast '+type;t.innerHTML='<span>'+(type==='success'?'✓':'✕')+'</span>'+msg;c.appendChild(t);setTimeout(()=>t.remove(),3e3)},
+modal(title,body,footer='',size=''){document.getElementById('modals').innerHTML=`<div class="modal-bg active" onclick="if(event.target===this)UI.closeModal()"><div class="modal ${size}"><div class="modal-header"><span class="modal-title">${title}</span><button class="modal-close" onclick="UI.closeModal()">✕</button></div><div class="modal-body">${body}</div>${footer?`<div class="modal-footer">${footer}</div>`:''}</div></div>`},
+closeModal(){document.getElementById('modals').innerHTML=''},
+confirm(msg,fn){this.modal('Confirmar',`<p style="text-align:center;padding:14px">${msg}</p>`,`<button class="btn btn-secondary" onclick="UI.closeModal()">No</button><button class="btn btn-danger" onclick="(${fn})();UI.closeModal()">Sí</button>`)},
+badges(){const s=DB.stats();['tasksBadge','leadsBadge','oppBadge','decBadge','inboxBadge','clientsBadge'].forEach(id=>{const el=document.getElementById(id);if(el){const v={tasksBadge:s.tasks,leadsBadge:s.activeLeads,oppBadge:s.opps,decBadge:s.decisions,inboxBadge:s.inbox,clientsBadge:s.clientsReview}[id];el.textContent=v;el.style.display=v>0?'inline':'none'}})}
 };
 
-function nav(p){page=p;detailView=null;document.querySelectorAll(’.nav-item’).forEach(i=>i.classList.toggle(‘active’,i.dataset.page===p));const title={dashboard:‘Dashboard’,inbox:‘Inbox’,tasks:‘Tareas’,comercial:‘Comercial’,referrers:‘Referidores’,opportunities:‘Oportunidades’,decisions:‘Decisiones’,projects:‘Proyectos’,clients:‘Clientes’,objectives:‘Objetivos’,team:‘Equipo’,settings:‘Config’}[p]||p;document.getElementById(‘pageTitle’).textContent=title;const mt=document.getElementById(‘mobileTitle’);if(mt)mt.textContent=title;render()}
+function nav(p){page=p;detailView=null;document.querySelectorAll('.nav-item').forEach(i=>i.classList.toggle('active',i.dataset.page===p));const title={dashboard:'Dashboard',inbox:'Inbox',tasks:'Tareas',comercial:'Comercial',referrers:'Referidores',opportunities:'Oportunidades',decisions:'Decisiones',projects:'Proyectos',clients:'Clientes',objectives:'Objetivos',team:'Equipo',settings:'Config'}[p]||p;document.getElementById('pageTitle').textContent=title;const mt=document.getElementById('mobileTitle');if(mt)mt.textContent=title;render()}
 
 function openDetail(type,id){detailView={type,id};render()}
 function closeDetail(){detailView=null;render()}
 
 function render(){
-const c=document.getElementById(‘pageContent’);
+const c=document.getElementById('pageContent');
 if(detailView){
-if(detailView.type===‘opp’) c.innerHTML=pgOppDetail(detailView.id);
-else if(detailView.type===‘proj’) c.innerHTML=pgProjDetail(detailView.id);
-else if(detailView.type===‘client’) c.innerHTML=pgClientDetail(detailView.id);
-else if(detailView.type===‘obj’) c.innerHTML=pgObjDetail(detailView.id);
+if(detailView.type==='opp') c.innerHTML=pgOppDetail(detailView.id);
+else if(detailView.type==='proj') c.innerHTML=pgProjDetail(detailView.id);
+else if(detailView.type==='client') c.innerHTML=pgClientDetail(detailView.id);
+else if(detailView.type==='obj') c.innerHTML=pgObjDetail(detailView.id);
 }else{
 c.innerHTML={dashboard:pgDash,inbox:pgInbox,tasks:pgTasks,comercial:pgCom,referrers:pgRef,opportunities:pgOpp,decisions:pgDec,projects:pgProj,clients:pgClients,objectives:pgObjectives,team:pgTeam,settings:pgSet}[page]?.()??pgDash();
 }
 UI.badges();
 }
 
-const avatar=(u,s=’’)=>u?`<div class="avatar ${s}" style="background:${u.color}">${u.initials}</div>`:`<div class="avatar ${s}" style="background:var(--muted)">?</div>`;
+const avatar=(u,s='')=>u?`<div class="avatar ${s}" style="background:${u.color}">${u.initials}</div>`:`<div class="avatar ${s}" style="background:var(--muted)">?</div>`;
 const tag=(t,txt)=>`<span class="tag ${t}">${txt}</span>`;
 
 function taskItem(t,showContext=true){
-const u=DB.get(‘users’,t.assignee);
-const done=t.status===‘done’;
-const opp=t.oppId?DB.get(‘opportunities’,t.oppId):null;
-const proj=t.projectId?DB.get(‘projects’,t.projectId):null;
-return`<div class="list-item ${done?'done':''}"><div class="check ${done?'checked':''}" onclick="event.stopPropagation();toggleTask('${t.id}')">✓</div><div class="item-content" onclick="editTask('${t.id}')"><div class="item-title">${t.title}</div><div class="item-meta">${tag(t.priority,t.priority)}${t.due?`<span>📅${U.date(t.due)}</span>`:''}${showContext&&opp?`<span>💡${opp.title.substring(0,15)}…</span>`:''}${showContext&&proj?`<span>🎯${proj.title.substring(0,15)}…</span>`:''}</div></div>${u?avatar(u,'sm'):''}</div>`
+const u=DB.get('users',t.assignee);
+const done=t.status==='done';
+const opp=t.oppId?DB.get('opportunities',t.oppId):null;
+const proj=t.projectId?DB.get('projects',t.projectId):null;
+return`<div class="list-item ${done?'done':''}"><div class="check ${done?'checked':''}" onclick="event.stopPropagation();toggleTask('${t.id}')">✓</div><div class="item-content" onclick="editTask('${t.id}')"><div class="item-title">${t.title}</div><div class="item-meta">${tag(t.priority,t.priority)}${t.due?`<span>📅${U.date(t.due)}</span>`:''}${showContext&&opp?`<span>💡${opp.title.substring(0,15)}...</span>`:''}${showContext&&proj?`<span>🎯${proj.title.substring(0,15)}...</span>`:''}</div></div>${u?avatar(u,'sm'):''}</div>`
 }
 
-function leadCard(l){const ref=l.referrerId?DB.get(‘referrers’,l.referrerId):null;return`<div class="lead-card" onclick="editLead('${l.id}')" draggable="true" ondragstart="dragLead(event,'${l.id}')"><div class="lead-name">${l.name}</div><div class="lead-company">${l.company||'-'}</div><div class="lead-footer"><span>${ref?'👥'+ref.name.split(' ')[0]:''}</span><span class="lead-value">${U.money(l.value)}</span></div></div>`}
+function leadCard(l){const ref=l.referrerId?DB.get('referrers',l.referrerId):null;return`<div class="lead-card" onclick="editLead('${l.id}')" draggable="true" ondragstart="dragLead(event,'${l.id}')"><div class="lead-name">${l.name}</div><div class="lead-company">${l.company||'-'}</div><div class="lead-footer"><span>${ref?'👥'+ref.name.split(' ')[0]:''}</span><span class="lead-value">${U.money(l.value)}</span></div></div>`}
 
 function oppCard(o){
 const st=OPP_ST.find(x=>x.id===o.status);
 const tasks=DB.tasksByOpp(o.id);
-const done=tasks.filter(t=>t.status===‘done’).length;
+const done=tasks.filter(t=>t.status==='done').length;
 return`<div class="opp-card ${o.status}" onclick="openDetail('opp','${o.id}')"><div style="display:flex;justify-content:space-between"><div class="opp-title">${o.title}</div>${tag(o.status,st?.name||o.status)}</div><div class="opp-desc">${o.desc}</div><div class="opp-footer"><span>💰${U.money(o.potential)}</span><span>📋 ${done}/${tasks.length} tareas</span></div></div>`
 }
 
 function decCard(d){return`<div class="decision-card ${d.decided?'decided':''}" onclick="editDec('${d.id}')"><div class="decision-title">${d.decided?'✅ ':''}${d.title}</div><div class="decision-context">${d.context}</div>${d.decided?`<div style="color:var(--green);font-size:11px">→ ${d.decision}</div>`:''}<div class="decision-footer">${d.deadline?`<span>📅${U.date(d.deadline)}</span>`:''}</div></div>`}
 
 function projCard(p){
-const lead=DB.get(‘users’,p.lead);
+const lead=DB.get('users',p.lead);
 const tasks=DB.tasksByProj(p.id);
-const done=tasks.filter(t=>t.status===‘done’).length;
+const done=tasks.filter(t=>t.status==='done').length;
 return`<div class="project-card ${p.status}" onclick="openDetail('proj','${p.id}')"><div style="display:flex;justify-content:space-between"><div class="project-title">${p.title}</div>${tag(p.status,p.status)}</div><div class="project-desc">${p.desc}</div><div class="progress-bar"><div class="progress-fill" style="width:${p.progress}%;background:${U.progCol(p.progress)}"></div></div><div class="project-footer"><span>${lead?'👤'+lead.name:''}</span><span>📋 ${done}/${tasks.length} tareas</span><span>📅${U.date(p.due)}</span></div></div>`
 }
 
 // ============ DETAIL PAGES ============
 function pgOppDetail(id){
-const o=DB.get(‘opportunities’,id);
-if(!o)return’<div class="empty">No encontrado</div>’;
+const o=DB.get('opportunities',id);
+if(!o)return'<div class="empty">No encontrado</div>';
 const st=OPP_ST.find(x=>x.id===o.status);
-const lead=DB.get(‘users’,o.lead);
+const lead=DB.get('users',o.lead);
 const tasks=DB.tasksByOpp(id);
-const pending=tasks.filter(t=>t.status===‘pending’);
-const inProgress=tasks.filter(t=>t.status===‘in-progress’);
-const done=tasks.filter(t=>t.status===‘done’);
+const pending=tasks.filter(t=>t.status==='pending');
+const inProgress=tasks.filter(t=>t.status==='in-progress');
+const done=tasks.filter(t=>t.status==='done');
 const pct=tasks.length?U.pct(done.length,tasks.length):0;
 
 return`<div class="page active">
-
 <div class="back-btn" onclick="closeDetail()">← Volver a Oportunidades</div>
 <div class="detail-header">
 <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
@@ -313,18 +311,17 @@ ${done.length?`<div class="mt-1 mb-1" style="font-size:11px;color:var(--muted)">
 }
 
 function pgProjDetail(id){
-const p=DB.get(‘projects’,id);
-if(!p)return’<div class="empty">No encontrado</div>’;
+const p=DB.get('projects',id);
+if(!p)return'<div class="empty">No encontrado</div>';
 const st=PROJ_ST.find(x=>x.id===p.status);
-const lead=DB.get(‘users’,p.lead);
+const lead=DB.get('users',p.lead);
 const tasks=DB.tasksByProj(id);
-const pending=tasks.filter(t=>t.status===‘pending’);
-const inProgress=tasks.filter(t=>t.status===‘in-progress’);
-const done=tasks.filter(t=>t.status===‘done’);
+const pending=tasks.filter(t=>t.status==='pending');
+const inProgress=tasks.filter(t=>t.status==='in-progress');
+const done=tasks.filter(t=>t.status==='done');
 const pct=tasks.length?U.pct(done.length,tasks.length):p.progress;
 
 return`<div class="page active">
-
 <div class="back-btn" onclick="closeDetail()">← Volver a Proyectos</div>
 <div class="detail-header">
 <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
@@ -373,7 +370,6 @@ const items=DB.data.inbox||[];
 const pending=items.filter(i=>!i.processed);
 const processed=items.filter(i=>i.processed);
 return`<div class="page active">
-
 <div class="page-header"><div><h1>📥 Inbox</h1><p>Captura rápida de ideas y pensamientos</p></div>
 <div class="actions"><button class="btn btn-primary" onclick="showInboxModal()">+ Capturar idea</button></div></div>
 <div class="qstats">
@@ -390,7 +386,6 @@ ${processed.length?`<div class="card"><div class="card-title mb-1">✅ Procesado
 function inboxItem(i){
 const tags=i.tags||[];
 return`<div class="list-item" onclick="editInbox('${i.id}')" style="border-left:3px solid ${i.processed?'var(--muted)':'var(--accent)'}">
-
 <div class="item-content">
 <div class="item-title">${i.text}</div>
 <div class="item-meta">${tags.map(t=>{const tg=TAGS.find(x=>x.id===t);return tg?`<span style="color:${tg.color}">${tg.icon}${tg.name}</span>`:''}).join('')}<span>📅${U.date(i.created)}</span></div>
@@ -405,13 +400,12 @@ ${!i.processed?`<button class="btn btn-ghost" onclick="event.stopPropagation();p
 // ============ CLIENTES ============
 function pgClients(){
 const clients=DB.data.clients||[];
-const review=clients.filter(c=>c.status===‘review’);
-const ok=clients.filter(c=>c.status===‘ok’);
-const risk=clients.filter(c=>c.status===‘risk’);
-const newC=clients.filter(c=>c.status===‘new’);
+const review=clients.filter(c=>c.status==='review');
+const ok=clients.filter(c=>c.status==='ok');
+const risk=clients.filter(c=>c.status==='risk');
+const newC=clients.filter(c=>c.status==='new');
 const totalMrr=clients.reduce((s,c)=>s+(c.mrr||0),0);
 return`<div class="page active">
-
 <div class="page-header"><div><h1>👥 Clientes</h1><p>Revisión estratégica</p></div>
 <div class="actions"><button class="btn btn-primary" onclick="showClientModal()">+ Cliente</button></div></div>
 <div class="qstats">
@@ -432,9 +426,8 @@ return`<div class="page active">
 
 function clientCard(c){
 const st=CLIENT_ST.find(x=>x.id===c.status);
-const services=(c.services||[]).join(’, ’);
+const services=(c.services||[]).join(', ');
 return`<div class="project-card" onclick="openDetail('client','${c.id}')" style="border-left-color:${st?.color||'var(--muted)'}">
-
 <div style="display:flex;justify-content:space-between;align-items:start">
 <div class="project-title">${c.name}</div>
 ${tag(c.status,st?.name||c.status)}
@@ -450,11 +443,10 @@ ${c.aiNeeds&&c.aiNeeds!=='No explorado aún'?`<div style="margin-top:8px;padding
 
 function pgClientDetail(id){
 const c=DB.data.clients.find(x=>x.id===id);
-if(!c)return’<div class="empty">No encontrado</div>’;
+if(!c)return'<div class="empty">No encontrado</div>';
 const st=CLIENT_ST.find(x=>x.id===c.status);
-const services=(c.services||[]).join(’, ’);
+const services=(c.services||[]).join(', ');
 return`<div class="page active">
-
 <div class="back-btn" onclick="closeDetail()">← Volver a Clientes</div>
 <div class="detail-header">
 <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
@@ -496,20 +488,20 @@ return`<div class="page active">
 }
 
 function filterClients(f,btn){
-document.querySelectorAll(’#clientFilters .pill’).forEach(p=>p.classList.remove(‘active’));
-btn.classList.add(‘active’);
+document.querySelectorAll('#clientFilters .pill').forEach(p=>p.classList.remove('active'));
+btn.classList.add('active');
 let clients=DB.data.clients||[];
-if(f!==‘all’)clients=clients.filter(c=>c.status===f);
-document.getElementById(‘clientsGrid’).innerHTML=clients.map(c=>clientCard(c)).join(’’)||’<div class="empty">No hay clientes</div>’;
+if(f!=='all')clients=clients.filter(c=>c.status===f);
+document.getElementById('clientsGrid').innerHTML=clients.map(c=>clientCard(c)).join('')||'<div class="empty">No hay clientes</div>';
 }
 
 // ============ LIST PAGES ============
 function pgDash(){
-if(currentDash===‘today’)return pgDashToday();
-if(currentDash===‘comercial’)return pgDashComercial();
-if(currentDash===‘clientes’)return pgDashClientes();
-if(currentDash===‘producto’)return pgDashProducto();
-if(currentDash===‘equipo’)return pgDashEquipo();
+if(currentDash==='today')return pgDashToday();
+if(currentDash==='comercial')return pgDashComercial();
+if(currentDash==='clientes')return pgDashClientes();
+if(currentDash==='producto')return pgDashProducto();
+if(currentDash==='equipo')return pgDashEquipo();
 return pgDashCEO();
 }
 
@@ -517,39 +509,39 @@ return pgDashCEO();
 function getAlerts(){
 const alerts=[];
 const now=new Date();
-const today=now.toISOString().split(‘T’)[0];
+const today=now.toISOString().split('T')[0];
 // Decisiones con deadline pasado
-(DB.data.decisions||[]).filter(d=>!d.decided&&d.deadline&&d.deadline<today).forEach(d=>alerts.push({type:‘danger’,icon:‘⚡’,text:’Decisión atrasada: ’+d.title,action:()=>editDec(d.id)}));
+(DB.data.decisions||[]).filter(d=>!d.decided&&d.deadline&&d.deadline<today).forEach(d=>alerts.push({type:'danger',icon:'⚡',text:'Decisión atrasada: '+d.title,action:()=>editDec(d.id)}));
 // Tareas urgentes sin asignar
-DB.data.tasks.filter(t=>t.status!==‘done’&&t.priority===‘urgent’&&!t.assignee).forEach(t=>alerts.push({type:‘warning’,icon:‘🔥’,text:’Tarea urgente sin asignar: ’+t.title,action:()=>editTask(t.id)}));
+DB.data.tasks.filter(t=>t.status!=='done'&&t.priority==='urgent'&&!t.assignee).forEach(t=>alerts.push({type:'warning',icon:'🔥',text:'Tarea urgente sin asignar: '+t.title,action:()=>editTask(t.id)}));
 // Tareas atrasadas
-DB.data.tasks.filter(t=>t.status!==‘done’&&t.due&&t.due<today).forEach(t=>alerts.push({type:‘warning’,icon:‘📅’,text:’Tarea atrasada: ‘+t.title,action:()=>editTask(t.id)}));
+DB.data.tasks.filter(t=>t.status!=='done'&&t.due&&t.due<today).forEach(t=>alerts.push({type:'warning',icon:'📅',text:'Tarea atrasada: '+t.title,action:()=>editTask(t.id)}));
 // Clientes en riesgo con MRR alto
-(DB.data.clients||[]).filter(c=>c.status===‘risk’&&c.mrr>=1000).forEach(c=>alerts.push({type:‘danger’,icon:‘🚨’,text:‘Cliente en riesgo (’+U.money(c.mrr)+’/m): ’+c.name,action:()=>openDetail(‘client’,c.id)}));
+(DB.data.clients||[]).filter(c=>c.status==='risk'&&c.mrr>=1000).forEach(c=>alerts.push({type:'danger',icon:'🚨',text:'Cliente en riesgo ('+U.money(c.mrr)+'/m): '+c.name,action:()=>openDetail('client',c.id)}));
 // Oportunidades estancadas (+30 días en idea)
-(DB.data.opportunities||[]).filter(o=>o.status===‘idea’).forEach(o=>alerts.push({type:‘info’,icon:‘💡’,text:‘Oportunidad en “Idea”: ‘+o.title,action:()=>openDetail(‘opp’,o.id)}));
+(DB.data.opportunities||[]).filter(o=>o.status==='idea').forEach(o=>alerts.push({type:'info',icon:'💡',text:'Oportunidad en "Idea": '+o.title,action:()=>openDetail('opp',o.id)}));
 // Inbox sin procesar (+5 items)
 const inboxCount=(DB.data.inbox||[]).filter(i=>!i.processed).length;
-if(inboxCount>=5)alerts.push({type:‘info’,icon:‘📥’,text:inboxCount+’ ideas sin procesar en Inbox’,action:()=>nav(‘inbox’)});
+if(inboxCount>=5)alerts.push({type:'info',icon:'📥',text:inboxCount+' ideas sin procesar en Inbox',action:()=>nav('inbox')});
 return alerts;
 }
 
 function alertItem(a){
-const colors={danger:‘var(–red)’,warning:‘var(–orange)’,info:‘var(–blue)’};
+const colors={danger:'var(--red)',warning:'var(--orange)',info:'var(--blue)'};
 return`<div class="list-item" onclick="(${a.action})()" style="border-left:3px solid ${colors[a.type]}"><span style="font-size:16px">${a.icon}</span><div class="item-content"><div class="item-title" style="font-size:12px">${a.text}</div></div><span style="color:var(--muted);font-size:18px">→</span></div>`;
 }
 
 // ============ VISTA HOY ============
 function pgDashToday(){
 const alerts=getAlerts();
-const today=new Date().toISOString().split(‘T’)[0];
-const todayTasks=DB.data.tasks.filter(t=>t.status!==‘done’&&t.due===today);
-const urgentTasks=DB.data.tasks.filter(t=>t.status!==‘done’&&(t.priority===‘urgent’||t.priority===‘high’));
+const today=new Date().toISOString().split('T')[0];
+const todayTasks=DB.data.tasks.filter(t=>t.status!=='done'&&t.due===today);
+const urgentTasks=DB.data.tasks.filter(t=>t.status!=='done'&&(t.priority==='urgent'||t.priority==='high'));
 const pendingDecs=DB.data.decisions.filter(d=>!d.decided);
 const inboxPending=(DB.data.inbox||[]).filter(i=>!i.processed).slice(0,3);
 
-return`<div class="page active"><div class="page-header"><div><h1>📆 Hoy</h1><p>Lo que necesita tu atención ahora</p></div></div> ${alerts.length?`<div class="card mb-2" style="border-left:3px solid var(--red)"><div class="card-title mb-1">🚨 Alertas (${alerts.length})</div>${alerts.slice(0,5).map(a=>alertItem(a)).join(’’)}${alerts.length>5?`<div class="text-muted" style="font-size:11px;margin-top:8px">+${alerts.length-5} alertas más</div>`:’’}</div>`:’’}
-
+return`<div class="page active"><div class="page-header"><div><h1>📆 Hoy</h1><p>Lo que necesita tu atención ahora</p></div></div>
+${alerts.length?`<div class="card mb-2" style="border-left:3px solid var(--red)"><div class="card-title mb-1">🚨 Alertas (${alerts.length})</div>${alerts.slice(0,5).map(a=>alertItem(a)).join('')}${alerts.length>5?`<div class="text-muted" style="font-size:11px;margin-top:8px">+${alerts.length-5} alertas más</div>`:''}</div>`:''}
 <div class="grid g2 mb-2">
 <div class="card"><div class="card-title mb-1">📅 Tareas para hoy (${todayTasks.length})</div>${todayTasks.length?todayTasks.map(t=>taskItem(t)).join(''):'<div class="empty">Nada programado para hoy</div>'}</div>
 <div class="card"><div class="card-title mb-1">🔥 Urgentes/Altas (${urgentTasks.length})</div>${urgentTasks.slice(0,4).map(t=>taskItem(t)).join('')||'<div class="empty">Sin urgencias 👍</div>'}</div>
@@ -561,7 +553,7 @@ return`<div class="page active"><div class="page-header"><div><h1>📆 Hoy</h1><
 </div>`}
 
 function pgDashCEO(){
-const s=DB.stats();const me=DB.me();const myTasks=DB.tasksByUser(me.id).filter(t=>t.status!==‘done’).slice(0,4);const opps=DB.data.opportunities.filter(o=>![‘launched’].includes(o.status)).slice(0,3);const decs=DB.data.decisions.filter(d=>!d.decided).slice(0,3);const inboxPending=(DB.data.inbox||[]).filter(i=>!i.processed).slice(0,3);const clientsReview=(DB.data.clients||[]).filter(c=>c.status===‘review’).slice(0,3);
+const s=DB.stats();const me=DB.me();const myTasks=DB.tasksByUser(me.id).filter(t=>t.status!=='done').slice(0,4);const opps=DB.data.opportunities.filter(o=>!['launched'].includes(o.status)).slice(0,3);const decs=DB.data.decisions.filter(d=>!d.decided).slice(0,3);const inboxPending=(DB.data.inbox||[]).filter(i=>!i.processed).slice(0,3);const clientsReview=(DB.data.clients||[]).filter(c=>c.status==='review').slice(0,3);
 const alerts=getAlerts();
 const objs=DB.data.objectives||[];
 const avgObjProgress=objs.length?Math.round(objs.reduce((s,o)=>s+U.pct(o.current,o.target),0)/objs.length):0;
@@ -571,8 +563,8 @@ const history=DB.data.history||[];
 const lastMonth=history[1]?.metrics||{};
 const mrrChange=lastMonth.mrr?Math.round(((totalMrr-lastMonth.mrr)/lastMonth.mrr)*100):0;
 
-return`<div class="page active"><div class="page-header"><div><h1>👑 CEO Overview</h1><p>Centro de mando WEDO</p></div><div class="actions"><button class="btn btn-secondary" onclick="showInboxModal()">📥 Capturar</button><button class="btn btn-primary" onclick="showTaskModal()">+ Tarea</button></div></div> ${alerts.length?`<div class="card mb-2" style="border-left:3px solid var(--orange)"><div class="card-header"><div class="card-title">🚨 Alertas (${alerts.length})</div><span class="card-link" onclick="selectDash('today')">Ver todo →</span></div>${alerts.slice(0,3).map(a=>alertItem(a)).join(’’)}</div>`:’’}
-
+return`<div class="page active"><div class="page-header"><div><h1>👑 CEO Overview</h1><p>Centro de mando WEDO</p></div><div class="actions"><button class="btn btn-secondary" onclick="showInboxModal()">📥 Capturar</button><button class="btn btn-primary" onclick="showTaskModal()">+ Tarea</button></div></div>
+${alerts.length?`<div class="card mb-2" style="border-left:3px solid var(--orange)"><div class="card-header"><div class="card-title">🚨 Alertas (${alerts.length})</div><span class="card-link" onclick="selectDash('today')">Ver todo →</span></div>${alerts.slice(0,3).map(a=>alertItem(a)).join('')}</div>`:''}
 <div class="grid g4 mb-2">
 <div class="stat" onclick="nav('clients')"><div class="stat-icon green">💰</div><div class="stat-value">${U.money(totalMrr)}</div><div class="stat-label">MRR ${mrrChange>=0?'↑':'↓'}${Math.abs(mrrChange)}%</div></div>
 <div class="stat" onclick="nav('objectives')"><div class="stat-icon purple">📈</div><div class="stat-value">${avgObjProgress}%</div><div class="stat-label">Objetivos</div></div>
@@ -587,9 +579,8 @@ return`<div class="page active"><div class="page-header"><div><h1>👑 CEO Overv
 <div class="grid g2 mt-2"><div class="card"><div class="card-header"><div class="card-title">🎯 Proyectos activos</div><span class="card-link" onclick="nav('projects')">Ver →</span></div>${DB.data.projects.filter(p=>p.status==='active').slice(0,2).map(projCard).join('')||'<div class="empty">-</div>'}</div><div class="card"><div class="card-header"><div class="card-title">✅ Mis tareas</div><span class="card-link" onclick="nav('tasks')">Ver →</span></div>${myTasks.length?myTasks.map(t=>taskItem(t)).join(''):'<div class="empty">Sin tareas 🎉</div>'}</div></div></div>`}
 
 function pgDashComercial(){
-const s=DB.stats();const leads=DB.data.leads;const activeLeads=leads.filter(l=>![‘won’,‘lost’].includes(l.stage));const wonLeads=leads.filter(l=>l.stage===‘won’);const lostLeads=leads.filter(l=>l.stage===‘lost’);const convRate=wonLeads.length+lostLeads.length>0?U.pct(wonLeads.length,wonLeads.length+lostLeads.length):0;const avgDealValue=wonLeads.length>0?Math.round(wonLeads.reduce((s,l)=>s+(l.value||0),0)/wonLeads.length):0;const refs=DB.data.referrers||[];
+const s=DB.stats();const leads=DB.data.leads;const activeLeads=leads.filter(l=>!['won','lost'].includes(l.stage));const wonLeads=leads.filter(l=>l.stage==='won');const lostLeads=leads.filter(l=>l.stage==='lost');const convRate=wonLeads.length+lostLeads.length>0?U.pct(wonLeads.length,wonLeads.length+lostLeads.length):0;const avgDealValue=wonLeads.length>0?Math.round(wonLeads.reduce((s,l)=>s+(l.value||0),0)/wonLeads.length):0;const refs=DB.data.referrers||[];
 return`<div class="page active"><div class="page-header"><div><h1>💼 Dashboard Comercial</h1><p>Pipeline y rendimiento de ventas</p></div><div class="actions"><button class="btn btn-primary" onclick="showLeadModal()">+ Nuevo lead</button></div></div>
-
 <div class="grid g4 mb-2">
 <div class="stat" onclick="nav('comercial')"><div class="stat-icon blue">🎯</div><div class="stat-value">${activeLeads.length}</div><div class="stat-label">Leads activos</div></div>
 <div class="stat" onclick="nav('comercial')"><div class="stat-icon green">💰</div><div class="stat-value">${U.money(s.pipeline)}</div><div class="stat-label">Pipeline</div></div>
@@ -609,9 +600,8 @@ ${STAGES.filter(st=>!['won','lost'].includes(st.id)).map(st=>{const count=DB.byS
 </div></div>`}
 
 function pgDashClientes(){
-const clients=DB.data.clients||[];const totalMrr=clients.reduce((s,c)=>s+(c.mrr||0),0);const review=clients.filter(c=>c.status===‘review’);const risk=clients.filter(c=>c.status===‘risk’);const ok=clients.filter(c=>c.status===‘ok’);const noAI=clients.filter(c=>!c.aiNeeds||c.aiNeeds===‘No explorado aún’||c.aiNeeds===‘Por evaluar’);
+const clients=DB.data.clients||[];const totalMrr=clients.reduce((s,c)=>s+(c.mrr||0),0);const review=clients.filter(c=>c.status==='review');const risk=clients.filter(c=>c.status==='risk');const ok=clients.filter(c=>c.status==='ok');const noAI=clients.filter(c=>!c.aiNeeds||c.aiNeeds==='No explorado aún'||c.aiNeeds==='Por evaluar');
 return`<div class="page active"><div class="page-header"><div><h1>👥 Dashboard Clientes</h1><p>Cartera y retención</p></div><div class="actions"><button class="btn btn-primary" onclick="showClientModal()">+ Cliente</button></div></div>
-
 <div class="grid g4 mb-2">
 <div class="stat" onclick="nav('clients')"><div class="stat-icon blue">👥</div><div class="stat-value">${clients.length}</div><div class="stat-label">Clientes</div></div>
 <div class="stat"><div class="stat-icon green">💰</div><div class="stat-value">${U.money(totalMrr)}</div><div class="stat-label">MRR Total</div></div>
@@ -632,9 +622,8 @@ return`<div class="page active"><div class="page-header"><div><h1>👥 Dashboard
 </div></div>`}
 
 function pgDashProducto(){
-const opps=DB.data.opportunities;const projects=DB.data.projects;const decs=DB.data.decisions;const inbox=(DB.data.inbox||[]).filter(i=>!i.processed);const activeOpps=opps.filter(o=>![‘launched’,‘discarded’].includes(o.status));const activeProjs=projects.filter(p=>p.status===‘active’);const totalPotential=activeOpps.reduce((s,o)=>s+(o.potential||0),0);
+const opps=DB.data.opportunities;const projects=DB.data.projects;const decs=DB.data.decisions;const inbox=(DB.data.inbox||[]).filter(i=>!i.processed);const activeOpps=opps.filter(o=>!['launched','discarded'].includes(o.status));const activeProjs=projects.filter(p=>p.status==='active');const totalPotential=activeOpps.reduce((s,o)=>s+(o.potential||0),0);
 return`<div class="page active"><div class="page-header"><div><h1>🎯 Dashboard Producto</h1><p>Estrategia y desarrollo</p></div><div class="actions"><button class="btn btn-secondary" onclick="showInboxModal()">📥 Idea</button><button class="btn btn-primary" onclick="showOppModal()">+ Oportunidad</button></div></div>
-
 <div class="grid g4 mb-2">
 <div class="stat" onclick="nav('opportunities')"><div class="stat-icon yellow">💡</div><div class="stat-value">${activeOpps.length}</div><div class="stat-label">Oportunidades</div></div>
 <div class="stat"><div class="stat-icon green">💰</div><div class="stat-value">${U.money(totalPotential)}</div><div class="stat-label">Potencial</div></div>
@@ -651,9 +640,8 @@ return`<div class="page active"><div class="page-header"><div><h1>🎯 Dashboard
 </div></div>`}
 
 function pgDashEquipo(){
-const users=DB.data.users;const tasks=DB.data.tasks;const pendingTasks=tasks.filter(t=>t.status!==‘done’);const inProgress=tasks.filter(t=>t.status===‘in-progress’);const inbox=(DB.data.inbox||[]).filter(i=>!i.processed&&(i.tags||[]).includes(‘equipo’));
+const users=DB.data.users;const tasks=DB.data.tasks;const pendingTasks=tasks.filter(t=>t.status!=='done');const inProgress=tasks.filter(t=>t.status==='in-progress');const inbox=(DB.data.inbox||[]).filter(i=>!i.processed&&(i.tags||[]).includes('equipo'));
 return`<div class="page active"><div class="page-header"><div><h1>🧑‍🤝‍🧑 Dashboard Equipo</h1><p>Carga de trabajo y capacidad</p></div><div class="actions"><button class="btn btn-primary" onclick="showTaskModal()">+ Asignar tarea</button></div></div>
-
 <div class="grid g4 mb-2">
 <div class="stat" onclick="nav('team')"><div class="stat-icon blue">👥</div><div class="stat-value">${users.length}</div><div class="stat-label">Miembros</div></div>
 <div class="stat" onclick="nav('tasks')"><div class="stat-icon orange">📋</div><div class="stat-value">${pendingTasks.length}</div><div class="stat-label">Tareas pendientes</div></div>
@@ -668,40 +656,34 @@ ${users.map(u=>{const userTasks=DB.tasksByUser(u.id).filter(t=>t.status!=='done'
 <div class="card"><div class="card-header"><div class="card-title">👥 Temas equipo</div><span class="card-link" onclick="nav('inbox')">Ver inbox →</span></div>${inbox.slice(0,3).map(i=>inboxItem(i)).join('')||'<div class="empty">Sin temas pendientes</div>'}</div>
 </div></div>`}
 
-function pgOpp(){const opps=DB.data.opportunities.filter(o=>o.status!==‘launched’);const launched=DB.data.opportunities.filter(o=>o.status===‘launched’);
+function pgOpp(){const opps=DB.data.opportunities.filter(o=>o.status!=='launched');const launched=DB.data.opportunities.filter(o=>o.status==='launched');
 return`<div class="page active"><div class="page-header"><div><h1>💡 Oportunidades</h1><p>Ideas para escalar WEDO</p></div><div class="actions"><button class="btn btn-primary" onclick="showOppModal()">+ Nueva</button></div></div>
-
 <div class="qstats"><div class="qstat"><div class="qstat-val">${opps.length}</div><div class="qstat-lbl">Activas</div></div><div class="qstat"><div class="qstat-val text-success">${U.money(opps.reduce((s,o)=>s+(o.potential||0),0))}</div><div class="qstat-lbl">Potencial</div></div></div>
 <div class="grid g2">${opps.map(oppCard).join('')}</div>
 ${launched.length?`<h3 class="mt-2 mb-1" style="font-size:13px;color:var(--text2)">🎉 Lanzadas</h3><div class="grid g2">${launched.map(oppCard).join('')}</div>`:''}</div>`}
 
 function pgDec(){const pending=DB.data.decisions.filter(d=>!d.decided);const decided=DB.data.decisions.filter(d=>d.decided);
 return`<div class="page active"><div class="page-header"><div><h1>⚡ Decisiones</h1><p>Cosas que decidir</p></div><div class="actions"><button class="btn btn-primary" onclick="showDecModal()">+ Nueva</button></div></div>
-
 <div class="qstats"><div class="qstat"><div class="qstat-val text-warning">${pending.length}</div><div class="qstat-lbl">Pendientes</div></div><div class="qstat"><div class="qstat-val text-success">${decided.length}</div><div class="qstat-lbl">Decididas</div></div></div>
 <h3 class="mb-1" style="font-size:13px">⏳ Pendientes</h3><div class="grid g2 mb-2">${pending.length?pending.map(decCard).join(''):'<div class="empty">Nada pendiente</div>'}</div>
 ${decided.length?`<h3 class="mb-1" style="font-size:13px">✅ Decididas</h3><div class="grid g2">${decided.map(decCard).join('')}</div>`:''}</div>`}
 
 function pgProj(){return`<div class="page active"><div class="page-header"><div><h1>🎯 Proyectos WEDO</h1><p>Proyectos internos</p></div><div class="actions"><button class="btn btn-primary" onclick="showProjModal()">+ Nuevo</button></div></div>
-
 <div class="grid g2">${DB.data.projects.map(projCard).join('')}</div></div>`}
 
-function pgCom(){const s=DB.stats();const stages=STAGES.filter(st=>![‘won’,‘lost’].includes(st.id));const won=DB.byStage(‘won’),lost=DB.byStage(‘lost’);
+function pgCom(){const s=DB.stats();const stages=STAGES.filter(st=>!['won','lost'].includes(st.id));const won=DB.byStage('won'),lost=DB.byStage('lost');
 return`<div class="page active"><div class="page-header"><div><h1>💼 Comercial</h1><p>Pipeline de ventas</p></div><div class="actions"><button class="btn btn-secondary" onclick="nav('referrers')">👥 Referidores</button><button class="btn btn-primary" onclick="showLeadModal()">+ Lead</button></div></div>
-
 <div class="qstats"><div class="qstat"><div class="qstat-val">${s.activeLeads}</div><div class="qstat-lbl">Leads</div></div><div class="qstat"><div class="qstat-val text-success">${U.money(s.pipeline)}</div><div class="qstat-lbl">Pipeline</div></div><div class="qstat"><div class="qstat-val">${won.length}</div><div class="qstat-lbl">Ganados</div></div><div class="qstat"><div class="qstat-val">${U.money(s.won)}</div><div class="qstat-lbl">Facturado</div></div><div class="qstat"><div class="qstat-val">${U.pct(won.length,won.length+lost.length)}%</div><div class="qstat-lbl">Conversión</div></div></div>
 <div class="funnel">${stages.map(st=>{const leads=DB.byStage(st.id);return`<div class="funnel-col"><div class="funnel-header"><div class="funnel-title" style="color:${st.color}">${st.icon} ${st.name} <span class="funnel-count">${leads.length}</span></div><span style="font-size:10px;color:var(--muted)">${U.money(leads.reduce((s,l)=>s+(l.value||0),0))}</span></div><div class="funnel-body" ondragover="event.preventDefault()" ondrop="dropLead(event,'${st.id}')">${leads.map(leadCard).join('')}<button class="funnel-add" onclick="showLeadModal(null,'${st.id}')">+</button></div></div>`}).join('')}</div>
 <div class="grid g2 mt-2"><div class="card" style="border-left:3px solid var(--green)"><div class="card-title mb-1">✅ Cerrados (${won.length})</div>${won.slice(0,3).map(leadCard).join('')||'<div class="empty">-</div>'}</div><div class="card" style="border-left:3px solid var(--red)"><div class="card-title mb-1">❌ Perdidos (${lost.length})</div>${lost.slice(0,3).map(leadCard).join('')||'<div class="empty">-</div>'}</div></div></div>`}
 
-function pgRef(){const refs=DB.data.referrers;const total=DB.data.leads.filter(l=>l.referrerId).length;const wonRef=DB.data.leads.filter(l=>l.referrerId&&l.stage===‘won’);const val=wonRef.reduce((s,l)=>s+(l.value||0),0);
+function pgRef(){const refs=DB.data.referrers;const total=DB.data.leads.filter(l=>l.referrerId).length;const wonRef=DB.data.leads.filter(l=>l.referrerId&&l.stage==='won');const val=wonRef.reduce((s,l)=>s+(l.value||0),0);
 return`<div class="page active"><div class="page-header"><div><h1>👥 Referidores</h1></div><div class="actions"><button class="btn btn-secondary" onclick="nav('comercial')">← Comercial</button><button class="btn btn-primary" onclick="showRefModal()">+ Referidor</button></div></div>
-
 <div class="qstats"><div class="qstat"><div class="qstat-val">${refs.length}</div><div class="qstat-lbl">Referidores</div></div><div class="qstat"><div class="qstat-val">${total}</div><div class="qstat-lbl">Leads</div></div><div class="qstat"><div class="qstat-val text-success">${wonRef.length}</div><div class="qstat-lbl">Cerrados</div></div><div class="qstat"><div class="qstat-val text-success">${U.money(val)}</div><div class="qstat-lbl">Generado</div></div></div>
 <div class="card"><div class="card-title mb-1">🏆 Ranking</div>${refs.sort((a,b)=>{const av=DB.byRef(a.id).filter(l=>l.stage==='won').reduce((s,l)=>s+(l.value||0),0);const bv=DB.byRef(b.id).filter(l=>l.stage==='won').reduce((s,l)=>s+(l.value||0),0);return bv-av}).map((r,i)=>{const lds=DB.byRef(r.id);const w=lds.filter(l=>l.stage==='won');const v=w.reduce((s,l)=>s+(l.value||0),0);return`<div class="list-item" onclick="editRef('${r.id}')"><span style="font-size:16px">${['🥇','🥈','🥉'][i]||'▪️'}</span><div class="avatar sm" style="background:linear-gradient(135deg,var(--cyan),var(--blue))">${r.name[0]}</div><div class="item-content"><div class="item-title">${r.name}</div><div class="item-meta"><span>${lds.length} leads</span><span>${w.length} cerrados</span></div></div><span style="font-weight:700;color:var(--green)">${U.money(v)}</span></div>`}).join('')}</div></div>`}
 
-function pgTasks(){const tasks=DB.data.tasks;const p=tasks.filter(t=>t.status===‘pending’),ip=tasks.filter(t=>t.status===‘in-progress’),d=tasks.filter(t=>t.status===‘done’);
+function pgTasks(){const tasks=DB.data.tasks;const p=tasks.filter(t=>t.status==='pending'),ip=tasks.filter(t=>t.status==='in-progress'),d=tasks.filter(t=>t.status==='done');
 return`<div class="page active"><div class="page-header"><div><h1>✅ Tareas</h1><p>Todas las tareas sincronizadas</p></div><div class="actions"><button class="btn btn-primary" onclick="showTaskModal()">+ Tarea</button></div></div>
-
 <div class="grid g3"><div class="card"><div class="card-title mb-1">📋 Pendientes (${p.length})</div>${p.length?p.map(t=>taskItem(t)).join(''):'<div class="empty">-</div>'}</div><div class="card"><div class="card-title mb-1">🔄 En progreso (${ip.length})</div>${ip.length?ip.map(t=>taskItem(t)).join(''):'<div class="empty">-</div>'}</div><div class="card"><div class="card-title mb-1">✅ Hechas (${d.length})</div>${d.length?d.slice(0,8).map(t=>taskItem(t)).join(''):'<div class="empty">-</div>'}</div></div></div>`}
 
 // ============ OBJETIVOS ============
@@ -712,7 +694,6 @@ const yearObjs=objs.filter(o=>o.year===year);
 const avgProgress=yearObjs.length?Math.round(yearObjs.reduce((s,o)=>s+U.pct(o.current,o.target),0)/yearObjs.length):0;
 
 return`<div class="page active"><div class="page-header"><div><h1>🎯 Objetivos ${year}</h1><p>Planificación estratégica anual</p></div><div class="actions"><button class="btn btn-primary" onclick="showObjModal()">+ Objetivo</button></div></div>
-
 <div class="qstats">
 <div class="qstat"><div class="qstat-val">${yearObjs.length}</div><div class="qstat-lbl">Objetivos</div></div>
 <div class="qstat"><div class="qstat-val" style="color:${U.progCol(avgProgress)}">${avgProgress}%</div><div class="qstat-lbl">Progreso</div></div>
@@ -728,7 +709,6 @@ const pct=U.pct(o.current,o.target);
 const krs=o.keyResults||[];
 const krsProgress=krs.length?Math.round(krs.reduce((s,k)=>s+U.pct(k.current,k.target),0)/krs.length):0;
 return`<div class="project-card" onclick="openDetail('obj','${o.id}')" style="border-left-color:${area?.color||'var(--accent)'}">
-
 <div style="display:flex;justify-content:space-between;align-items:start">
 <div class="project-title">${o.title}</div>
 <span class="tag" style="background:${area?.color}22;color:${area?.color}">${area?.icon} ${area?.name}</span>
@@ -743,13 +723,12 @@ return`<div class="project-card" onclick="openDetail('obj','${o.id}')" style="bo
 
 function pgObjDetail(id){
 const o=(DB.data.objectives||[]).find(x=>x.id===id);
-if(!o)return’<div class="empty">No encontrado</div>’;
+if(!o)return'<div class="empty">No encontrado</div>';
 const area=OBJ_AREAS.find(a=>a.id===o.area);
 const pct=U.pct(o.current,o.target);
 const krs=o.keyResults||[];
 
 return`<div class="page active">
-
 <div class="back-btn" onclick="closeDetail()">← Volver a Objetivos</div>
 <div class="detail-header">
 <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:10px">
@@ -786,44 +765,42 @@ return`<div class="list-item" onclick="editKR('${o.id}','${kr.id}')">
 </div>`}
 
 function pgTeam(){return`<div class="page active"><div class="page-header"><div><h1>👥 Equipo</h1></div><div class="actions"><button class="btn btn-primary" onclick="showUserModal()">+ Miembro</button></div></div>
-
 <div class="grid g4">${DB.data.users.map(u=>{const tasks=DB.tasksByUser(u.id).filter(t=>t.status!=='done').length;return`<div class="member" onclick="editUser('${u.id}')">${avatar(u,'xl')}<div class="member-name">${u.name}</div><div class="member-role">${u.role}</div><div style="margin-top:8px;font-size:12px"><strong>${tasks}</strong> tareas</div></div>`}).join('')}</div></div>`}
 
 function pgSet(){const co=DB.data.company;const me=DB.me();return`<div class="page active"><div class="page-header"><div><h1>⚙️ Config</h1></div></div>
-
 <div class="grid g2"><div class="card"><div class="card-title mb-1">👤 Mi perfil</div><form id="profileForm" onsubmit="saveProfile(event)"><div class="form-group"><label class="form-label">Nombre</label><input class="form-input" name="name" value="${me.name}" required></div><div class="form-group"><label class="form-label">Cargo</label><input class="form-input" name="role" value="${me.role}"></div><button type="submit" class="btn btn-primary" style="width:100%">Guardar</button></form></div>
 <div class="card"><div class="card-title mb-1">🏢 Empresa</div><form id="companyForm" onsubmit="saveCo(event)"><div class="form-group"><label class="form-label">Nombre</label><input class="form-input" name="name" value="${co.name}" required></div><div class="form-group"><label class="form-label">Logo</label><input class="form-input" name="logo" value="${co.logo}" maxlength="2"></div><button type="submit" class="btn btn-primary" style="width:100%">Guardar</button></form><div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--border)"><button class="btn btn-danger btn-sm" onclick="confirmReset()">🗑️ Reset</button></div></div></div></div>`}
 
 // Drag
 let dragId=null;
-function dragLead(e,id){dragId=id;e.dataTransfer.effectAllowed=‘move’}
-function dropLead(e,stage){e.preventDefault();if(dragId){DB.update(‘leads’,dragId,{stage});UI.toast(‘Movido’);render();dragId=null}}
+function dragLead(e,id){dragId=id;e.dataTransfer.effectAllowed='move'}
+function dropLead(e,stage){e.preventDefault();if(dragId){DB.update('leads',dragId,{stage});UI.toast('Movido');render();dragId=null}}
 
 // ============ MODALS ============
-function showOppModal(o=null){const ed=o!==null;const users=DB.data.users;UI.modal(ed?‘Editar’:‘Nueva oportunidad’,`<form id="oppForm"><div class="form-group"><label class="form-label">Título *</label><input class="form-input" name="title" value="${o?.title||''}" required></div><div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea" name="desc">${o?.desc||''}</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status">${OPP_ST.map(s=>`<option value=”${s.id}” ${o?.status===s.id?‘selected’:’’}>${s.icon} ${s.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Potencial €</label><input type="number" class="form-input" name="potential" value="${o?.potential||''}"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Esfuerzo</label><select class="form-select" name="effort"><option value="low" ${o?.effort==='low'?'selected':''}>Bajo</option><option value="medium" ${o?.effort==='medium'?'selected':''}>Medio</option><option value="high" ${o?.effort==='high'?'selected':''}>Alto</option></select></div><div class="form-group"><label class="form-label">Responsable</label><select class="form-select" name="lead">${users.map(u=>`<option value=”${u.id}” ${o?.lead===u.id?‘selected’:’’}>${u.name}</option>`).join('')}</select></div></div><input type="hidden" name="id" value="${o?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delOpp('${o.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveOpp()">Guardar</button>`,‘lg’)}
-function saveOpp(){const f=document.getElementById(‘oppForm’);const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast(‘Título requerido’,‘error’);d.potential=parseInt(d.potential)||0;if(d.id){DB.update(‘opportunities’,d.id,d);UI.toast(‘Actualizado’)}else{delete d.id;DB.add(‘opportunities’,d);UI.toast(‘Creada’)}UI.closeModal();render()}
-function editOppInfo(id){showOppModal(DB.get(‘opportunities’,id))}
-function delOpp(id){UI.confirm(’¿Eliminar? Las tareas asociadas quedarán sin vincular.’,`function(){DB.data.tasks.forEach(t=>{if(t.oppId==='${id}')t.oppId=null});DB.del('opportunities','${id}');UI.toast('Eliminada');UI.closeModal();closeDetail()}`)}
+function showOppModal(o=null){const ed=o!==null;const users=DB.data.users;UI.modal(ed?'Editar':'Nueva oportunidad',`<form id="oppForm"><div class="form-group"><label class="form-label">Título *</label><input class="form-input" name="title" value="${o?.title||''}" required></div><div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea" name="desc">${o?.desc||''}</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status">${OPP_ST.map(s=>`<option value="${s.id}" ${o?.status===s.id?'selected':''}>${s.icon} ${s.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Potencial €</label><input type="number" class="form-input" name="potential" value="${o?.potential||''}"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Esfuerzo</label><select class="form-select" name="effort"><option value="low" ${o?.effort==='low'?'selected':''}>Bajo</option><option value="medium" ${o?.effort==='medium'?'selected':''}>Medio</option><option value="high" ${o?.effort==='high'?'selected':''}>Alto</option></select></div><div class="form-group"><label class="form-label">Responsable</label><select class="form-select" name="lead">${users.map(u=>`<option value="${u.id}" ${o?.lead===u.id?'selected':''}>${u.name}</option>`).join('')}</select></div></div><input type="hidden" name="id" value="${o?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delOpp('${o.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveOpp()">Guardar</button>`,'lg')}
+function saveOpp(){const f=document.getElementById('oppForm');const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast('Título requerido','error');d.potential=parseInt(d.potential)||0;if(d.id){DB.update('opportunities',d.id,d);UI.toast('Actualizado')}else{delete d.id;DB.add('opportunities',d);UI.toast('Creada')}UI.closeModal();render()}
+function editOppInfo(id){showOppModal(DB.get('opportunities',id))}
+function delOpp(id){UI.confirm('¿Eliminar? Las tareas asociadas quedarán sin vincular.',`function(){DB.data.tasks.forEach(t=>{if(t.oppId==='${id}')t.oppId=null});DB.del('opportunities','${id}');UI.toast('Eliminada');UI.closeModal();closeDetail()}`)}
 
-function showDecModal(d=null){const ed=d!==null;UI.modal(ed?‘Editar’:‘Nueva decisión’,`<form id="decForm"><div class="form-group"><label class="form-label">¿Qué decidir? *</label><input class="form-input" name="title" value="${d?.title||''}" required></div><div class="form-group"><label class="form-label">Contexto</label><textarea class="form-textarea" name="context">${d?.context||''}</textarea></div><div class="form-group"><label class="form-label">Opciones</label><textarea class="form-textarea" name="options">${d?.options||''}</textarea></div><div class="form-group"><label class="form-label">Deadline</label><input type="date" class="form-input" name="deadline" value="${d?.deadline||''}"></div>${ed?`<div class="form-group"><label><input type=“checkbox” name=“decided” ${d?.decided?‘checked’:’’} style=“margin-right:6px”>Decidido</label></div><div class="form-group"><label class="form-label">Decisión</label><input class="form-input" name="decision" value="${d?.decision||''}"></div>`:''}<input type="hidden" name="id" value="${d?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delDec('${d.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveDec()">Guardar</button>`,‘lg’)}
-function saveDec(){const f=document.getElementById(‘decForm’);const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast(‘Título requerido’,‘error’);d.decided=d.decided===‘on’;if(d.id){DB.update(‘decisions’,d.id,d);UI.toast(‘Actualizado’)}else{delete d.id;d.decided=false;DB.add(‘decisions’,d);UI.toast(‘Añadida’)}UI.closeModal();render()}
-function editDec(id){showDecModal(DB.get(‘decisions’,id))}
-function delDec(id){UI.confirm(’¿Eliminar?’,`function(){DB.del('decisions','${id}');UI.toast('Eliminada');UI.closeModal();render()}`)}
+function showDecModal(d=null){const ed=d!==null;UI.modal(ed?'Editar':'Nueva decisión',`<form id="decForm"><div class="form-group"><label class="form-label">¿Qué decidir? *</label><input class="form-input" name="title" value="${d?.title||''}" required></div><div class="form-group"><label class="form-label">Contexto</label><textarea class="form-textarea" name="context">${d?.context||''}</textarea></div><div class="form-group"><label class="form-label">Opciones</label><textarea class="form-textarea" name="options">${d?.options||''}</textarea></div><div class="form-group"><label class="form-label">Deadline</label><input type="date" class="form-input" name="deadline" value="${d?.deadline||''}"></div>${ed?`<div class="form-group"><label><input type="checkbox" name="decided" ${d?.decided?'checked':''} style="margin-right:6px">Decidido</label></div><div class="form-group"><label class="form-label">Decisión</label><input class="form-input" name="decision" value="${d?.decision||''}"></div>`:''}<input type="hidden" name="id" value="${d?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delDec('${d.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveDec()">Guardar</button>`,'lg')}
+function saveDec(){const f=document.getElementById('decForm');const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast('Título requerido','error');d.decided=d.decided==='on';if(d.id){DB.update('decisions',d.id,d);UI.toast('Actualizado')}else{delete d.id;d.decided=false;DB.add('decisions',d);UI.toast('Añadida')}UI.closeModal();render()}
+function editDec(id){showDecModal(DB.get('decisions',id))}
+function delDec(id){UI.confirm('¿Eliminar?',`function(){DB.del('decisions','${id}');UI.toast('Eliminada');UI.closeModal();render()}`)}
 
-function showProjModal(p=null){const ed=p!==null;const users=DB.data.users;UI.modal(ed?‘Editar’:‘Nuevo proyecto’,`<form id="projForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="title" value="${p?.title||''}" required></div><div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea" name="desc">${p?.desc||''}</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status">${PROJ_ST.map(s=>`<option value=”${s.id}” ${p?.status===s.id?‘selected’:’’}>${s.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Responsable</label><select class="form-select" name="lead">${users.map(u=>`<option value=”${u.id}” ${p?.lead===u.id?‘selected’:’’}>${u.name}</option>`).join('')}</select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Progreso %</label><input type="number" class="form-input" name="progress" value="${p?.progress||0}" min="0" max="100"></div><div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-input" name="due" value="${p?.due||''}"></div></div><input type="hidden" name="id" value="${p?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delProj('${p.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveProj()">Guardar</button>`,‘lg’)}
-function saveProj(){const f=document.getElementById(‘projForm’);const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast(‘Título requerido’,‘error’);d.progress=parseInt(d.progress)||0;if(d.id){DB.update(‘projects’,d.id,d);UI.toast(‘Actualizado’)}else{delete d.id;DB.add(‘projects’,d);UI.toast(‘Creado’)}UI.closeModal();render()}
-function editProjInfo(id){showProjModal(DB.get(‘projects’,id))}
-function delProj(id){UI.confirm(’¿Eliminar? Las tareas asociadas quedarán sin vincular.’,`function(){DB.data.tasks.forEach(t=>{if(t.projectId==='${id}')t.projectId=null});DB.del('projects','${id}');UI.toast('Eliminado');UI.closeModal();closeDetail()}`)}
+function showProjModal(p=null){const ed=p!==null;const users=DB.data.users;UI.modal(ed?'Editar':'Nuevo proyecto',`<form id="projForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="title" value="${p?.title||''}" required></div><div class="form-group"><label class="form-label">Descripción</label><textarea class="form-textarea" name="desc">${p?.desc||''}</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status">${PROJ_ST.map(s=>`<option value="${s.id}" ${p?.status===s.id?'selected':''}>${s.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Responsable</label><select class="form-select" name="lead">${users.map(u=>`<option value="${u.id}" ${p?.lead===u.id?'selected':''}>${u.name}</option>`).join('')}</select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Progreso %</label><input type="number" class="form-input" name="progress" value="${p?.progress||0}" min="0" max="100"></div><div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-input" name="due" value="${p?.due||''}"></div></div><input type="hidden" name="id" value="${p?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delProj('${p.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveProj()">Guardar</button>`,'lg')}
+function saveProj(){const f=document.getElementById('projForm');const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast('Título requerido','error');d.progress=parseInt(d.progress)||0;if(d.id){DB.update('projects',d.id,d);UI.toast('Actualizado')}else{delete d.id;DB.add('projects',d);UI.toast('Creado')}UI.closeModal();render()}
+function editProjInfo(id){showProjModal(DB.get('projects',id))}
+function delProj(id){UI.confirm('¿Eliminar? Las tareas asociadas quedarán sin vincular.',`function(){DB.data.tasks.forEach(t=>{if(t.projectId==='${id}')t.projectId=null});DB.del('projects','${id}');UI.toast('Eliminado');UI.closeModal();closeDetail()}`)}
 
-function showLeadModal(l=null,defStage=‘new’){const ed=l!==null;const users=DB.data.users;const refs=DB.data.referrers;UI.modal(ed?‘Editar’:‘Nuevo lead’,`<form id="leadForm"><div class="form-row"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${l?.name||''}" required></div><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" name="company" value="${l?.company||''}"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Valor €</label><input type="number" class="form-input" name="value" value="${l?.value||''}"></div><div class="form-group"><label class="form-label">Etapa</label><select class="form-select" name="stage">${STAGES.map(s=>`<option value=”${s.id}” ${(l?.stage||defStage)===s.id?‘selected’:’’}>${s.icon} ${s.name}</option>`).join('')}</select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Origen</label><select class="form-select" name="source">${SOURCES.map(s=>`<option value=”${s.id}” ${l?.source===s.id?‘selected’:’’}>${s.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Referidor</label><select class="form-select" name="referrerId"><option value="">-</option>${refs.map(r=>`<option value=”${r.id}” ${l?.referrerId===r.id?‘selected’:’’}>${r.name}</option>`).join('')}</select></div></div><div class="form-group"><label class="form-label">Asignado</label><select class="form-select" name="assignee">${users.map(u=>`<option value=”${u.id}” ${l?.assignee===u.id?‘selected’:’’}>${u.name}</option>`).join('')}</select></div><input type="hidden" name="id" value="${l?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delLead('${l.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveLead()">Guardar</button>`,‘lg’)}
-function saveLead(){const f=document.getElementById(‘leadForm’);const d=Object.fromEntries(new FormData(f));if(!d.name?.trim())return UI.toast(‘Nombre requerido’,‘error’);d.value=parseInt(d.value)||0;d.referrerId=d.referrerId||null;if(d.id){DB.update(‘leads’,d.id,d);UI.toast(‘Actualizado’)}else{delete d.id;DB.add(‘leads’,d);UI.toast(‘Creado’)}UI.closeModal();render()}
-function editLead(id){showLeadModal(DB.get(‘leads’,id))}
-function delLead(id){UI.confirm(’¿Eliminar?’,`function(){DB.del('leads','${id}');UI.toast('Eliminado');UI.closeModal();render()}`)}
+function showLeadModal(l=null,defStage='new'){const ed=l!==null;const users=DB.data.users;const refs=DB.data.referrers;UI.modal(ed?'Editar':'Nuevo lead',`<form id="leadForm"><div class="form-row"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${l?.name||''}" required></div><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" name="company" value="${l?.company||''}"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Valor €</label><input type="number" class="form-input" name="value" value="${l?.value||''}"></div><div class="form-group"><label class="form-label">Etapa</label><select class="form-select" name="stage">${STAGES.map(s=>`<option value="${s.id}" ${(l?.stage||defStage)===s.id?'selected':''}>${s.icon} ${s.name}</option>`).join('')}</select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Origen</label><select class="form-select" name="source">${SOURCES.map(s=>`<option value="${s.id}" ${l?.source===s.id?'selected':''}>${s.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Referidor</label><select class="form-select" name="referrerId"><option value="">-</option>${refs.map(r=>`<option value="${r.id}" ${l?.referrerId===r.id?'selected':''}>${r.name}</option>`).join('')}</select></div></div><div class="form-group"><label class="form-label">Asignado</label><select class="form-select" name="assignee">${users.map(u=>`<option value="${u.id}" ${l?.assignee===u.id?'selected':''}>${u.name}</option>`).join('')}</select></div><input type="hidden" name="id" value="${l?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delLead('${l.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveLead()">Guardar</button>`,'lg')}
+function saveLead(){const f=document.getElementById('leadForm');const d=Object.fromEntries(new FormData(f));if(!d.name?.trim())return UI.toast('Nombre requerido','error');d.value=parseInt(d.value)||0;d.referrerId=d.referrerId||null;if(d.id){DB.update('leads',d.id,d);UI.toast('Actualizado')}else{delete d.id;DB.add('leads',d);UI.toast('Creado')}UI.closeModal();render()}
+function editLead(id){showLeadModal(DB.get('leads',id))}
+function delLead(id){UI.confirm('¿Eliminar?',`function(){DB.del('leads','${id}');UI.toast('Eliminado');UI.closeModal();render()}`)}
 
-function showRefModal(r=null){const ed=r!==null;UI.modal(ed?‘Editar’:‘Nuevo referidor’,`<form id="refForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${r?.name||''}" required></div><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" name="company" value="${r?.company||''}"></div><div class="form-group"><label class="form-label">Tipo</label><select class="form-select" name="type"><option value="partner" ${r?.type==='partner'?'selected':''}>Partner</option><option value="client" ${r?.type==='client'?'selected':''}>Cliente</option><option value="contact" ${r?.type==='contact'?'selected':''}>Contacto</option></select></div><input type="hidden" name="id" value="${r?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delRef('${r.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveRef()">Guardar</button>`)}
-function saveRef(){const f=document.getElementById(‘refForm’);const d=Object.fromEntries(new FormData(f));if(!d.name?.trim())return UI.toast(‘Nombre requerido’,‘error’);if(d.id){DB.update(‘referrers’,d.id,d);UI.toast(‘Actualizado’)}else{delete d.id;DB.add(‘referrers’,d);UI.toast(‘Añadido’)}UI.closeModal();render()}
-function editRef(id){showRefModal(DB.get(‘referrers’,id))}
-function delRef(id){UI.confirm(’¿Eliminar?’,`function(){DB.del('referrers','${id}');DB.data.leads.forEach(l=>{if(l.referrerId==='${id}')l.referrerId=null});DB.save();UI.toast('Eliminado');UI.closeModal();render()}`)}
+function showRefModal(r=null){const ed=r!==null;UI.modal(ed?'Editar':'Nuevo referidor',`<form id="refForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${r?.name||''}" required></div><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" name="company" value="${r?.company||''}"></div><div class="form-group"><label class="form-label">Tipo</label><select class="form-select" name="type"><option value="partner" ${r?.type==='partner'?'selected':''}>Partner</option><option value="client" ${r?.type==='client'?'selected':''}>Cliente</option><option value="contact" ${r?.type==='contact'?'selected':''}>Contacto</option></select></div><input type="hidden" name="id" value="${r?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delRef('${r.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveRef()">Guardar</button>`)}
+function saveRef(){const f=document.getElementById('refForm');const d=Object.fromEntries(new FormData(f));if(!d.name?.trim())return UI.toast('Nombre requerido','error');if(d.id){DB.update('referrers',d.id,d);UI.toast('Actualizado')}else{delete d.id;DB.add('referrers',d);UI.toast('Añadido')}UI.closeModal();render()}
+function editRef(id){showRefModal(DB.get('referrers',id))}
+function delRef(id){UI.confirm('¿Eliminar?',`function(){DB.del('referrers','${id}');DB.data.leads.forEach(l=>{if(l.referrerId==='${id}')l.referrerId=null});DB.save();UI.toast('Eliminado');UI.closeModal();render()}`)}
 
 // Task modal con contexto opcional (opp o proj)
 function showTaskModal(t=null,contextType=null,contextId=null){
@@ -831,22 +808,21 @@ const ed=t!==null;
 const users=DB.data.users;
 const opps=DB.data.opportunities;
 const projs=DB.data.projects;
-const preOpp=contextType===‘opp’?contextId:(t?.oppId||’’);
-const preProj=contextType===‘proj’?contextId:(t?.projectId||’’);
+const preOpp=contextType==='opp'?contextId:(t?.oppId||'');
+const preProj=contextType==='proj'?contextId:(t?.projectId||'');
 
-UI.modal(ed?‘Editar tarea’:‘Nueva tarea’,`<form id="taskForm"><div class="form-group"><label class="form-label">Título *</label><input class="form-input" name="title" value="${t?.title||''}" required></div><div class="form-row"><div class="form-group"><label class="form-label">Asignar</label><select class="form-select" name="assignee"><option value="">-</option>${users.map(u=>`<option value=”${u.id}” ${t?.assignee===u.id?‘selected’:’’}>${u.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Prioridad</label><select class="form-select" name="priority"><option value="low" ${t?.priority==='low'?'selected':''}>Baja</option><option value="medium" ${t?.priority==='medium'?'selected':''}>Media</option><option value="high" ${t?.priority==='high'?'selected':''}>Alta</option><option value="urgent" ${t?.priority==='urgent'?'selected':''}>Urgente</option></select></div></div><div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-input" name="due" value="${t?.due||''}"></div><div class="form-row"><div class="form-group"><label class="form-label">💡 Oportunidad</label><select class="form-select" name="oppId"><option value="">-</option>${opps.map(o=>`<option value=”${o.id}” ${preOpp===o.id?‘selected’:’’}>${o.title}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">🎯 Proyecto</label><select class="form-select" name="projectId"><option value="">-</option>${projs.map(p=>`<option value=”${p.id}” ${preProj===p.id?‘selected’:’’}>${p.title}</option>`).join('')}</select></div></div>${ed?`<div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status"><option value=“pending” ${t?.status===‘pending’?‘selected’:’’}>Pendiente</option><option value=“in-progress” ${t?.status===‘in-progress’?‘selected’:’’}>En progreso</option><option value=“done” ${t?.status===‘done’?‘selected’:’’}>Hecha</option></select></div>`:''}<input type="hidden" name="id" value="${t?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delTask('${t.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveTask()">Guardar</button>`,‘lg’)}
+UI.modal(ed?'Editar tarea':'Nueva tarea',`<form id="taskForm"><div class="form-group"><label class="form-label">Título *</label><input class="form-input" name="title" value="${t?.title||''}" required></div><div class="form-row"><div class="form-group"><label class="form-label">Asignar</label><select class="form-select" name="assignee"><option value="">-</option>${users.map(u=>`<option value="${u.id}" ${t?.assignee===u.id?'selected':''}>${u.name}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">Prioridad</label><select class="form-select" name="priority"><option value="low" ${t?.priority==='low'?'selected':''}>Baja</option><option value="medium" ${t?.priority==='medium'?'selected':''}>Media</option><option value="high" ${t?.priority==='high'?'selected':''}>Alta</option><option value="urgent" ${t?.priority==='urgent'?'selected':''}>Urgente</option></select></div></div><div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-input" name="due" value="${t?.due||''}"></div><div class="form-row"><div class="form-group"><label class="form-label">💡 Oportunidad</label><select class="form-select" name="oppId"><option value="">-</option>${opps.map(o=>`<option value="${o.id}" ${preOpp===o.id?'selected':''}>${o.title}</option>`).join('')}</select></div><div class="form-group"><label class="form-label">🎯 Proyecto</label><select class="form-select" name="projectId"><option value="">-</option>${projs.map(p=>`<option value="${p.id}" ${preProj===p.id?'selected':''}>${p.title}</option>`).join('')}</select></div></div>${ed?`<div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status"><option value="pending" ${t?.status==='pending'?'selected':''}>Pendiente</option><option value="in-progress" ${t?.status==='in-progress'?'selected':''}>En progreso</option><option value="done" ${t?.status==='done'?'selected':''}>Hecha</option></select></div>`:''}<input type="hidden" name="id" value="${t?.id||''}"></form>`,`${ed?`<button class="btn btn-danger" onclick="delTask('${t.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveTask()">Guardar</button>`,'lg')}
 
-function saveTask(){const f=document.getElementById(‘taskForm’);const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast(‘Título requerido’,‘error’);d.assignee=d.assignee||null;d.oppId=d.oppId||null;d.projectId=d.projectId||null;if(d.id){DB.update(‘tasks’,d.id,d);UI.toast(‘Actualizada’)}else{delete d.id;d.status=‘pending’;DB.add(‘tasks’,d);UI.toast(‘Creada’)}UI.closeModal();render()}
-function editTask(id){showTaskModal(DB.get(‘tasks’,id))}
-function toggleTask(id){const t=DB.get(‘tasks’,id);if(t){DB.update(‘tasks’,id,{status:t.status===‘done’?‘pending’:‘done’});UI.toast(t.status!==‘done’?‘✓’:‘Reabierta’);render()}}
-function delTask(id){UI.confirm(’¿Eliminar?’,`function(){DB.del('tasks','${id}');UI.toast('Eliminada');UI.closeModal();render()}`)}
+function saveTask(){const f=document.getElementById('taskForm');const d=Object.fromEntries(new FormData(f));if(!d.title?.trim())return UI.toast('Título requerido','error');d.assignee=d.assignee||null;d.oppId=d.oppId||null;d.projectId=d.projectId||null;if(d.id){DB.update('tasks',d.id,d);UI.toast('Actualizada')}else{delete d.id;d.status='pending';DB.add('tasks',d);UI.toast('Creada')}UI.closeModal();render()}
+function editTask(id){showTaskModal(DB.get('tasks',id))}
+function toggleTask(id){const t=DB.get('tasks',id);if(t){DB.update('tasks',id,{status:t.status==='done'?'pending':'done'});UI.toast(t.status!=='done'?'✓':'Reabierta');render()}}
+function delTask(id){UI.confirm('¿Eliminar?',`function(){DB.del('tasks','${id}');UI.toast('Eliminada');UI.closeModal();render()}`)}
 
 // ============ INBOX MODALS ============
 function showInboxModal(i=null){
 const ed=i!==null;
 const currentTags=i?.tags||[];
-UI.modal(ed?‘Editar idea’:‘Capturar idea’,`<form id="inboxForm">
-
+UI.modal(ed?'Editar idea':'Capturar idea',`<form id="inboxForm">
 <div class="form-group"><label class="form-label">¿Qué estás pensando? *</label><textarea class="form-textarea" name="text" required style="min-height:100px">${i?.text||''}</textarea></div>
 <div class="form-group"><label class="form-label">Tags</label>
 <div style="display:flex;flex-wrap:wrap;gap:6px">${TAGS.map(t=>`<label style="display:flex;align-items:center;gap:4px;padding:6px 10px;background:var(--input);border-radius:6px;cursor:pointer;font-size:12px"><input type="checkbox" name="tags" value="${t.id}" ${currentTags.includes(t.id)?'checked':''}>${t.icon} ${t.name}</label>`).join('')}</div>
@@ -855,40 +831,43 @@ UI.modal(ed?‘Editar idea’:‘Capturar idea’,`<form id="inboxForm">
 </form>`,`${ed?`<button class="btn btn-danger" onclick="delInbox('${i.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveInbox()">Guardar</button>`,'lg')}
 
 function saveInbox(){
-const f=document.getElementById(‘inboxForm’);
+const f=document.getElementById('inboxForm');
 const fd=new FormData(f);
-const d={text:fd.get(‘text’),tags:fd.getAll(‘tags’),id:fd.get(‘id’)};
-if(!d.text?.trim())return UI.toast(‘Escribe algo’,‘error’);
-if(d.id){DB.update(‘inbox’,d.id,d);UI.toast(‘Actualizado’)}
-else{delete d.id;d.created=new Date().toISOString().split(‘T’)[0];d.processed=false;DB.add(‘inbox’,d);UI.toast(‘Capturado’)}
+const d={text:fd.get('text'),tags:fd.getAll('tags'),id:fd.get('id')};
+if(!d.text?.trim())return UI.toast('Escribe algo','error');
+if(d.id){DB.update('inbox',d.id,d);UI.toast('Actualizado')}
+else{delete d.id;d.created=new Date().toISOString().split('T')[0];d.processed=false;DB.add('inbox',d);UI.toast('Capturado')}
 UI.closeModal();render()}
 
 function editInbox(id){showInboxModal((DB.data.inbox||[]).find(i=>i.id===id))}
-function delInbox(id){UI.confirm(’¿Eliminar?’,`function(){DB.del('inbox','${id}');UI.toast('Eliminado');UI.closeModal();render()}`)}
-function processInbox(id){DB.update(‘inbox’,id,{processed:true});UI.toast(‘Procesado’);render()}
+function delInbox(id){UI.confirm('¿Eliminar?',`function(){DB.del('inbox','${id}');UI.toast('Eliminado');UI.closeModal();render()}`)}
+function processInbox(id){DB.update('inbox',id,{processed:true});UI.toast('Procesado');render()}
 
 function convertInbox(id){
 const i=(DB.data.inbox||[]).find(x=>x.id===id);
 if(!i)return;
-UI.modal(‘Convertir idea’,’<p style="margin-bottom:12px;font-size:13px;color:var(--text2)">”’+i.text+’”</p><p style="font-size:13px">¿En qué quieres convertirla?</p>’,` <button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button> <button class="btn btn-secondary" onclick="convertTo('opp','${id}')">💡 Oportunidad</button> <button class="btn btn-secondary" onclick="convertTo('decision','${id}')">⚡ Decisión</button> <button class="btn btn-secondary" onclick="convertTo('task','${id}')">✅ Tarea</button>`)}
+UI.modal('Convertir idea','<p style="margin-bottom:12px;font-size:13px;color:var(--text2)">"'+i.text+'"</p><p style="font-size:13px">¿En qué quieres convertirla?</p>',`
+<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button>
+<button class="btn btn-secondary" onclick="convertTo('opp','${id}')">💡 Oportunidad</button>
+<button class="btn btn-secondary" onclick="convertTo('decision','${id}')">⚡ Decisión</button>
+<button class="btn btn-secondary" onclick="convertTo('task','${id}')">✅ Tarea</button>`)}
 
 function convertTo(type,id){
 const i=(DB.data.inbox||[]).find(x=>x.id===id);
 if(!i)return;
 UI.closeModal();
-if(type===‘opp’){showOppModal({title:i.text,desc:’’,status:‘idea’,potential:0,effort:‘medium’})}
-else if(type===‘decision’){showDecModal({title:i.text,context:’’,options:’’,deadline:’’})}
-else if(type===‘task’){showTaskModal({title:i.text,priority:‘medium’})}
-DB.update(‘inbox’,id,{processed:true});
+if(type==='opp'){showOppModal({title:i.text,desc:'',status:'idea',potential:0,effort:'medium'})}
+else if(type==='decision'){showDecModal({title:i.text,context:'',options:'',deadline:''})}
+else if(type==='task'){showTaskModal({title:i.text,priority:'medium'})}
+DB.update('inbox',id,{processed:true});
 }
 
 // ============ CLIENT MODALS ============
 function showClientModal(c=null){
 const ed=c!==null;
 const currentServices=c?.services||[];
-const allServices=[‘web’,‘seo’,‘paid’,‘social’,‘design’,‘dev’,‘automation’];
-UI.modal(ed?‘Editar cliente’:‘Nuevo cliente’,`<form id="clientForm">
-
+const allServices=['web','seo','paid','social','design','dev','automation'];
+UI.modal(ed?'Editar cliente':'Nuevo cliente',`<form id="clientForm">
 <div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${c?.name||''}" required></div>
 <div class="form-row">
 <div class="form-group"><label class="form-label">MRR (€/mes)</label><input type="number" class="form-input" name="mrr" value="${c?.mrr||''}"></div>
@@ -904,45 +883,44 @@ UI.modal(ed?‘Editar cliente’:‘Nuevo cliente’,`<form id="clientForm">
 </form>`,`${ed?`<button class="btn btn-danger" onclick="delClient('${c.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveClient()">Guardar</button>`,'lg')}
 
 function saveClient(){
-const f=document.getElementById(‘clientForm’);
+const f=document.getElementById('clientForm');
 const fd=new FormData(f);
-const d={name:fd.get(‘name’),mrr:parseInt(fd.get(‘mrr’))||0,since:fd.get(‘since’),status:fd.get(‘status’),services:fd.getAll(‘services’),aiNeeds:fd.get(‘aiNeeds’),notes:fd.get(‘notes’),id:fd.get(‘id’)};
-if(!d.name?.trim())return UI.toast(‘Nombre requerido’,‘error’);
-if(d.id){DB.update(‘clients’,d.id,d);UI.toast(‘Actualizado’)}
-else{delete d.id;d.risk=‘low’;DB.add(‘clients’,d);UI.toast(‘Cliente añadido’)}
+const d={name:fd.get('name'),mrr:parseInt(fd.get('mrr'))||0,since:fd.get('since'),status:fd.get('status'),services:fd.getAll('services'),aiNeeds:fd.get('aiNeeds'),notes:fd.get('notes'),id:fd.get('id')};
+if(!d.name?.trim())return UI.toast('Nombre requerido','error');
+if(d.id){DB.update('clients',d.id,d);UI.toast('Actualizado')}
+else{delete d.id;d.risk='low';DB.add('clients',d);UI.toast('Cliente añadido')}
 UI.closeModal();render()}
 
 function editClientInfo(id){showClientModal((DB.data.clients||[]).find(c=>c.id===id))}
-function delClient(id){UI.confirm(’¿Eliminar cliente?’,`function(){DB.del('clients','${id}');UI.toast('Eliminado');UI.closeModal();closeDetail()}`)}
+function delClient(id){UI.confirm('¿Eliminar cliente?',`function(){DB.del('clients','${id}');UI.toast('Eliminado');UI.closeModal();closeDetail()}`)}
 
 function editClientAI(id){
 const c=(DB.data.clients||[]).find(x=>x.id===id);
 if(!c)return;
-UI.modal(’Necesidades IA - ’+c.name,`<form id="aiForm"><div class="form-group"><label class="form-label">¿Qué necesita este cliente en IA?</label><textarea class="form-textarea" name="aiNeeds" style="min-height:100px">${c.aiNeeds||''}</textarea></div></form>`,`<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveClientAI('${id}')">Guardar</button>`)}
+UI.modal('Necesidades IA - '+c.name,`<form id="aiForm"><div class="form-group"><label class="form-label">¿Qué necesita este cliente en IA?</label><textarea class="form-textarea" name="aiNeeds" style="min-height:100px">${c.aiNeeds||''}</textarea></div></form>`,`<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveClientAI('${id}')">Guardar</button>`)}
 
 function saveClientAI(id){
-const ai=document.querySelector(’#aiForm textarea’).value;
-DB.update(‘clients’,id,{aiNeeds:ai});
-UI.toast(‘Actualizado’);UI.closeModal();render()}
+const ai=document.querySelector('#aiForm textarea').value;
+DB.update('clients',id,{aiNeeds:ai});
+UI.toast('Actualizado');UI.closeModal();render()}
 
-function markClientStatus(id,status){DB.update(‘clients’,id,{status});UI.toast(‘Estado actualizado’);render()}
+function markClientStatus(id,status){DB.update('clients',id,{status});UI.toast('Estado actualizado');render()}
 
 function createIdeaForClient(id){
 const c=(DB.data.clients||[]).find(x=>x.id===id);
 if(!c)return;
-showOppModal({title:’[’+c.name+’] ‘,desc:’’,status:‘idea’,potential:0,effort:‘medium’})}
+showOppModal({title:'['+c.name+'] ',desc:'',status:'idea',potential:0,effort:'medium'})}
 
 function createTaskForClient(id){
 const c=(DB.data.clients||[]).find(x=>x.id===id);
 if(!c)return;
-showTaskModal({title:’[’+c.name+’] ’,priority:‘medium’})}
+showTaskModal({title:'['+c.name+'] ',priority:'medium'})}
 
 // ============ OBJECTIVES MODALS ============
 function showObjModal(o=null){
 const ed=o!==null;
 const year=new Date().getFullYear();
-UI.modal(ed?‘Editar objetivo’:‘Nuevo objetivo’,`<form id="objForm">
-
+UI.modal(ed?'Editar objetivo':'Nuevo objetivo',`<form id="objForm">
 <div class="form-group"><label class="form-label">Objetivo *</label><input class="form-input" name="title" value="${o?.title||''}" required placeholder="Ej: Alcanzar 15K MRR"></div>
 <div class="form-row">
 <div class="form-group"><label class="form-label">Área</label><select class="form-select" name="area">${OBJ_AREAS.map(a=>`<option value="${a.id}" ${o?.area===a.id?'selected':''}>${a.icon} ${a.name}</option>`).join('')}</select></div>
@@ -957,30 +935,29 @@ UI.modal(ed?‘Editar objetivo’:‘Nuevo objetivo’,`<form id="objForm">
 </form>`,`${ed?`<button class="btn btn-danger" onclick="delObj('${o.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveObj()">Guardar</button>`,'lg')}
 
 function saveObj(){
-const f=document.getElementById(‘objForm’);
+const f=document.getElementById('objForm');
 const d=Object.fromEntries(new FormData(f));
-if(!d.title?.trim())return UI.toast(‘Título requerido’,‘error’);
+if(!d.title?.trim())return UI.toast('Título requerido','error');
 d.target=parseInt(d.target)||0;
 d.current=parseInt(d.current)||0;
 d.year=parseInt(d.year)||new Date().getFullYear();
 if(d.id){
 const obj=(DB.data.objectives||[]).find(o=>o.id===d.id);
 if(obj){d.keyResults=obj.keyResults||[];}
-DB.update(‘objectives’,d.id,d);UI.toast(‘Actualizado’);
+DB.update('objectives',d.id,d);UI.toast('Actualizado');
 }else{
 delete d.id;d.keyResults=[];
 if(!DB.data.objectives)DB.data.objectives=[];
-DB.add(‘objectives’,d);UI.toast(‘Objetivo creado’);
+DB.add('objectives',d);UI.toast('Objetivo creado');
 }
 UI.closeModal();render()}
 
 function editObjInfo(id){showObjModal((DB.data.objectives||[]).find(o=>o.id===id))}
-function delObj(id){UI.confirm(’¿Eliminar objetivo?’,`function(){DB.del('objectives','${id}');UI.toast('Eliminado');UI.closeModal();closeDetail()}`)}
+function delObj(id){UI.confirm('¿Eliminar objetivo?',`function(){DB.del('objectives','${id}');UI.toast('Eliminado');UI.closeModal();closeDetail()}`)}
 
 function showKRModal(objId,kr=null){
 const ed=kr!==null;
-UI.modal(ed?‘Editar Key Result’:‘Nuevo Key Result’,`<form id="krForm">
-
+UI.modal(ed?'Editar Key Result':'Nuevo Key Result',`<form id="krForm">
 <div class="form-group"><label class="form-label">Key Result *</label><input class="form-input" name="title" value="${kr?.title||''}" required placeholder="Ej: Cerrar 5 clientes nuevos"></div>
 <div class="form-row">
 <div class="form-group"><label class="form-label">Meta</label><input type="number" class="form-input" name="target" value="${kr?.target||''}" placeholder="5"></div>
@@ -991,9 +968,9 @@ UI.modal(ed?‘Editar Key Result’:‘Nuevo Key Result’,`<form id="krForm">
 </form>`,`${ed?`<button class="btn btn-danger" onclick="delKR('${objId}','${kr?.id}')">Eliminar</button>`:''}<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveKR()">Guardar</button>`)}
 
 function saveKR(){
-const f=document.getElementById(‘krForm’);
+const f=document.getElementById('krForm');
 const d=Object.fromEntries(new FormData(f));
-if(!d.title?.trim())return UI.toast(‘Título requerido’,‘error’);
+if(!d.title?.trim())return UI.toast('Título requerido','error');
 const obj=(DB.data.objectives||[]).find(o=>o.id===d.objId);
 if(!obj)return;
 if(!obj.keyResults)obj.keyResults=[];
@@ -1001,11 +978,11 @@ d.target=parseInt(d.target)||0;
 d.current=parseInt(d.current)||0;
 if(d.id){
 const idx=obj.keyResults.findIndex(k=>k.id===d.id);
-if(idx>-1)obj.keyResults[idx]={…obj.keyResults[idx],title:d.title,target:d.target,current:d.current};
-UI.toast(‘Actualizado’);
+if(idx>-1)obj.keyResults[idx]={...obj.keyResults[idx],title:d.title,target:d.target,current:d.current};
+UI.toast('Actualizado');
 }else{
-obj.keyResults.push({id:‘kr’+Date.now(),title:d.title,target:d.target,current:d.current});
-UI.toast(‘Key Result añadido’);
+obj.keyResults.push({id:'kr'+Date.now(),title:d.title,target:d.target,current:d.current});
+UI.toast('Key Result añadido');
 }
 DB.save();UI.closeModal();render()}
 
@@ -1017,63 +994,65 @@ if(kr)showKRModal(objId,kr);
 }
 
 function delKR(objId,krId){
-UI.confirm(’¿Eliminar Key Result?’,`function(){ const obj=(DB.data.objectives||[]).find(o=>o.id==='${objId}'); if(obj){obj.keyResults=(obj.keyResults||[]).filter(k=>k.id!=='${krId}');DB.save();} UI.toast('Eliminado');UI.closeModal();render()}`)}
+UI.confirm('¿Eliminar Key Result?',`function(){
+const obj=(DB.data.objectives||[]).find(o=>o.id==='${objId}');
+if(obj){obj.keyResults=(obj.keyResults||[]).filter(k=>k.id!=='${krId}');DB.save();}
+UI.toast('Eliminado');UI.closeModal();render()}`)}
 
 // ============ CONEXIONES AUTOMÁTICAS ============
 function autoCreateTask(title,context){
-showTaskModal({title:title,priority:‘medium’,…context});
+showTaskModal({title:title,priority:'medium',...context});
 }
 
 function convertDecisionToTask(decId){
-const dec=DB.get(‘decisions’,decId);
+const dec=DB.get('decisions',decId);
 if(!dec||!dec.decided)return;
-autoCreateTask(’Implementar: ’+dec.title,{});
-UI.toast(‘Tarea creada desde decisión’);
+autoCreateTask('Implementar: '+dec.title,{});
+UI.toast('Tarea creada desde decisión');
 }
 
 function convertOppToProject(oppId){
-const opp=DB.get(‘opportunities’,oppId);
+const opp=DB.get('opportunities',oppId);
 if(!opp)return;
-showProjModal({title:opp.title,desc:opp.desc,status:‘planning’,progress:0});
+showProjModal({title:opp.title,desc:opp.desc,status:'planning',progress:0});
 }
 
 // ============ USER MODALS ============
-function showUserModal(u=null){const ed=u!==null;UI.modal(ed?‘Editar’:‘Añadir’,`<form id="userForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${u?.name||''}" required></div><div class="form-group"><label class="form-label">Cargo</label><input class="form-input" name="role" value="${u?.role||''}"></div><input type="hidden" name="id" value="${u?.id||''}"></form>`,`<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveUser()">Guardar</button>`)}
-function saveUser(){const f=document.getElementById(‘userForm’);const d=Object.fromEntries(new FormData(f));if(!d.name?.trim())return UI.toast(‘Nombre requerido’,‘error’);if(d.id){d.initials=d.name[0].toUpperCase();DB.update(‘users’,d.id,d);UI.toast(‘Actualizado’)}else{delete d.id;d.initials=d.name[0].toUpperCase();d.color=‘linear-gradient(135deg,#8b5cf6,#ec4899)’;DB.add(‘users’,d);UI.toast(‘Añadido’)}UI.closeModal();render()}
-function editUser(id){showUserModal(DB.get(‘users’,id))}
+function showUserModal(u=null){const ed=u!==null;UI.modal(ed?'Editar':'Añadir',`<form id="userForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="${u?.name||''}" required></div><div class="form-group"><label class="form-label">Cargo</label><input class="form-input" name="role" value="${u?.role||''}"></div><input type="hidden" name="id" value="${u?.id||''}"></form>`,`<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveUser()">Guardar</button>`)}
+function saveUser(){const f=document.getElementById('userForm');const d=Object.fromEntries(new FormData(f));if(!d.name?.trim())return UI.toast('Nombre requerido','error');if(d.id){d.initials=d.name[0].toUpperCase();DB.update('users',d.id,d);UI.toast('Actualizado')}else{delete d.id;d.initials=d.name[0].toUpperCase();d.color='linear-gradient(135deg,#8b5cf6,#ec4899)';DB.add('users',d);UI.toast('Añadido')}UI.closeModal();render()}
+function editUser(id){showUserModal(DB.get('users',id))}
 
-function saveProfile(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));d.initials=d.name[0].toUpperCase();DB.update(‘users’,DB.data.currentUser,d);UI.toast(‘Guardado’);render()}
-function saveCo(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));DB.data.company=d;DB.save();UI.toast(‘Guardado’);document.querySelector(’.brand’).innerHTML=d.name+`<span>Command Center</span>`;document.querySelector(’.logo’).textContent=d.logo}
-function confirmReset(){UI.confirm(’¿Resetear TODO?’,`function(){DB.reset();location.reload()}`)}
+function saveProfile(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));d.initials=d.name[0].toUpperCase();DB.update('users',DB.data.currentUser,d);UI.toast('Guardado');render()}
+function saveCo(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target));DB.data.company=d;DB.save();UI.toast('Guardado');document.querySelector('.brand').innerHTML=d.name+`<span>Command Center</span>`;document.querySelector('.logo').textContent=d.logo}
+function confirmReset(){UI.confirm('¿Resetear TODO?',`function(){DB.reset();location.reload()}`)}
 
-function toggleMenu(){document.getElementById(‘sidebar’).classList.toggle(‘open’);document.getElementById(‘overlay’).classList.toggle(‘active’)}
-function closeMenu(){document.getElementById(‘sidebar’).classList.remove(‘open’);document.getElementById(‘overlay’).classList.remove(‘active’)}
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open');document.getElementById('overlay').classList.toggle('active')}
+function closeMenu(){document.getElementById('sidebar').classList.remove('open');document.getElementById('overlay').classList.remove('active')}
 function navMobile(p){closeMenu();nav(p)}
 
 function toggleDashDropdown(){
-document.getElementById(‘dashDropdown’).classList.toggle(‘open’);
-document.getElementById(‘dashDropdownMobile’).classList.toggle(‘open’);
+document.getElementById('dashDropdown').classList.toggle('open');
+document.getElementById('dashDropdownMobile').classList.toggle('open');
 }
 function closeDashDropdown(){
-document.getElementById(‘dashDropdown’).classList.remove(‘open’);
-document.getElementById(‘dashDropdownMobile’).classList.remove(‘open’);
+document.getElementById('dashDropdown').classList.remove('open');
+document.getElementById('dashDropdownMobile').classList.remove('open');
 }
 function selectDash(id){
 currentDash=id;
 const d=DASHBOARDS.find(x=>x.id===id);
-document.getElementById(‘currentDashIcon’).textContent=d.icon;
-document.getElementById(‘currentDashName’).textContent=d.name;
-const iconM=document.getElementById(‘currentDashIconMobile’);
-const nameM=document.getElementById(‘currentDashNameMobile’);
+document.getElementById('currentDashIcon').textContent=d.icon;
+document.getElementById('currentDashName').textContent=d.name;
+const iconM=document.getElementById('currentDashIconMobile');
+const nameM=document.getElementById('currentDashNameMobile');
 if(iconM)iconM.textContent=d.icon;
-if(nameM)nameM.textContent=d.name.split(’ ‘)[0];
-document.querySelectorAll(’.dash-option’).forEach(o=>o.classList.toggle(‘active’,o.dataset.dash===id));
+if(nameM)nameM.textContent=d.name.split(' ')[0];
+document.querySelectorAll('.dash-option').forEach(o=>o.classList.toggle('active',o.dataset.dash===id));
 closeDashDropdown();
-if(page===‘dashboard’)render();
+if(page==='dashboard')render();
 }
-document.addEventListener(‘click’,e=>{if(!e.target.closest(’.dash-selector’))closeDashDropdown()});
-function init(){DB.init();const me=DB.me();const s=DB.stats();document.getElementById(‘app’).innerHTML=`<div class="app">
-
+document.addEventListener('click',e=>{if(!e.target.closest('.dash-selector'))closeDashDropdown()});
+function init(){DB.init();const me=DB.me();const s=DB.stats();document.getElementById('app').innerHTML=`<div class="app">
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="mobile-header visible">
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
