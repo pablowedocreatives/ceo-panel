@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sowper Command Center</title>
+<style>
+:root{--bg:#050505;--bg2:rgba(16,185,129,.03);--card:rgba(16,185,129,.06);--card-solid:#0a1210;--hover:rgba(16,185,129,.12);--accent:#10b981;--accent2:#34d399;--green:#10b981;--red:#ef4444;--orange:#f59e0b;--blue:#3b82f6;--cyan:#06b6d4;--pink:#ec4899;--purple:#a855f7;--yellow:#eab308;--text:#f0fdf4;--text2:#86efac;--muted:#4ade80;--border:rgba(16,185,129,.2);--glow:0 0 20px rgba(16,185,129,.15)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',-apple-system,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;background-image:radial-gradient(ellipse at top,rgba(16,185,129,.08) 0%,transparent 50%),radial-gradient(ellipse at bottom right,rgba(16,185,129,.05) 0%,transparent 50%)}
+button{font-family:inherit;cursor:pointer}input,select,textarea{font-family:inherit}
+.app{display:flex;min-height:100vh}.sidebar{width:260px;background:linear-gradient(180deg,rgba(16,185,129,.08) 0%,rgba(16,185,129,.02) 100%);backdrop-filter:blur(20px);border-right:1px solid var(--border);position:fixed;height:100vh;display:flex;flex-direction:column;z-index:100}.main{margin-left:260px;flex:1}
+.sidebar-header{padding:20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}.logo{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;color:#000;box-shadow:var(--glow)}.brand{font-weight:700;font-size:16px;color:var(--text)}.brand span{color:var(--accent);display:block;font-size:11px;font-weight:500;letter-spacing:.5px}
+.nav{padding:12px;flex:1;overflow-y:auto}.nav-section{margin-bottom:8px}.nav-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;padding:12px 12px 6px;letter-spacing:.5px}.nav-item{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;color:var(--text2);cursor:pointer;font-size:13px;font-weight:500;transition:all .2s}.nav-item:hover{background:var(--hover);color:var(--text)}.nav-item.active{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;font-weight:600;box-shadow:var(--glow)}.nav-badge{margin-left:auto;background:var(--accent);color:#000;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px}
+.header{height:64px;background:linear-gradient(90deg,rgba(16,185,129,.06) 0%,transparent 100%);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;padding:0 24px;position:sticky;top:0;z-index:50}.page-title{font-size:16px;font-weight:600;color:var(--text)}
+.content{padding:24px}.page-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:24px;flex-wrap:wrap;gap:16px}.page-header h1{font-size:28px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.page-header p{color:var(--text2);font-size:13px;margin-top:4px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:10px;font-size:13px;font-weight:600;border:none;transition:all .2s}.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#000;box-shadow:var(--glow)}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 30px rgba(16,185,129,.3)}.btn-secondary{background:var(--card);color:var(--text);border:1px solid var(--border)}.btn-secondary:hover{background:var(--hover);border-color:var(--accent)}.btn-danger{background:rgba(239,68,68,.2);color:var(--red);border:1px solid rgba(239,68,68,.3)}.btn-danger:hover{background:rgba(239,68,68,.3)}.btn-sm{padding:7px 14px;font-size:12px}
+.grid{display:grid;gap:20px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.card{background:linear-gradient(135deg,var(--card) 0%,rgba(16,185,129,.02) 100%);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:20px;transition:all .3s}.card:hover{border-color:rgba(16,185,129,.4);box-shadow:var(--glow)}.card-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.card-title{font-size:14px;font-weight:600;color:var(--text)}.card-link{font-size:12px;color:var(--accent);cursor:pointer;font-weight:500}.card-link:hover{color:var(--accent2)}
+.stat{background:linear-gradient(135deg,var(--card) 0%,rgba(16,185,129,.02) 100%);backdrop-filter:blur(20px);border:1px solid var(--border);border-radius:16px;padding:20px;cursor:pointer;transition:all .3s}.stat:hover{transform:translateY(-2px);border-color:var(--accent);box-shadow:var(--glow)}.stat-icon{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:22px}.stat-icon.green{background:rgba(16,185,129,.15);box-shadow:0 0 20px rgba(16,185,129,.1)}.stat-icon.orange{background:rgba(245,158,11,.15)}.stat-icon.blue{background:rgba(59,130,246,.15)}.stat-icon.yellow{background:rgba(234,179,8,.15)}.stat-icon.red{background:rgba(239,68,68,.15)}.stat-value{font-size:32px;font-weight:700;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.stat-label{font-size:12px;color:var(--text2);margin-top:4px;font-weight:500}
+.form-group{margin-bottom:16px}.form-label{display:block;font-size:12px;font-weight:600;color:var(--text2);margin-bottom:6px}.form-input,.form-select,.form-textarea{width:100%;padding:12px 14px;background:rgba(16,185,129,.05);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:13px;transition:all .2s}.form-input:focus,.form-select:focus,.form-textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(16,185,129,.1)}.form-textarea{min-height:100px;resize:vertical}.form-row{display:flex;gap:14px}.form-row .form-group{flex:1}.form-select{cursor:pointer}.form-select option{background:var(--card-solid);color:var(--text)}
+.tag{display:inline-flex;padding:5px 12px;border-radius:8px;font-size:11px;font-weight:600}
+.list-item{display:flex;align-items:center;gap:14px;padding:14px;background:rgba(16,185,129,.04);border:1px solid transparent;border-radius:12px;margin-bottom:10px;cursor:pointer;transition:all .2s}.list-item:hover{background:var(--hover);border-color:var(--border)}.item-content{flex:1;min-width:0}.item-title{font-size:13px;font-weight:500;margin-bottom:4px;color:var(--text)}.item-meta{font-size:11px;color:var(--muted);display:flex;gap:12px}
+.avatar{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600}
+.empty{text-align:center;padding:40px;color:var(--muted);font-size:13px}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;z-index:1000;padding:20px}.modal-bg.active{display:flex}.modal{background:linear-gradient(135deg,var(--card-solid) 0%,#0d1915 100%);border:1px solid var(--border);border-radius:20px;width:100%;max-width:500px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 25px 50px rgba(0,0,0,.5),var(--glow)}.modal.lg{max-width:600px}.modal-header{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--border)}.modal-title{font-size:18px;font-weight:600;color:var(--text)}.modal-close{width:36px;height:36px;border-radius:10px;background:var(--card);border:1px solid var(--border);color:var(--text2);cursor:pointer;font-size:20px;transition:all .2s}.modal-close:hover{background:var(--hover);color:var(--text);border-color:var(--accent)}.modal-body{padding:24px;overflow-y:auto;flex:1}.modal-footer{display:flex;justify-content:flex-end;gap:12px;padding:20px 24px;border-top:1px solid var(--border);background:rgba(16,185,129,.02)}
+.toast-box{position:fixed;bottom:24px;right:24px;z-index:2000}.toast{background:var(--card-solid);border:1px solid var(--border);border-radius:12px;padding:14px 18px;font-size:13px;margin-top:10px;box-shadow:0 10px 40px rgba(0,0,0,.3)}.toast.success{border-left:3px solid var(--green)}.toast.error{border-left:3px solid var(--red)}
+.progress-bar{height:6px;background:rgba(16,185,129,.1);border-radius:3px;overflow:hidden}.progress-fill{height:100%;border-radius:3px}
+.platform-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}.platform-google{background:linear-gradient(135deg,#4285f4,#34a853);color:#fff}.platform-meta{background:linear-gradient(135deg,#0081fb,#00c6ff);color:#fff}.platform-tiktok{background:linear-gradient(135deg,#000,#25f4ee);color:#fff}.platform-linkedin{background:linear-gradient(135deg,#0a66c2,#0077b5);color:#fff}.platform-other{background:var(--muted);color:#fff}
+.pipeline{display:flex;gap:16px;overflow-x:auto;padding-bottom:16px}.pipeline-col{min-width:280px;width:280px;background:linear-gradient(180deg,var(--card) 0%,transparent 100%);border:1px solid var(--border);border-radius:16px;display:flex;flex-direction:column;max-height:calc(100vh - 240px)}.pipeline-header{padding:16px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}.pipeline-title{font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}.pipeline-count{background:var(--card);padding:4px 10px;border-radius:8px;font-size:11px;font-weight:600}.pipeline-body{padding:10px;flex:1;overflow-y:auto;min-height:100px}.pipeline-card{background:var(--card-solid);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:10px;cursor:pointer;transition:all .2s}.pipeline-card:hover{border-color:var(--accent);transform:translateY(-1px)}
+.detail-header{background:linear-gradient(135deg,var(--card) 0%,rgba(16,185,129,.02) 100%);border:1px solid var(--border);border-radius:20px;padding:28px;margin-bottom:24px}.detail-title{font-size:26px;font-weight:700;margin-bottom:6px;background:linear-gradient(135deg,var(--text),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.detail-subtitle{color:var(--text2);font-size:14px}.detail-stats{display:flex;gap:32px;margin-top:20px;flex-wrap:wrap}.detail-stat{text-align:center}.detail-stat-value{font-size:24px;font-weight:700;color:var(--text)}.detail-stat-label{font-size:11px;color:var(--muted);margin-top:2px}
+.back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--text2);font-size:13px;cursor:pointer;margin-bottom:20px;font-weight:500;transition:color .2s}.back-btn:hover{color:var(--accent)}
+.table{width:100%;border-collapse:collapse;font-size:13px}.table th{text-align:left;padding:14px;color:var(--text2);font-weight:600;border-bottom:1px solid var(--border);font-size:11px;text-transform:uppercase;letter-spacing:.5px}.table td{padding:14px;border-bottom:1px solid rgba(16,185,129,.1)}.table tr:hover td{background:var(--hover)}
+.account-card{background:var(--card);border-radius:12px;padding:16px;margin-bottom:12px;cursor:pointer;border-left:3px solid var(--accent);transition:all .2s}.account-card:hover{background:var(--hover)}.account-card.google{border-left-color:#4285f4}.account-card.meta{border-left-color:#0081fb}.account-card.tiktok{border-left-color:#ff0050}.account-card.linkedin{border-left-color:#0a66c2}
+.mobile-header{display:none;position:fixed;top:0;left:0;right:0;height:60px;background:linear-gradient(90deg,rgba(16,185,129,.08) 0%,var(--bg) 100%);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:90;padding:0 16px;align-items:center;gap:14px}.menu-btn{width:44px;height:44px;background:var(--card);border:1px solid var(--border);border-radius:10px;color:var(--text);font-size:20px}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(4px);z-index:95}.overlay.active{display:block}
+@media(max-width:768px){.sidebar{transform:translateX(-100%);transition:transform .3s;width:280px}.sidebar.open{transform:translateX(0)}.main{margin-left:0;padding-top:60px}.header{display:none}.mobile-header{display:flex}.g4,.g3{grid-template-columns:repeat(2,1fr)}.g2{grid-template-columns:1fr}.pipeline{flex-direction:column}.pipeline-col{width:100%;min-width:100%;max-height:none}.content{padding:16px}.page-header h1{font-size:22px}}
+.mb-1{margin-bottom:10px}.mb-2{margin-bottom:20px}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const PLATFORMS=[{id:'google',name:'Google Ads',icon:'G',color:'#4285f4'},{id:'meta',name:'Meta Ads',icon:'M',color:'#0081fb'},{id:'tiktok',name:'TikTok Ads',icon:'T',color:'#ff0050'},{id:'linkedin',name:'LinkedIn Ads',icon:'in',color:'#0a66c2'},{id:'other',name:'Otro',icon:'?',color:'#71717a'}];
+const ACCOUNT_STATUS=[{id:'active',name:'Activa',color:'var(--green)'},{id:'onboarding',name:'Onboarding',color:'var(--blue)'},{id:'paused',name:'Pausada',color:'var(--orange)'},{id:'cancelled',name:'Baja',color:'var(--red)'}];
+const SENTIMENTS=[{id:'happy',emoji:'😊',label:'Contento'},{id:'neutral',emoji:'😐',label:'Neutral'},{id:'unhappy',emoji:'😟',label:'Descontento'}];
+const LEAD_STAGES=[{id:'lead',name:'Lead',color:'var(--muted)'},{id:'contacted',name:'Contactado',color:'var(--blue)'},{id:'meeting',name:'Reunión',color:'var(--cyan)'},{id:'proposal',name:'Propuesta',color:'var(--purple)'},{id:'negotiation',name:'Negociación',color:'var(--orange)'},{id:'won',name:'Ganado',color:'var(--green)'},{id:'lost',name:'Perdido',color:'var(--red)'}];
+const FEE=350,CAP=35;
+
+const DB={
+key:‘sowper_v3’,data:null,
+defaults:{
+company:{name:‘Sowper’},
+managers:[{id:‘m1’,name:‘María García’,initials:‘MG’,color:‘linear-gradient(135deg,#f97316,#eab308)’,salary:2200,active:true},{id:‘m2’,name:‘Carlos López’,initials:‘CL’,color:‘linear-gradient(135deg,#3b82f6,#06b6d4)’,salary:2200,active:true}],
+comerciales:[{id:‘com1’,name:‘Ana Ruiz’,initials:‘AR’,color:‘linear-gradient(135deg,#ec4899,#f97316)’,salary:1800,active:true}],
+referrers:[{id:‘ref1’,name:‘Pedro Martín’,company:‘Agencia XYZ’,commission:10,notes:’’}],
+clients:[{id:‘cl1’,name:‘Enter Properties’,contact:‘Juan Pérez’,email:‘juan@enter.com’,phone:‘666111222’,sentiment:‘happy’,notes:‘Cliente premium’,since:‘2022-06’},{id:‘cl2’,name:‘Aventura Amazonia’,contact:‘Laura Sanz’,email:‘laura@aventura.com’,phone:‘666333444’,sentiment:‘neutral’,notes:’’,since:‘2023-03’},{id:‘cl3’,name:‘TODOCAMA’,contact:‘Pedro Ruiz’,email:‘pedro@todocama.com’,phone:‘666555666’,sentiment:‘happy’,notes:’’,since:‘2023-09’}],
+accounts:[{id:‘a1’,clientId:‘cl1’,platform:‘google’,status:‘active’,managerId:‘m1’,fee:350,investment:2000,metrics:[],calendarActions:[],commissions:[]},{id:‘a2’,clientId:‘cl1’,platform:‘meta’,status:‘active’,managerId:‘m1’,fee:350,investment:1500,metrics:[],calendarActions:[],commissions:[]},{id:‘a3’,clientId:‘cl2’,platform:‘google’,status:‘active’,managerId:‘m2’,fee:350,investment:3000,metrics:[],calendarActions:[],commissions:[]},{id:‘a4’,clientId:‘cl3’,platform:‘meta’,status:‘onboarding’,managerId:‘m2’,fee:350,investment:800,metrics:[],calendarActions:[],commissions:[]}],
+leads:[{id:‘ld1’,name:‘Restaurante Marina’,contact:‘Luis Torres’,email:’’,phone:’’,accounts:2,mrr:700,stage:‘proposal’,source:‘web’,comercialId:‘com1’,referrerId:null,notes:’’,created:‘2025-01-05’},{id:‘ld2’,name:‘Gimnasio FitLife’,contact:‘Sara Vega’,email:’’,phone:’’,accounts:3,mrr:1050,stage:‘negotiation’,source:‘referral’,comercialId:‘com1’,referrerId:‘ref1’,notes:’’,created:‘2025-01-03’}],
+tasks:[{id:‘t1’,title:‘Revisar campañas Enter’,accountId:‘a1’,managerId:‘m1’,status:‘pending’,due:‘2025-01-10’,priority:‘high’},{id:‘t2’,title:‘Setup TODOCAMA’,accountId:‘a4’,managerId:‘m2’,status:‘pending’,due:‘2025-01-08’,priority:‘high’}],
+expenses:[{id:‘e1’,category:‘payroll’,name:‘María García’,amount:2200,monthly:true},{id:‘e2’,category:‘payroll’,name:‘Carlos López’,amount:2200,monthly:true},{id:‘e3’,category:‘payroll’,name:‘Ana Ruiz’,amount:1800,monthly:true},{id:‘e4’,category:‘tools’,name:‘Herramientas’,amount:200,monthly:true}],
+objectives:[{id:‘o1’,title:‘140 cuentas’,area:‘growth’,target:140,current:4,unit:‘cuentas’},{id:‘o2’,title:‘4 managers’,area:‘team’,target:4,current:2,unit:‘managers’},{id:‘o3’,title:‘MRR 49K’,area:‘revenue’,target:49000,current:1400,unit:‘EUR’}],
+decisions:[{id:‘d1’,title:‘Contratar tercer manager’,context:’’,deadline:‘2025-02-01’,decided:false}],
+opportunities:[{id:‘op1’,title:‘Servicio creatividades’,desc:‘Upsell de diseño’,potential:5000,status:‘idea’}],
+projects:[{id:‘pr1’,title:‘Dashboard clientes’,desc:‘Portal métricas’,progress:20,status:‘active’}],
+actions:[],inbox:[],scenario:{newAccMonth:5,churn:3,avgFee:350}
+},
+init:function(){var s=localStorage.getItem(this.key);this.data=s?JSON.parse(s):JSON.parse(JSON.stringify(this.defaults));this.save();},
+save:function(){localStorage.setItem(this.key,JSON.stringify(this.data));},
+reset:function(){this.data=JSON.parse(JSON.stringify(this.defaults));this.save();},
+add:function(t,item){item.id=t[0]+Date.now();this.data[t].push(item);this.save();return item;},
+update:function(t,id,d){var i=this.data[t].findIndex(function(x){return x.id===id;});if(i>-1){Object.assign(this.data[t][i],d);this.save();}},
+del:function(t,id){this.data[t]=this.data[t].filter(function(x){return x.id!==id;});this.save();},
+get:function(t,id){return this.data[t].find(function(x){return x.id===id;});},
+getClient:function(id){return this.data.clients.find(function(c){return c.id===id;});},
+getManager:function(id){return this.data.managers.find(function(m){return m.id===id;});},
+getComercial:function(id){return this.data.comerciales.find(function(c){return c.id===id;});},
+getReferrer:function(id){return this.data.referrers.find(function(r){return r.id===id;});},
+accountsByClient:function(cid){return this.data.accounts.filter(function(a){return a.clientId===cid;});},
+accountsByManager:function(mid){return this.data.accounts.filter(function(a){return a.managerId===mid;});},
+activeAccounts:function(){return this.data.accounts.filter(function(a){return a.status===‘active’||a.status===‘onboarding’;});},
+stats:function(){
+var acc=this.activeAccounts();
+var mrr=acc.reduce(function(s,a){return s+(a.fee||FEE);},0);
+var exp=this.data.expenses.filter(function(e){return e.monthly;}).reduce(function(s,e){return s+e.amount;},0);
+var leads=this.data.leads.filter(function(l){return l.stage!==‘won’&&l.stage!==‘lost’;});
+return{accounts:acc.length,mrr:mrr,expenses:exp,margin:mrr-exp,clients:this.data.clients.length,leads:leads.length,pipelineMRR:leads.reduce(function(s,l){return s+(l.mrr||0);},0),pendingDec:this.data.decisions.filter(function(d){return!d.decided;}).length,pendingTasks:this.data.tasks.filter(function(t){return t.status!==‘done’;}).length};
+}
+};
+
+var U={
+money:function(n){return new Intl.NumberFormat(‘es-ES’,{style:‘currency’,currency:‘EUR’,maximumFractionDigits:0}).format(n||0);},
+pct:function(v,t){return t?Math.round((v/t)*100):0;},
+date:function(d){if(!d)return’-’;return new Date(d).toLocaleDateString(‘es-ES’,{day:‘numeric’,month:‘short’});},
+today:function(){return new Date().toISOString().split(‘T’)[0];},
+progColor:function(p){return p>=75?‘var(–green)’:p>=50?‘var(–blue)’:p>=25?‘var(–orange)’:‘var(–red)’;}
+};
+
+var UI={
+toast:function(m,t){t=t||‘success’;var c=document.getElementById(‘toasts’);var d=document.createElement(‘div’);d.className=‘toast ‘+t;d.textContent=m;c.appendChild(d);setTimeout(function(){d.remove();},3000);},
+modal:function(title,body,footer,size){footer=footer||’’;size=size||’’;document.getElementById(‘modals’).innerHTML=’<div class="modal-bg active" onclick="if(event.target===this)UI.closeModal()"><div class="modal '+size+'"><div class="modal-header"><div class="modal-title">’+title+’</div><button class="modal-close" onclick="UI.closeModal()">×</button></div><div class="modal-body">’+body+’</div>’+(footer?’<div class="modal-footer">’+footer+’</div>’:’’)+’</div></div>’;},
+closeModal:function(){document.getElementById(‘modals’).innerHTML=’’;},
+confirm:function(m,fn){this.modal(‘Confirmar’,’<p>’+m+’</p>’,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-danger" onclick="UI.closeModal();'+fn+'">Confirmar</button>’);}
+};
+
+var page=‘dashboard’,detail=null;
+function nav(p){page=p;detail=null;document.querySelectorAll(’.nav-item’).forEach(function(i){i.classList.toggle(‘active’,i.dataset.page===p);});render();}
+function openDetail(t,id){detail={type:t,id:id};render();}
+function closeDetail(){detail=null;render();}
+function render(){
+var c=document.getElementById(‘pageContent’);
+if(detail){
+if(detail.type===‘client’)c.innerHTML=pgClientDetail(detail.id);
+else if(detail.type===‘account’)c.innerHTML=pgAccountDetail(detail.id);
+else c.innerHTML=pgByPage();
+}else{c.innerHTML=pgByPage();}
+document.getElementById(‘pageTitle’).textContent=getTitleByPage();
+updateBadges();
+}
+function getTitleByPage(){var titles={dashboard:‘Dashboard’,clients:‘Clientes’,accounts:‘Cuentas’,pipeline:‘Pipeline’,managers:‘Managers’,comerciales:‘Comerciales’,referrers:‘Referidores’,finance:‘Finanzas’,tasks:‘Tareas’,objectives:‘Objetivos’,decisions:‘Decisiones’,opportunities:‘Oportunidades’,projects:‘Proyectos’,inbox:‘Inbox’,settings:‘Config’};return titles[page]||‘Dashboard’;}
+function updateBadges(){var s=DB.stats();var el=function(id){return document.getElementById(id);};if(el(‘leadsBadge’))el(‘leadsBadge’).textContent=s.leads;if(el(‘decBadge’))el(‘decBadge’).textContent=s.pendingDec;if(el(‘taskBadge’))el(‘taskBadge’).textContent=s.pendingTasks;if(el(‘inboxBadge’))el(‘inboxBadge’).textContent=DB.data.inbox.length;}
+function pgByPage(){var pages={dashboard:pgDash,clients:pgClients,accounts:pgAccounts,pipeline:pgPipeline,managers:pgManagers,comerciales:pgComerciales,referrers:pgReferrers,finance:pgFinance,tasks:pgTasks,objectives:pgObjectives,decisions:pgDecisions,opportunities:pgOpportunities,projects:pgProjects,inbox:pgInbox,settings:pgSettings};return(pages[page]||pgDash)();}
+
+function pgDash(){
+var s=DB.stats();
+var dec=DB.data.decisions.filter(function(d){return!d.decided;}).slice(0,3);
+var tasks=DB.data.tasks.filter(function(t){return t.status!==‘done’&&t.priority===‘high’;}).slice(0,4);
+var html=’<div class="page-header"><div><h1>🚀 Dashboard</h1><p>Centro de control Sowper</p></div><div><button class="btn btn-primary" onclick="showAccountModal()">+ Cuenta</button></div></div>’;
+html+=’<div class="grid g4 mb-2">’;
+html+=’<div class="stat" onclick="nav(\'accounts\')"><div class="stat-icon orange">📊</div><div class="stat-value">’+s.accounts+’</div><div class="stat-label">Cuentas</div></div>’;
+html+=’<div class="stat" onclick="nav(\'finance\')"><div class="stat-icon green">💰</div><div class="stat-value">’+U.money(s.mrr)+’</div><div class="stat-label">MRR</div></div>’;
+html+=’<div class="stat" onclick="nav(\'finance\')"><div class="stat-icon blue">📈</div><div class="stat-value">’+U.money(s.margin)+’</div><div class="stat-label">Margen</div></div>’;
+html+=’<div class="stat" onclick="nav(\'pipeline\')"><div class="stat-icon yellow">🎯</div><div class="stat-value">’+s.leads+’</div><div class="stat-label">Pipeline</div></div>’;
+html+=’</div>’;
+html+=’<div class="grid g2 mb-2">’;
+html+=’<div class="card"><div class="card-header"><div class="card-title">⚡ Decisiones</div><span class="card-link" onclick="nav(\'decisions\')">Ver →</span></div>’;
+if(dec.length){dec.forEach(function(d){html+=’<div class="list-item" onclick="showDecisionModal(DB.get(\'decisions\',\''+d.id+'\'))"><div class="item-content"><div class="item-title">’+d.title+’</div>’+(d.deadline?’<div class="item-meta"><span>📅 ‘+U.date(d.deadline)+’</span></div>’:’’)+’</div></div>’;});}else{html+=’<div class="empty">Sin decisiones 🎉</div>’;}
+html+=’</div>’;
+html+=’<div class="card"><div class="card-header"><div class="card-title">🔥 Tareas urgentes</div><span class="card-link" onclick="nav(\'tasks\')">Ver →</span></div>’;
+if(tasks.length){tasks.forEach(function(t){var acc=t.accountId?DB.get(‘accounts’,t.accountId):null;var cl=acc?DB.getClient(acc.clientId):null;html+=’<div class="list-item" onclick="showTaskModal(DB.get(\'tasks\',\''+t.id+'\'))"><div class="item-content"><div class="item-title">’+t.title+’</div><div class="item-meta">’+(cl?’<span>’+cl.name+’</span>’:’’)+(t.due?’<span>📅 ‘+U.date(t.due)+’</span>’:’’)+’</div></div></div>’;});}else{html+=’<div class="empty">Sin tareas urgentes 🎉</div>’;}
+html+=’</div></div>’;
+html+=’<div class="grid g2">’;
+var recentLeads=DB.data.leads.filter(function(l){return l.stage!==‘won’&&l.stage!==‘lost’;}).slice(0,4);
+html+=’<div class="card"><div class="card-header"><div class="card-title">🎯 Pipeline</div><span class="card-link" onclick="nav(\'pipeline\')">Ver →</span></div>’;
+if(recentLeads.length){recentLeads.forEach(function(l){var st=LEAD_STAGES.find(function(s){return s.id===l.stage;});html+=’<div class="list-item" onclick="showLeadModal(DB.get(\'leads\',\''+l.id+'\'))"><div class="item-content"><div class="item-title">’+l.name+’</div><div class="item-meta"><span>’+l.accounts+’ cuentas</span><span>’+U.money(l.mrr)+’/mes</span></div></div><span class="tag" style="background:'+st.color+'22;color:'+st.color+'">’+st.name+’</span></div>’;});}else{html+=’<div class="empty">Sin leads</div>’;}
+html+=’</div>’;
+html+=’<div class="card"><div class="card-header"><div class="card-title">📈 Objetivos</div><span class="card-link" onclick="nav(\'objectives\')">Ver →</span></div>’;
+DB.data.objectives.slice(0,3).forEach(function(o){var p=U.pct(o.current,o.target);html+=’<div style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:4px"><span>’+o.title+’</span><span style="color:'+U.progColor(p)+'">’+p+’%</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+p+'%;background:'+U.progColor(p)+'"></div></div></div>’;});
+html+=’</div></div>’;
+return html;
+}
+
+function pgClients(){
+var clients=DB.data.clients;
+var html=’<div class="page-header"><div><h1>👥 Clientes</h1><p>’+clients.length+’ clientes</p></div><div><button class="btn btn-primary" onclick="showClientModal()">+ Cliente</button></div></div>’;
+html+=’<div class="grid g3">’;
+clients.forEach(function(c){
+var acc=DB.accountsByClient(c.id).filter(function(a){return a.status===‘active’||a.status===‘onboarding’;});
+var mrr=acc.reduce(function(s,a){return s+(a.fee||FEE);},0);
+var sent=SENTIMENTS.find(function(s){return s.id===c.sentiment;})||{emoji:‘😐’};
+html+=’<div class="card" onclick="openDetail(\'client\',\''+c.id+'\')" style="cursor:pointer">’;
+html+=’<div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px"><div class="card-title">’+c.name+’</div><span style="font-size:24px">’+sent.emoji+’</span></div>’;
+html+=’<div style="font-size:12px;color:var(--text2);margin-bottom:10px">’+(c.contact||’-’)+’</div>’;
+html+=’<div style="display:flex;gap:4px;margin-bottom:10px">’;
+acc.forEach(function(a){var pl=PLATFORMS.find(function(p){return p.id===a.platform;});html+=’<div class="platform-icon platform-'+a.platform+'" style="width:22px;height:22px;font-size:10px">’+pl.icon+’</div>’;});
+html+=’</div>’;
+html+=’<div style="display:flex;justify-content:space-between;font-size:12px"><span>’+acc.length+’ cuentas</span><span style="color:var(--green);font-weight:600">’+U.money(mrr)+’/mes</span></div>’;
+html+=’</div>’;
+});
+html+=’</div>’;
+return html;
+}
+
+function pgClientDetail(id){
+var c=DB.getClient(id);if(!c)return’<div class="empty">No encontrado</div>’;
+var acc=DB.accountsByClient(id);
+var active=acc.filter(function(a){return a.status===‘active’||a.status===‘onboarding’;});
+var mrr=active.reduce(function(s,a){return s+(a.fee||FEE);},0);
+var actions=DB.data.actions?DB.data.actions.filter(function(a){return a.clientId===id;}):[];
+var sent=SENTIMENTS.find(function(s){return s.id===c.sentiment;})||{emoji:‘😐’};
+var html=’<div class="back-btn" onclick="closeDetail()">← Volver</div>’;
+html+=’<div class="detail-header"><div style="display:flex;justify-content:space-between;align-items:start"><div><div class="detail-title">’+c.name+’</div><div class="detail-subtitle">’+(c.contact||’’)+(c.email?’ · ‘+c.email:’’)+’</div></div><button class="btn btn-secondary btn-sm" onclick="showClientModal(DB.getClient(\''+id+'\'))">✏️ Editar</button></div>’;
+html+=’<div class="detail-stats"><div class="detail-stat"><div class="detail-stat-value">’+active.length+’</div><div class="detail-stat-label">Cuentas</div></div><div class="detail-stat"><div class="detail-stat-value" style="color:var(--green)">’+U.money(mrr)+’</div><div class="detail-stat-label">MRR</div></div><div class="detail-stat"><div class="detail-stat-value">’+(c.since||’-’)+’</div><div class="detail-stat-label">Desde</div></div><div class="detail-stat" onclick="showSentimentModal(\''+id+'\')" style="cursor:pointer"><div style="font-size:32px">’+sent.emoji+’</div><div class="detail-stat-label">Sentimiento</div></div></div></div>’;
+html+=’<div class="grid g2 mb-2"><div class="card"><div class="card-header"><div class="card-title">📊 Cuentas</div><button class="btn btn-sm btn-primary" onclick="showAccountModal(null,\''+id+'\')">+</button></div>’;
+if(acc.length){acc.forEach(function(a){html+=accountCard(a);});}else{html+=’<div class="empty">Sin cuentas</div>’;}
+html+=’</div><div class="card"><div class="card-header"><div class="card-title">📝 Notas</div><button class="btn btn-sm btn-secondary" onclick="editClientNotes(\''+id+'\')">Editar</button></div><div style="font-size:13px;color:var(--text2);white-space:pre-wrap">’+(c.notes||‘Sin notas’)+’</div></div></div>’;
+html+=’<div class="card"><div class="card-header"><div class="card-title">📋 Historial</div><button class="btn btn-sm btn-primary" onclick="showActionModal(\''+id+'\')">+ Acción</button></div>’;
+if(actions.length){actions.sort(function(a,b){return new Date(b.date)-new Date(a.date);}).slice(0,10).forEach(function(a){html+=’<div class="list-item"><div class="item-content"><div class="item-title">’+a.text+’</div><div class="item-meta"><span>’+U.date(a.date)+’</span></div></div></div>’;});}else{html+=’<div class="empty">Sin acciones</div>’;}
+html+=’</div>’;
+return html;
+}
+
+function accountCard(a){
+var cl=DB.getClient(a.clientId);var mg=DB.getManager(a.managerId);var pl=PLATFORMS.find(function(p){return p.id===a.platform;});var st=ACCOUNT_STATUS.find(function(s){return s.id===a.status;});
+var html=’<div class="account-card '+a.platform+'" onclick="openDetail(\'account\',\''+a.id+'\');event.stopPropagation()">’;
+html+=’<div style="display:flex;justify-content:space-between;align-items:start"><div style="display:flex;align-items:center;gap:10px"><div class="platform-icon platform-'+a.platform+'">’+pl.icon+’</div><div><div style="font-weight:600;font-size:13px">’+pl.name+’</div><div style="font-size:11px;color:var(--text2)">👤 ‘+(mg?mg.name:’-’)+’</div></div></div><span class="tag" style="background:'+st.color+'22;color:'+st.color+'">’+st.name+’</span></div>’;
+html+=’<div style="display:flex;justify-content:space-between;margin-top:10px;font-size:12px;color:var(--text2)"><span>Fee: ‘+U.money(a.fee)+’</span><span>Inv: ‘+U.money(a.investment)+’</span></div></div>’;
+return html;
+}
+function pgAccounts(){
+var acc=DB.data.accounts;var byP={};PLATFORMS.forEach(function(p){byP[p.id]=acc.filter(function(a){return a.platform===p.id;});});
+var html=’<div class="page-header"><div><h1>📊 Cuentas</h1><p>’+acc.length+’ totales</p></div><div><button class="btn btn-primary" onclick="showAccountModal()">+ Cuenta</button></div></div>’;
+html+=’<div class="grid g4 mb-2">’;
+PLATFORMS.forEach(function(p){var n=byP[p.id].filter(function(a){return a.status===‘active’;}).length;html+=’<div class="stat"><div class="stat-icon" style="background:'+p.color+'22"><span style="color:'+p.color+'">’+p.icon+’</span></div><div class="stat-value">’+n+’</div><div class="stat-label">’+p.name+’</div></div>’;});
+html+=’</div><div class="grid g2">’;
+PLATFORMS.forEach(function(p){if(byP[p.id].length>0){html+=’<div class="card"><div class="card-title mb-1" style="color:'+p.color+'">’+p.icon+’ ‘+p.name+’ (’+byP[p.id].length+’)</div>’;byP[p.id].forEach(function(a){html+=accountCard(a);});html+=’</div>’;}});
+html+=’</div>’;return html;
+}
+
+function pgAccountDetail(id){
+var a=DB.get(‘accounts’,id);if(!a)return’<div class="empty">No encontrado</div>’;
+var cl=DB.getClient(a.clientId);var mg=DB.getManager(a.managerId);var pl=PLATFORMS.find(function(p){return p.id===a.platform;});
+var com=a.commissions||[];var met=a.metrics||[];var cal=a.calendarActions||[];
+var html=’<div class="back-btn" onclick="closeDetail()">← Volver</div>’;
+html+=’<div class="detail-header"><div style="display:flex;justify-content:space-between;align-items:start"><div style="display:flex;align-items:center;gap:16px"><div class="platform-icon platform-'+a.platform+'" style="width:56px;height:56px;font-size:24px">’+pl.icon+’</div><div><div class="detail-title">’+(cl?cl.name:’-’)+’ - ‘+pl.name+’</div><div class="detail-subtitle">Manager: ‘+(mg?mg.name:’-’)+’</div></div></div><button class="btn btn-secondary btn-sm" onclick="showAccountModal(DB.get(\'accounts\',\''+id+'\'))">✏️</button></div>’;
+html+=’<div class="detail-stats"><div class="detail-stat"><div class="detail-stat-value" style="color:var(--green)">’+U.money(a.fee)+’</div><div class="detail-stat-label">Fee</div></div><div class="detail-stat"><div class="detail-stat-value">’+U.money(a.investment)+’</div><div class="detail-stat-label">Inversión</div></div><div class="detail-stat"><div class="detail-stat-value">’+(met[0]?met[0].leads:’-’)+’</div><div class="detail-stat-label">Leads</div></div><div class="detail-stat"><div class="detail-stat-value">’+(met[0]?U.money(met[0].cpl):’-’)+’</div><div class="detail-stat-label">CPL</div></div></div></div>’;
+html+=’<div class="grid g2 mb-2"><div class="card"><div class="card-header"><div class="card-title">📅 Calendario</div><button class="btn btn-sm btn-primary" onclick="showCalActionModal(\''+id+'\')">+</button></div>’;
+if(cal.length){cal.forEach(function(c){var types={revision:‘📋 Revisión’,report:‘📊 Informe’,optimization:‘⚡ Optimización’,meeting:‘🤝 Reunión’};var freqs={daily:‘Diario’,weekly:‘Semanal’,biweekly:‘Quincenal’,monthly:‘Mensual’};html+=’<div class="list-item"><div class="item-content"><div class="item-title">’+(types[c.type]||c.type)+’</div><div class="item-meta"><span>’+(freqs[c.frequency]||c.frequency)+’</span>’+(c.day?’<span>Día ‘+c.day+’</span>’:’’)+’</div></div><button class="btn btn-sm btn-secondary" onclick="event.stopPropagation();delCalAction(\''+id+'\',\''+c.id+'\')">×</button></div>’;});}else{html+=’<div class="empty">Sin acciones</div>’;}
+html+=’</div><div class="card"><div class="card-header"><div class="card-title">💸 Comisiones</div><button class="btn btn-sm btn-primary" onclick="showCommissionModal(\''+id+'\')">+</button></div>’;
+if(com.length){com.forEach(function(c){var p;if(c.type===‘manager’)p=DB.getManager(c.personId);else if(c.type===‘comercial’)p=DB.getComercial(c.personId);else p=DB.getReferrer(c.personId);var types={manager:‘Manager’,comercial:‘Comercial’,referrer:‘Referidor’};html+=’<div class="list-item"><div class="item-content"><div class="item-title">’+(p?p.name:’-’)+’</div><div class="item-meta"><span>’+types[c.type]+’</span><span>’+c.percent+’%</span></div></div><button class="btn btn-sm btn-secondary" onclick="event.stopPropagation();delCommission(\''+id+'\',\''+c.personId+'\')">×</button></div>’;});}else{html+=’<div class="empty">Sin comisiones</div>’;}
+html+=’</div></div>’;
+html+=’<div class="card"><div class="card-header"><div class="card-title">📈 Métricas</div><button class="btn btn-sm btn-primary" onclick="showMetricModal(\''+id+'\')">+ Mes</button></div>’;
+if(met.length){html+=’<table class="table"><thead><tr><th>Mes</th><th>Leads</th><th>CPL</th><th>Inversión</th></tr></thead><tbody>’;met.forEach(function(m){html+=’<tr><td>’+m.month+’</td><td>’+m.leads+’</td><td>’+U.money(m.cpl)+’</td><td>’+U.money(m.investment)+’</td></tr>’;});html+=’</tbody></table>’;}else{html+=’<div class="empty">Sin métricas</div>’;}
+html+=’</div>’;return html;
+}
+
+function pgPipeline(){
+var leads=DB.data.leads;var active=LEAD_STAGES.filter(function(s){return s.id!==‘won’&&s.id!==‘lost’;});
+var pMRR=leads.filter(function(l){return l.stage!==‘won’&&l.stage!==‘lost’;}).reduce(function(s,l){return s+(l.mrr||0);},0);
+var html=’<div class="page-header"><div><h1>🎯 Pipeline</h1><p>MRR: ‘+U.money(pMRR)+’</p></div><div><button class="btn btn-primary" onclick="showLeadModal()">+ Lead</button></div></div><div class="pipeline">’;
+active.forEach(function(st){
+var stLeads=leads.filter(function(l){return l.stage===st.id;});
+html+=’<div class="pipeline-col" ondragover="event.preventDefault()" ondrop="dropLead(event,\''+st.id+'\')">’;
+html+=’<div class="pipeline-header"><div class="pipeline-title"><span style="color:'+st.color+'">●</span> ‘+st.name+’</div><div class="pipeline-count">’+stLeads.length+’</div></div><div class="pipeline-body">’;
+stLeads.forEach(function(l){var com=DB.getComercial(l.comercialId);html+=’<div class="pipeline-card" draggable="true" ondragstart="dragLead(event,\''+l.id+'\')" onclick="showLeadModal(DB.get(\'leads\',\''+l.id+'\'))"><div style="font-weight:600;font-size:13px;margin-bottom:6px">’+l.name+’</div><div style="font-size:11px;color:var(--text2);margin-bottom:8px">’+(l.contact||’-’)+’</div><div style="display:flex;justify-content:space-between;font-size:11px"><span>’+l.accounts+’ ctas</span><span style="color:var(--green);font-weight:600">’+U.money(l.mrr)+’</span></div>’+(com?’<div style="margin-top:8px;font-size:10px;color:var(--muted)">👤 ‘+com.name+’</div>’:’’)+’</div>’;});
+html+=’</div></div>’;
+});
+var won=leads.filter(function(l){return l.stage===‘won’;});var lost=leads.filter(function(l){return l.stage===‘lost’;});
+html+=’<div class="pipeline-col" style="background:rgba(16,185,129,.1)"><div class="pipeline-header"><div class="pipeline-title"><span style="color:var(--green)">●</span> Ganados</div><div class="pipeline-count">’+won.length+’</div></div><div class="pipeline-body">’;
+won.slice(0,5).forEach(function(l){html+=’<div class="pipeline-card" onclick="showLeadModal(DB.get(\'leads\',\''+l.id+'\'))"><div style="font-weight:600;font-size:13px">’+l.name+’</div><div style="font-size:11px;color:var(--green)">’+U.money(l.mrr)+’/mes</div></div>’;});
+html+=’</div></div>’;
+html+=’<div class="pipeline-col" style="background:rgba(239,68,68,.1)"><div class="pipeline-header"><div class="pipeline-title"><span style="color:var(--red)">●</span> Perdidos</div><div class="pipeline-count">’+lost.length+’</div></div><div class="pipeline-body">’;
+lost.slice(0,5).forEach(function(l){html+=’<div class="pipeline-card" onclick="showLeadModal(DB.get(\'leads\',\''+l.id+'\'))"><div style="font-weight:600;font-size:13px">’+l.name+’</div></div>’;});
+html+=’</div></div></div>’;return html;
+}
+function dragLead(e,id){e.dataTransfer.setData(‘text/plain’,id);}
+function dropLead(e,st){e.preventDefault();var id=e.dataTransfer.getData(‘text/plain’);DB.update(‘leads’,id,{stage:st});render();UI.toast(‘Lead movido’);}
+
+function pgManagers(){
+var mgrs=DB.data.managers;
+var html=’<div class="page-header"><div><h1>👤 Managers</h1><p>’+mgrs.filter(function(m){return m.active;}).length+’ activos</p></div><div><button class="btn btn-primary" onclick="showManagerModal()">+ Manager</button></div></div><div class="grid g2">’;
+mgrs.forEach(function(m){
+var acc=DB.accountsByManager(m.id).filter(function(a){return a.status===‘active’;});var load=U.pct(acc.length,CAP);
+html+=’<div class="card"><div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div class="avatar" style="background:'+m.color+';width:52px;height:52px;font-size:18px">’+m.initials+’</div><div style="flex:1"><div style="font-weight:600;font-size:15px">’+m.name+’</div><div style="font-size:12px;color:var(--text2)">’+(m.active?‘Activo’:‘Inactivo’)+’ · ‘+U.money(m.salary)+’/mes</div></div><button class="btn btn-secondary btn-sm" onclick="showManagerModal(DB.getManager(\''+m.id+'\'))">✏️</button></div>’;
+html+=’<div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Carga: ‘+acc.length+’/’+CAP+’</span><span style="color:'+(load>=100?'var(--red)':load>=80?'var(--orange)':'var(--green)')+'">’+load+’%</span></div>’;
+html+=’<div class="progress-bar"><div class="progress-fill" style="width:'+Math.min(load,100)+'%;background:'+(load>=100?'var(--red)':load>=80?'var(--orange)':'var(--green)')+'"></div></div>’;
+html+=’<div style="margin-top:12px;display:flex;gap:6px">’;
+PLATFORMS.forEach(function(p){var n=acc.filter(function(a){return a.platform===p.id;}).length;if(n)html+=’<span style="font-size:11px;background:'+p.color+'22;color:'+p.color+';padding:3px 8px;border-radius:4px">’+p.icon+’ ‘+n+’</span>’;});
+html+=’</div></div>’;
+});
+html+=’</div>’;return html;
+}
+
+function pgComerciales(){
+var coms=DB.data.comerciales;
+var html=’<div class="page-header"><div><h1>💼 Comerciales</h1><p>’+coms.length+’ comerciales</p></div><div><button class="btn btn-primary" onclick="showComercialModal()">+ Comercial</button></div></div><div class="grid g2">’;
+coms.forEach(function(c){
+var leads=DB.data.leads.filter(function(l){return l.comercialId===c.id;});
+var active=leads.filter(function(l){return l.stage!==‘won’&&l.stage!==‘lost’;});
+var won=leads.filter(function(l){return l.stage===‘won’;});
+html+=’<div class="card"><div style="display:flex;align-items:center;gap:14px;margin-bottom:14px"><div class="avatar" style="background:'+c.color+';width:52px;height:52px;font-size:18px">’+c.initials+’</div><div style="flex:1"><div style="font-weight:600;font-size:15px">’+c.name+’</div><div style="font-size:12px;color:var(--text2)">’+(c.active?‘Activo’:‘Inactivo’)+’ · ‘+U.money(c.salary)+’/mes</div></div><button class="btn btn-secondary btn-sm" onclick="showComercialModal(DB.getComercial(\''+c.id+'\'))">✏️</button></div>’;
+html+=’<div class="grid g3" style="gap:8px"><div style="text-align:center;padding:10px;background:var(--input);border-radius:8px"><div style="font-size:20px;font-weight:700">’+active.length+’</div><div style="font-size:10px;color:var(--muted)">Pipeline</div></div><div style="text-align:center;padding:10px;background:var(--input);border-radius:8px"><div style="font-size:20px;font-weight:700;color:var(--green)">’+won.length+’</div><div style="font-size:10px;color:var(--muted)">Ganados</div></div><div style="text-align:center;padding:10px;background:var(--input);border-radius:8px"><div style="font-size:20px;font-weight:700">’+U.money(active.reduce(function(s,l){return s+(l.mrr||0);},0))+’</div><div style="font-size:10px;color:var(--muted)">MRR</div></div></div></div>’;
+});
+html+=’</div>’;return html;
+}
+
+function pgReferrers(){
+var refs=DB.data.referrers;
+var html=’<div class="page-header"><div><h1>🤝 Referidores</h1><p>’+refs.length+’ referidores</p></div><div><button class="btn btn-primary" onclick="showReferrerModal()">+ Referidor</button></div></div><div class="grid g3">’;
+refs.forEach(function(r){
+var leads=DB.data.leads.filter(function(l){return l.referrerId===r.id;});
+var won=leads.filter(function(l){return l.stage===‘won’;});
+html+=’<div class="card"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:12px"><div><div style="font-weight:600;font-size:15px">’+r.name+’</div><div style="font-size:12px;color:var(--text2)">’+(r.company||’-’)+’</div></div><button class="btn btn-secondary btn-sm" onclick="showReferrerModal(DB.getReferrer(\''+r.id+'\'))">✏️</button></div>’;
+html+=’<div style="display:flex;gap:12px;margin-bottom:12px"><div style="flex:1;text-align:center;padding:10px;background:var(--input);border-radius:8px"><div style="font-size:18px;font-weight:700">’+leads.length+’</div><div style="font-size:10px;color:var(--muted)">Leads</div></div><div style="flex:1;text-align:center;padding:10px;background:var(--input);border-radius:8px"><div style="font-size:18px;font-weight:700;color:var(--green)">’+won.length+’</div><div style="font-size:10px;color:var(--muted)">Ganados</div></div></div>’;
+html+=’<div style="font-size:12px;color:var(--text2)">Comisión: ‘+(r.commission||0)+’%</div></div>’;
+});
+html+=’</div>’;return html;
+}
+function pgFinance(){
+var s=DB.stats();var exp=DB.data.expenses;var byCat={payroll:0,tools:0,other:0};
+exp.filter(function(e){return e.monthly;}).forEach(function(e){byCat[e.category]=(byCat[e.category]||0)+e.amount;});
+var sc=DB.data.scenario;var proj=[];var curr=s.accounts,currMRR=s.mrr;
+for(var i=0;i<12;i++){curr+=sc.newAccMonth;curr=Math.round(curr*(1-sc.churn/100));currMRR=curr*sc.avgFee;proj.push({m:i+1,acc:curr,mrr:currMRR});}
+var html=’<div class="page-header"><div><h1>💰 Finanzas</h1><p>MRR = Ingresos Recurrentes Mensuales</p></div><div><button class="btn btn-secondary" onclick="showScenarioModal()">⚙️ Escenario</button> <button class="btn btn-primary" onclick="showExpenseModal()">+ Gasto</button></div></div>’;
+html+=’<div class="grid g4 mb-2"><div class="stat"><div class="stat-icon green">💰</div><div class="stat-value">’+U.money(s.mrr)+’</div><div class="stat-label">MRR</div></div><div class="stat"><div class="stat-icon red">💸</div><div class="stat-value">’+U.money(s.expenses)+’</div><div class="stat-label">Gastos</div></div><div class="stat"><div class="stat-icon blue">📈</div><div class="stat-value">’+U.money(s.margin)+’</div><div class="stat-label">Margen</div></div><div class="stat"><div class="stat-icon yellow">📊</div><div class="stat-value">’+(s.mrr?Math.round((s.margin/s.mrr)*100):0)+’%</div><div class="stat-label">% Margen</div></div></div>’;
+html+=’<div class="grid g2 mb-2"><div class="card"><div class="card-title mb-1">📊 Ingresos</div><div style="padding:12px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px"><span>’+s.accounts+’ cuentas × ‘+U.money(FEE)+’</span><span style="font-weight:600;color:var(--green)">’+U.money(s.mrr)+’</span></div><div style="padding:12px 0;display:flex;justify-content:space-between;font-size:13px"><span>ARR proyectado</span><span style="font-weight:600">’+U.money(s.mrr*12)+’</span></div></div>’;
+html+=’<div class="card"><div class="card-title mb-1">💸 Gastos</div>’;
+var cats={payroll:‘👤 Nóminas’,tools:‘🔧 Herramientas’,other:‘📦 Otros’};
+for(var k in cats){html+=’<div style="padding:10px 0;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;font-size:13px"><span>’+cats[k]+’</span><span>’+U.money(byCat[k])+’</span></div>’;}
+html+=’<div style="padding:10px 0;display:flex;justify-content:space-between;font-size:13px;font-weight:600"><span>Total</span><span style="color:var(--red)">’+U.money(s.expenses)+’</span></div></div></div>’;
+html+=’<div class="card mb-2"><div class="card-header"><div class="card-title">📈 Proyección 12 meses</div><span style="font-size:11px;color:var(--muted)">’+sc.newAccMonth+’ nuevas/mes · ‘+sc.churn+’% churn</span></div>’;
+var maxMRR=Math.max.apply(null,proj.map(function(p){return p.mrr;}));
+html+=’<div style="display:flex;align-items:flex-end;gap:8px;height:140px;padding:16px 0">’;
+proj.forEach(function(p,i){var h=Math.round((p.mrr/maxMRR)*100);html+=’<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:4px"><span style="font-size:9px;color:var(--muted)">’+U.money(p.mrr)+’</span><div style="width:100%;height:'+h+'px;background:linear-gradient(to top,var(--accent),var(--yellow));border-radius:4px 4px 0 0"></div><span style="font-size:10px;color:var(--text2)">M’+(i+1)+’</span></div>’;});
+html+=’</div></div>’;
+html+=’<div class="card"><div class="card-header"><div class="card-title">📋 Detalle gastos</div></div><table class="table"><thead><tr><th>Concepto</th><th>Categoría</th><th>Importe</th><th></th></tr></thead><tbody>’;
+var catNames={payroll:‘Nómina’,tools:‘Herramientas’,other:‘Otros’};
+exp.forEach(function(e){html+=’<tr><td>’+e.name+’</td><td>’+catNames[e.category]+’</td><td>’+U.money(e.amount)+’</td><td><button class="btn btn-sm btn-secondary" onclick="showExpenseModal(DB.get(\'expenses\',\''+e.id+'\'))">✏️</button></td></tr>’;});
+html+=’</tbody></table></div>’;return html;
+}
+
+function pgTasks(){
+var tasks=DB.data.tasks;var pend=tasks.filter(function(t){return t.status!==‘done’;});var done=tasks.filter(function(t){return t.status===‘done’;});
+var html=’<div class="page-header"><div><h1>✅ Tareas</h1><p>’+pend.length+’ pendientes</p></div><div><button class="btn btn-primary" onclick="showTaskModal()">+ Tarea</button></div></div><div class="grid g2"><div class="card"><div class="card-title mb-1">📋 Pendientes</div>’;
+if(pend.length){pend.forEach(function(t){var acc=t.accountId?DB.get(‘accounts’,t.accountId):null;var cl=acc?DB.getClient(acc.clientId):null;var mg=t.managerId?DB.getManager(t.managerId):null;var colors={high:‘rgba(239,68,68,.15)’,urgent:‘rgba(239,68,68,.25)’,medium:‘rgba(234,179,8,.15)’,low:‘rgba(113,113,122,.15)’};var textColors={high:‘var(–red)’,urgent:‘var(–red)’,medium:‘var(–yellow)’,low:‘var(–muted)’};html+=’<div class="list-item" onclick="showTaskModal(DB.get(\'tasks\',\''+t.id+'\'))"><input type="checkbox" onclick="event.stopPropagation();toggleTask(\''+t.id+'\')" style="width:18px;height:18px"><div class="item-content"><div class="item-title">’+t.title+’</div><div class="item-meta">’+(cl?’<span>’+cl.name+’</span>’:’’)+(mg?’<span>👤 ‘+mg.name.split(’ ‘)[0]+’</span>’:’’)+(t.due?’<span>📅 ‘+U.date(t.due)+’</span>’:’’)+’</div></div><span class="tag" style="background:'+colors[t.priority]+';color:'+textColors[t.priority]+'">’+t.priority+’</span></div>’;});}else{html+=’<div class="empty">Sin tareas 🎉</div>’;}
+html+=’</div><div class="card"><div class="card-title mb-1">✓ Completadas</div>’;
+if(done.length){done.slice(0,8).forEach(function(t){html+=’<div class="list-item" style="opacity:.6" onclick="showTaskModal(DB.get(\'tasks\',\''+t.id+'\'))"><input type="checkbox" checked onclick="event.stopPropagation();toggleTask(\''+t.id+'\')" style="width:18px;height:18px"><div class="item-content"><div class="item-title" style="text-decoration:line-through">’+t.title+’</div></div></div>’;});}else{html+=’<div class="empty">-</div>’;}
+html+=’</div></div>’;return html;
+}
+function toggleTask(id){var t=DB.get(‘tasks’,id);DB.update(‘tasks’,id,{status:t.status===‘done’?‘pending’:‘done’});render();}
+
+function pgObjectives(){
+var objs=DB.data.objectives;var byArea={growth:[],revenue:[],team:[]};objs.forEach(function(o){if(byArea[o.area])byArea[o.area].push(o);});
+var html=’<div class="page-header"><div><h1>🎯 Objetivos</h1></div><div><button class="btn btn-primary" onclick="showObjectiveModal()">+ Objetivo</button></div></div><div class="grid g3">’;
+var areas={growth:‘📈 Crecimiento’,revenue:‘💰 Ingresos’,team:‘👥 Equipo’};
+for(var k in areas){html+=’<div class="card"><div class="card-title mb-1">’+areas[k]+’</div>’;if(byArea[k].length){byArea[k].forEach(function(o){var p=U.pct(o.current,o.target);html+=’<div style="margin-bottom:14px;cursor:pointer" onclick="showObjectiveModal(DB.get(\'objectives\',\''+o.id+'\'))"><div style="font-size:13px;font-weight:500;margin-bottom:6px">’+o.title+’</div><div class="progress-bar mb-1"><div class="progress-fill" style="width:'+p+'%;background:'+U.progColor(p)+'"></div></div><div style="display:flex;justify-content:space-between;font-size:11px;color:var(--muted)"><span>’+o.current+’/’+o.target+’ ‘+o.unit+’</span><span style="color:'+U.progColor(p)+'">’+p+’%</span></div></div>’;});}else{html+=’<div class="empty">-</div>’;}html+=’</div>’;}
+html+=’</div>’;return html;
+}
+
+function pgDecisions(){
+var dec=DB.data.decisions;var pend=dec.filter(function(d){return!d.decided;});var done=dec.filter(function(d){return d.decided;});
+var html=’<div class="page-header"><div><h1>⚡ Decisiones</h1><p>’+pend.length+’ pendientes</p></div><div><button class="btn btn-primary" onclick="showDecisionModal()">+ Decisión</button></div></div><div class="grid g2"><div class="card"><div class="card-title mb-1">⏳ Pendientes</div>’;
+if(pend.length){pend.forEach(function(d){html+=’<div class="list-item" onclick="showDecisionModal(DB.get(\'decisions\',\''+d.id+'\'))"><div class="item-content"><div class="item-title">’+d.title+’</div><div class="item-meta">’+(d.context?’<span>’+d.context.slice(0,50)+’…</span>’:’’)+(d.deadline?’<span>📅 ‘+U.date(d.deadline)+’</span>’:’’)+’</div></div></div>’;});}else{html+=’<div class="empty">Sin decisiones 🎉</div>’;}
+html+=’</div><div class="card"><div class="card-title mb-1">✓ Decididas</div>’;
+if(done.length){done.slice(0,5).forEach(function(d){html+=’<div class="list-item" style="opacity:.6" onclick="showDecisionModal(DB.get(\'decisions\',\''+d.id+'\'))"><div class="item-content"><div class="item-title">’+d.title+’</div></div></div>’;});}else{html+=’<div class="empty">-</div>’;}
+html+=’</div></div>’;return html;
+}
+
+function pgOpportunities(){
+var ops=DB.data.opportunities;
+var html=’<div class="page-header"><div><h1>💡 Oportunidades</h1></div><div><button class="btn btn-primary" onclick="showOpportunityModal()">+ Oportunidad</button></div></div><div class="grid g3">’;
+if(ops.length){ops.forEach(function(o){var colors={idea:‘var(–purple)’,exploring:‘var(–blue)’,launched:‘var(–green)’};var names={idea:‘Idea’,exploring:‘Explorando’,launched:‘Lanzado’};html+=’<div class="card" onclick="showOpportunityModal(DB.get(\'opportunities\',\''+o.id+'\'))" style="cursor:pointer"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:8px"><div class="card-title">’+o.title+’</div><span class="tag" style="background:'+colors[o.status]+'22;color:'+colors[o.status]+'">’+names[o.status]+’</span></div><div style="font-size:12px;color:var(--text2);margin-bottom:10px">’+(o.desc||’-’)+’</div><div style="font-size:14px;font-weight:600;color:var(--green)">’+U.money(o.potential)+’ potencial</div></div>’;});}else{html+=’<div class="empty">Sin oportunidades</div>’;}
+html+=’</div>’;return html;
+}
+
+function pgProjects(){
+var prs=DB.data.projects;
+var html=’<div class="page-header"><div><h1>🚀 Proyectos</h1></div><div><button class="btn btn-primary" onclick="showProjectModal()">+ Proyecto</button></div></div><div class="grid g2">’;
+if(prs.length){prs.forEach(function(p){var colors={active:‘var(–green)’,paused:‘var(–orange)’,done:‘var(–blue)’};var names={active:‘Activo’,paused:‘Pausado’,done:‘Completado’};html+=’<div class="card" onclick="showProjectModal(DB.get(\'projects\',\''+p.id+'\'))" style="cursor:pointer"><div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:10px"><div class="card-title">’+p.title+’</div><span class="tag" style="background:'+colors[p.status]+'22;color:'+colors[p.status]+'">’+names[p.status]+’</span></div><div style="font-size:12px;color:var(--text2);margin-bottom:12px">’+(p.desc||’-’)+’</div><div style="display:flex;justify-content:space-between;font-size:12px;margin-bottom:6px"><span>Progreso</span><span>’+p.progress+’%</span></div><div class="progress-bar"><div class="progress-fill" style="width:'+p.progress+'%;background:var(--accent)"></div></div></div>’;});}else{html+=’<div class="empty">Sin proyectos</div>’;}
+html+=’</div>’;return html;
+}
+
+function pgInbox(){
+var inbox=DB.data.inbox;
+var html=’<div class="page-header"><div><h1>📥 Inbox</h1><p>Captura rápida</p></div></div><div class="card mb-2"><form onsubmit="addInbox(event)"><div class="form-row"><input class="form-input" name="text" placeholder="Nueva idea..." style="flex:1"><button class="btn btn-primary" type="submit">Añadir</button></div></form></div><div class="card">’;
+if(inbox.length){inbox.forEach(function(i){html+=’<div class="list-item"><div class="item-content"><div class="item-title">’+i.text+’</div><div class="item-meta"><span>’+U.date(i.created)+’</span></div></div><div style="display:flex;gap:6px"><button class="btn btn-sm btn-secondary" onclick="convertInbox(\''+i.id+'\',\'task\')">→ Tarea</button><button class="btn btn-sm btn-secondary" onclick="convertInbox(\''+i.id+'\',\'decision\')">→ Decisión</button><button class="btn btn-sm btn-danger" onclick="delInbox(\''+i.id+'\')">×</button></div></div>’;});}else{html+=’<div class="empty">Inbox vacío</div>’;}
+html+=’</div>’;return html;
+}
+function addInbox(e){e.preventDefault();var t=e.target.text.value.trim();if(t){DB.add(‘inbox’,{text:t,created:U.today()});e.target.reset();render();UI.toast(‘Añadido’);}}
+function delInbox(id){DB.del(‘inbox’,id);render();}
+function convertInbox(id,type){var i=DB.get(‘inbox’,id);if(type===‘task’){DB.add(‘tasks’,{title:i.text,status:‘pending’,priority:‘medium’});UI.toast(‘Convertido a tarea’);}else{DB.add(‘decisions’,{title:i.text,decided:false});UI.toast(‘Convertido a decisión’);}DB.del(‘inbox’,id);render();}
+
+function pgSettings(){
+var html=’<div class="page-header"><div><h1>⚙️ Config</h1></div></div><div class="grid g2"><div class="card"><div class="card-title mb-1">🏢 Empresa</div><form onsubmit="saveCo(event)"><div class="form-group"><label class="form-label">Nombre</label><input class="form-input" name="name" value="'+DB.data.company.name+'"></div><button class="btn btn-primary" type="submit">Guardar</button></form></div><div class="card"><div class="card-title mb-1">⚠️ Datos</div><p style="font-size:12px;color:var(--text2);margin-bottom:12px">Datos en localStorage</p><button class="btn btn-danger" onclick="confirmReset()">Resetear</button></div></div>’;
+return html;
+}
+function saveCo(e){e.preventDefault();DB.data.company.name=e.target.name.value;DB.save();UI.toast(‘Guardado’);render();}
+function confirmReset(){UI.confirm(’¿Resetear TODO?’,‘DB.reset();location.reload()’);}
+function showClientModal(c){
+var ed=c?true:false;c=c||{};
+var html=’<form id="clientForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="'+(c.name||'')+'" required></div><div class="form-row"><div class="form-group"><label class="form-label">Contacto</label><input class="form-input" name="contact" value="'+(c.contact||'')+'"></div><div class="form-group"><label class="form-label">Email</label><input class="form-input" name="email" value="'+(c.email||'')+'"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Teléfono</label><input class="form-input" name="phone" value="'+(c.phone||'')+'"></div><div class="form-group"><label class="form-label">Cliente desde</label><input type="month" class="form-input" name="since" value="'+(c.since||'')+'"></div></div><div class="form-group"><label class="form-label">Notas</label><textarea class="form-textarea" name="notes">’+(c.notes||’’)+’</textarea></div><input type="hidden" name="id" value="'+(c.id||'')+'"><input type="hidden" name="sentiment" value="'+(c.sentiment||'neutral')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delClient(\''+c.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveClient()">Guardar</button>’;
+UI.modal(ed?‘Editar cliente’:‘Nuevo cliente’,html,footer,‘lg’);
+}
+function saveClient(){var f=document.getElementById(‘clientForm’);var d=Object.fromEntries(new FormData(f));if(!d.name||!d.name.trim()){UI.toast(‘Nombre requerido’,‘error’);return;}if(d.id){DB.update(‘clients’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘clients’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delClient(id){UI.confirm(‘Eliminar cliente?’,‘DB.del(“clients”,”’+id+’”);UI.closeModal();closeDetail()’);}
+
+function showAccountModal(a,clientId){
+var ed=a?true:false;a=a||{};
+var clientOpts=’<option value="">Seleccionar…</option>’;DB.data.clients.forEach(function(c){clientOpts+=’<option value=”’+c.id+’” ‘+((a.clientId||clientId)===c.id?‘selected’:’’)+’>’+c.name+’</option>’;});
+var platOpts=’’;PLATFORMS.forEach(function(p){platOpts+=’<option value=”’+p.id+’” ‘+(a.platform===p.id?‘selected’:’’)+’>’+p.name+’</option>’;});
+var statOpts=’’;ACCOUNT_STATUS.forEach(function(s){statOpts+=’<option value=”’+s.id+’” ‘+(a.status===s.id?‘selected’:’’)+’>’+s.name+’</option>’;});
+var mgrOpts=’’;DB.data.managers.forEach(function(m){mgrOpts+=’<option value=”’+m.id+’” ‘+(a.managerId===m.id?‘selected’:’’)+’>’+m.name+’</option>’;});
+var html=’<form id="accountForm"><div class="form-group"><label class="form-label">Cliente *</label><select class="form-select" name="clientId" required>’+clientOpts+’</select></div><div class="form-row"><div class="form-group"><label class="form-label">Plataforma</label><select class="form-select" name="platform">’+platOpts+’</select></div><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status">’+statOpts+’</select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Manager</label><select class="form-select" name="managerId">’+mgrOpts+’</select></div><div class="form-group"><label class="form-label">Fee</label><input type="number" class="form-input" name="fee" value="'+(a.fee||FEE)+'"></div></div><div class="form-group"><label class="form-label">Inversion</label><input type="number" class="form-input" name="investment" value="'+(a.investment||'')+'"></div><input type="hidden" name="id" value="'+(a.id||'')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delAccount(\''+a.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveAccount()">Guardar</button>’;
+UI.modal(ed?‘Editar cuenta’:‘Nueva cuenta’,html,footer,‘lg’);
+}
+function saveAccount(){var f=document.getElementById(‘accountForm’);var d=Object.fromEntries(new FormData(f));if(!d.clientId){UI.toast(‘Cliente requerido’,‘error’);return;}d.fee=parseInt(d.fee)||FEE;d.investment=parseInt(d.investment)||0;if(d.id){DB.update(‘accounts’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;d.metrics=[];d.calendarActions=[];d.commissions=[];DB.add(‘accounts’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delAccount(id){UI.confirm(‘Eliminar cuenta?’,‘DB.del(“accounts”,”’+id+’”);UI.closeModal();closeDetail()’);}
+
+function showLeadModal(l){
+var ed=l?true:false;l=l||{};
+var stageOpts=’’;LEAD_STAGES.forEach(function(s){stageOpts+=’<option value=”’+s.id+’” ‘+(l.stage===s.id?‘selected’:’’)+’>’+s.name+’</option>’;});
+var comOpts=’<option value="">-</option>’;DB.data.comerciales.forEach(function(c){comOpts+=’<option value=”’+c.id+’” ‘+(l.comercialId===c.id?‘selected’:’’)+’>’+c.name+’</option>’;});
+var refOpts=’<option value="">-</option>’;DB.data.referrers.forEach(function(r){refOpts+=’<option value=”’+r.id+’” ‘+(l.referrerId===r.id?‘selected’:’’)+’>’+r.name+’</option>’;});
+var html=’<form id="leadForm"><div class="form-row"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="'+(l.name||'')+'" required></div><div class="form-group"><label class="form-label">Contacto</label><input class="form-input" name="contact" value="'+(l.contact||'')+'"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Cuentas</label><input type="number" class="form-input" name="accounts" value="'+(l.accounts||1)+'"></div><div class="form-group"><label class="form-label">MRR</label><input type="number" class="form-input" name="mrr" value="'+(l.mrr||350)+'"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Etapa</label><select class="form-select" name="stage">’+stageOpts+’</select></div><div class="form-group"><label class="form-label">Origen</label><select class="form-select" name="source"><option value=“web” ‘+(l.source===‘web’?‘selected’:’’)+’>Web</option><option value=“referral” ‘+(l.source===‘referral’?‘selected’:’’)+’>Referido</option><option value=“cold” ‘+(l.source===‘cold’?‘selected’:’’)+’>Frio</option></select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Comercial</label><select class="form-select" name="comercialId">’+comOpts+’</select></div><div class="form-group"><label class="form-label">Referidor</label><select class="form-select" name="referrerId">’+refOpts+’</select></div></div><div class="form-group"><label class="form-label">Notas</label><textarea class="form-textarea" name="notes">’+(l.notes||’’)+’</textarea></div><input type="hidden" name="id" value="'+(l.id||'')+'"><input type="hidden" name="created" value="'+(l.created||U.today())+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delLead(\''+l.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveLead()">Guardar</button>’;
+UI.modal(ed?‘Editar lead’:‘Nuevo lead’,html,footer,‘lg’);
+}
+function saveLead(){var f=document.getElementById(‘leadForm’);var d=Object.fromEntries(new FormData(f));if(!d.name||!d.name.trim()){UI.toast(‘Nombre requerido’,‘error’);return;}d.accounts=parseInt(d.accounts)||1;d.mrr=parseInt(d.mrr)||350;if(d.id){DB.update(‘leads’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘leads’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delLead(id){UI.confirm(‘Eliminar lead?’,‘DB.del(“leads”,”’+id+’”);UI.closeModal()’);}
+
+function showManagerModal(m){
+var ed=m?true:false;m=m||{};
+var html=’<form id="mgrForm"><div class="form-row"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="'+(m.name||'')+'" required></div><div class="form-group"><label class="form-label">Iniciales</label><input class="form-input" name="initials" value="'+(m.initials||'')+'" maxlength="2"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Salario</label><input type="number" class="form-input" name="salary" value="'+(m.salary||2200)+'"></div><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="active"><option value=“true” ‘+(m.active!==false?‘selected’:’’)+’>Activo</option><option value=“false” ‘+(m.active===false?‘selected’:’’)+’>Inactivo</option></select></div></div><input type="hidden" name="id" value="'+(m.id||'')+'"><input type="hidden" name="color" value="'+(m.color||'linear-gradient(135deg,#f97316,#eab308)')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delManager(\''+m.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveManager()">Guardar</button>’;
+UI.modal(ed?‘Editar manager’:‘Nuevo manager’,html,footer);
+}
+function saveManager(){var f=document.getElementById(‘mgrForm’);var d=Object.fromEntries(new FormData(f));if(!d.name||!d.name.trim()){UI.toast(‘Nombre requerido’,‘error’);return;}d.salary=parseInt(d.salary)||2200;d.active=d.active===‘true’;if(!d.initials)d.initials=d.name.split(’ ‘).map(function(w){return w[0];}).join(’’).toUpperCase().slice(0,2);if(d.id){DB.update(‘managers’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘managers’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delManager(id){UI.confirm(‘Eliminar manager?’,‘DB.del(“managers”,”’+id+’”);UI.closeModal()’);}
+
+function showComercialModal(c){
+var ed=c?true:false;c=c||{};
+var html=’<form id="comForm"><div class="form-row"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="'+(c.name||'')+'" required></div><div class="form-group"><label class="form-label">Iniciales</label><input class="form-input" name="initials" value="'+(c.initials||'')+'" maxlength="2"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Salario</label><input type="number" class="form-input" name="salary" value="'+(c.salary||1800)+'"></div><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="active"><option value=“true” ‘+(c.active!==false?‘selected’:’’)+’>Activo</option><option value=“false” ‘+(c.active===false?‘selected’:’’)+’>Inactivo</option></select></div></div><input type="hidden" name="id" value="'+(c.id||'')+'"><input type="hidden" name="color" value="'+(c.color||'linear-gradient(135deg,#ec4899,#f97316)')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delComercial(\''+c.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveComercial()">Guardar</button>’;
+UI.modal(ed?‘Editar comercial’:‘Nuevo comercial’,html,footer);
+}
+function saveComercial(){var f=document.getElementById(‘comForm’);var d=Object.fromEntries(new FormData(f));if(!d.name||!d.name.trim()){UI.toast(‘Nombre requerido’,‘error’);return;}d.salary=parseInt(d.salary)||1800;d.active=d.active===‘true’;if(!d.initials)d.initials=d.name.split(’ ‘).map(function(w){return w[0];}).join(’’).toUpperCase().slice(0,2);if(d.id){DB.update(‘comerciales’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘comerciales’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delComercial(id){UI.confirm(‘Eliminar comercial?’,‘DB.del(“comerciales”,”’+id+’”);UI.closeModal()’);}
+
+function showReferrerModal(r){
+var ed=r?true:false;r=r||{};
+var html=’<form id="refForm"><div class="form-group"><label class="form-label">Nombre *</label><input class="form-input" name="name" value="'+(r.name||'')+'" required></div><div class="form-row"><div class="form-group"><label class="form-label">Empresa</label><input class="form-input" name="company" value="'+(r.company||'')+'"></div><div class="form-group"><label class="form-label">Comision %</label><input type="number" class="form-input" name="commission" value="'+(r.commission||10)+'"></div></div><div class="form-group"><label class="form-label">Notas</label><textarea class="form-textarea" name="notes">’+(r.notes||’’)+’</textarea></div><input type="hidden" name="id" value="'+(r.id||'')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delReferrer(\''+r.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveReferrer()">Guardar</button>’;
+UI.modal(ed?‘Editar referidor’:‘Nuevo referidor’,html,footer);
+}
+function saveReferrer(){var f=document.getElementById(‘refForm’);var d=Object.fromEntries(new FormData(f));if(!d.name||!d.name.trim()){UI.toast(‘Nombre requerido’,‘error’);return;}d.commission=parseInt(d.commission)||10;if(d.id){DB.update(‘referrers’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘referrers’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delReferrer(id){UI.confirm(‘Eliminar referidor?’,‘DB.del(“referrers”,”’+id+’”);UI.closeModal()’);}
+function showTaskModal(t){
+var ed=t?true:false;t=t||{};
+var accOpts=’<option value="">General</option>’;DB.data.accounts.forEach(function(a){var cl=DB.getClient(a.clientId);var pl=PLATFORMS.find(function(p){return p.id===a.platform;});accOpts+=’<option value=”’+a.id+’” ‘+(t.accountId===a.id?‘selected’:’’)+’>’+(cl?cl.name:’-’)+’ - ‘+pl.name+’</option>’;});
+var mgrOpts=’’;DB.data.managers.forEach(function(m){mgrOpts+=’<option value=”’+m.id+’” ‘+(t.managerId===m.id?‘selected’:’’)+’>’+m.name+’</option>’;});
+var html=’<form id="taskForm"><div class="form-group"><label class="form-label">Tarea *</label><input class="form-input" name="title" value="'+(t.title||'')+'" required></div><div class="form-row"><div class="form-group"><label class="form-label">Cuenta</label><select class="form-select" name="accountId">’+accOpts+’</select></div><div class="form-group"><label class="form-label">Manager</label><select class="form-select" name="managerId">’+mgrOpts+’</select></div></div><div class="form-row"><div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-input" name="due" value="'+(t.due||'')+'"></div><div class="form-group"><label class="form-label">Prioridad</label><select class="form-select" name="priority"><option value=“low” ‘+(t.priority===‘low’?‘selected’:’’)+’>Baja</option><option value=“medium” ‘+(t.priority===‘medium’||!t.priority?‘selected’:’’)+’>Media</option><option value=“high” ‘+(t.priority===‘high’?‘selected’:’’)+’>Alta</option><option value=“urgent” ‘+(t.priority===‘urgent’?‘selected’:’’)+’>Urgente</option></select></div></div><input type="hidden" name="id" value="'+(t.id||'')+'"><input type="hidden" name="status" value="'+(t.status||'pending')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delTask(\''+t.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveTask()">Guardar</button>’;
+UI.modal(ed?‘Editar tarea’:‘Nueva tarea’,html,footer);
+}
+function saveTask(){var f=document.getElementById(‘taskForm’);var d=Object.fromEntries(new FormData(f));if(!d.title||!d.title.trim()){UI.toast(‘Titulo requerido’,‘error’);return;}if(d.id){DB.update(‘tasks’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘tasks’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delTask(id){UI.confirm(‘Eliminar tarea?’,‘DB.del(“tasks”,”’+id+’”);UI.closeModal()’);}
+
+function showExpenseModal(e){
+var ed=e?true:false;e=e||{};
+var html=’<form id="expForm"><div class="form-group"><label class="form-label">Concepto *</label><input class="form-input" name="name" value="'+(e.name||'')+'" required></div><div class="form-row"><div class="form-group"><label class="form-label">Importe</label><input type="number" class="form-input" name="amount" value="'+(e.amount||'')+'" required></div><div class="form-group"><label class="form-label">Categoria</label><select class="form-select" name="category"><option value=“payroll” ‘+(e.category===‘payroll’?‘selected’:’’)+’>Nomina</option><option value=“tools” ‘+(e.category===‘tools’?‘selected’:’’)+’>Herramientas</option><option value=“other” ‘+(e.category===‘other’||!e.category?‘selected’:’’)+’>Otros</option></select></div></div><input type="hidden" name="id" value="'+(e.id||'')+'"><input type="hidden" name="monthly" value="true"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delExpense(\''+e.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveExpense()">Guardar</button>’;
+UI.modal(ed?‘Editar gasto’:‘Nuevo gasto’,html,footer);
+}
+function saveExpense(){var f=document.getElementById(‘expForm’);var d=Object.fromEntries(new FormData(f));if(!d.name||!d.name.trim()){UI.toast(‘Concepto requerido’,‘error’);return;}d.amount=parseInt(d.amount)||0;d.monthly=true;if(d.id){DB.update(‘expenses’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘expenses’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delExpense(id){UI.confirm(‘Eliminar gasto?’,‘DB.del(“expenses”,”’+id+’”);UI.closeModal()’);}
+
+function showObjectiveModal(o){
+var ed=o?true:false;o=o||{};
+var html=’<form id="objForm"><div class="form-group"><label class="form-label">Objetivo *</label><input class="form-input" name="title" value="'+(o.title||'')+'" required></div><div class="form-row"><div class="form-group"><label class="form-label">Area</label><select class="form-select" name="area"><option value=“growth” ‘+(o.area===‘growth’?‘selected’:’’)+’>Crecimiento</option><option value=“revenue” ‘+(o.area===‘revenue’?‘selected’:’’)+’>Ingresos</option><option value=“team” ‘+(o.area===‘team’?‘selected’:’’)+’>Equipo</option></select></div><div class="form-group"><label class="form-label">Unidad</label><input class="form-input" name="unit" value="'+(o.unit||'')+'"></div></div><div class="form-row"><div class="form-group"><label class="form-label">Meta</label><input type="number" class="form-input" name="target" value="'+(o.target||'')+'"></div><div class="form-group"><label class="form-label">Actual</label><input type="number" class="form-input" name="current" value="'+(o.current||0)+'"></div></div><input type="hidden" name="id" value="'+(o.id||'')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delObjective(\''+o.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveObjective()">Guardar</button>’;
+UI.modal(ed?‘Editar objetivo’:‘Nuevo objetivo’,html,footer);
+}
+function saveObjective(){var f=document.getElementById(‘objForm’);var d=Object.fromEntries(new FormData(f));if(!d.title||!d.title.trim()){UI.toast(‘Titulo requerido’,‘error’);return;}d.target=parseInt(d.target)||0;d.current=parseInt(d.current)||0;if(d.id){DB.update(‘objectives’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘objectives’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delObjective(id){UI.confirm(‘Eliminar objetivo?’,‘DB.del(“objectives”,”’+id+’”);UI.closeModal()’);}
+
+function showDecisionModal(d){
+var ed=d?true:false;d=d||{};
+var html=’<form id="decForm"><div class="form-group"><label class="form-label">Decision *</label><input class="form-input" name="title" value="'+(d.title||'')+'" required></div><div class="form-group"><label class="form-label">Contexto</label><textarea class="form-textarea" name="context">’+(d.context||’’)+’</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Deadline</label><input type="date" class="form-input" name="deadline" value="'+(d.deadline||'')+'"></div><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="decided"><option value=“false” ‘+(!d.decided?‘selected’:’’)+’>Pendiente</option><option value=“true” ‘+(d.decided?‘selected’:’’)+’>Decidida</option></select></div></div><input type="hidden" name="id" value="'+(d.id||'')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delDecision(\''+d.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveDecision()">Guardar</button>’;
+UI.modal(ed?‘Editar decision’:‘Nueva decision’,html,footer);
+}
+function saveDecision(){var f=document.getElementById(‘decForm’);var d=Object.fromEntries(new FormData(f));if(!d.title||!d.title.trim()){UI.toast(‘Titulo requerido’,‘error’);return;}d.decided=d.decided===‘true’;if(d.id){DB.update(‘decisions’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘decisions’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delDecision(id){UI.confirm(‘Eliminar decision?’,‘DB.del(“decisions”,”’+id+’”);UI.closeModal()’);}
+
+function showOpportunityModal(o){
+var ed=o?true:false;o=o||{};
+var html=’<form id="oppForm"><div class="form-group"><label class="form-label">Titulo *</label><input class="form-input" name="title" value="'+(o.title||'')+'" required></div><div class="form-group"><label class="form-label">Descripcion</label><textarea class="form-textarea" name="desc">’+(o.desc||’’)+’</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Potencial</label><input type="number" class="form-input" name="potential" value="'+(o.potential||'')+'"></div><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status"><option value=“idea” ‘+(o.status===‘idea’?‘selected’:’’)+’>Idea</option><option value=“exploring” ‘+(o.status===‘exploring’?‘selected’:’’)+’>Explorando</option><option value=“launched” ‘+(o.status===‘launched’?‘selected’:’’)+’>Lanzado</option></select></div></div><input type="hidden" name="id" value="'+(o.id||'')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delOpportunity(\''+o.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveOpportunity()">Guardar</button>’;
+UI.modal(ed?‘Editar oportunidad’:‘Nueva oportunidad’,html,footer);
+}
+function saveOpportunity(){var f=document.getElementById(‘oppForm’);var d=Object.fromEntries(new FormData(f));if(!d.title||!d.title.trim()){UI.toast(‘Titulo requerido’,‘error’);return;}d.potential=parseInt(d.potential)||0;if(d.id){DB.update(‘opportunities’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘opportunities’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delOpportunity(id){UI.confirm(‘Eliminar oportunidad?’,‘DB.del(“opportunities”,”’+id+’”);UI.closeModal()’);}
+
+function showProjectModal(p){
+var ed=p?true:false;p=p||{};
+var html=’<form id="projForm"><div class="form-group"><label class="form-label">Titulo *</label><input class="form-input" name="title" value="'+(p.title||'')+'" required></div><div class="form-group"><label class="form-label">Descripcion</label><textarea class="form-textarea" name="desc">’+(p.desc||’’)+’</textarea></div><div class="form-row"><div class="form-group"><label class="form-label">Progreso %</label><input type="number" class="form-input" name="progress" value="'+(p.progress||0)+'" min="0" max="100"></div><div class="form-group"><label class="form-label">Estado</label><select class="form-select" name="status"><option value=“active” ‘+(p.status===‘active’?‘selected’:’’)+’>Activo</option><option value=“paused” ‘+(p.status===‘paused’?‘selected’:’’)+’>Pausado</option><option value=“done” ‘+(p.status===‘done’?‘selected’:’’)+’>Completado</option></select></div></div><input type="hidden" name="id" value="'+(p.id||'')+'"></form>’;
+var footer=(ed?’<button class="btn btn-danger" onclick="delProject(\''+p.id+'\')">Eliminar</button>’:’’)+’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveProject()">Guardar</button>’;
+UI.modal(ed?‘Editar proyecto’:‘Nuevo proyecto’,html,footer);
+}
+function saveProject(){var f=document.getElementById(‘projForm’);var d=Object.fromEntries(new FormData(f));if(!d.title||!d.title.trim()){UI.toast(‘Titulo requerido’,‘error’);return;}d.progress=parseInt(d.progress)||0;if(d.id){DB.update(‘projects’,d.id,d);UI.toast(‘Actualizado’);}else{delete d.id;DB.add(‘projects’,d);UI.toast(‘Creado’);}UI.closeModal();render();}
+function delProject(id){UI.confirm(‘Eliminar proyecto?’,‘DB.del(“projects”,”’+id+’”);UI.closeModal()’);}
+function showSentimentModal(cid){
+var c=DB.getClient(cid);
+var html=’<div style="display:flex;justify-content:center;gap:20px;padding:20px">’;
+SENTIMENTS.forEach(function(s){html+=’<div style="text-align:center;cursor:pointer" onclick="setSentiment(\''+cid+'\',\''+s.id+'\')"><div style="font-size:48px;'+(c.sentiment===s.id?'':'opacity:.4')+'">’+s.emoji+’</div><div style="font-size:12px;margin-top:8px">’+s.label+’</div></div>’;});
+html+=’</div>’;
+UI.modal(‘Sentimiento’,html,’’);
+}
+function setSentiment(cid,s){DB.update(‘clients’,cid,{sentiment:s});UI.closeModal();render();UI.toast(‘Actualizado’);}
+
+function showActionModal(cid){
+var html=’<form id="actionForm"><div class="form-group"><label class="form-label">Accion *</label><input class="form-input" name="text" required></div><div class="form-group"><label class="form-label">Fecha</label><input type="date" class="form-input" name="date" value="'+U.today()+'"></div><input type="hidden" name="clientId" value="'+cid+'"></form>’;
+UI.modal(‘Nueva accion’,html,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveAction()">Guardar</button>’);
+}
+function saveAction(){var f=document.getElementById(‘actionForm’);var d=Object.fromEntries(new FormData(f));if(!d.text||!d.text.trim()){UI.toast(‘Texto requerido’,‘error’);return;}if(!DB.data.actions)DB.data.actions=[];DB.data.actions.push({id:‘act’+Date.now(),text:d.text,date:d.date,clientId:d.clientId});DB.save();UI.closeModal();render();UI.toast(‘Accion guardada’);}
+
+function editClientNotes(id){
+var c=DB.getClient(id);
+var html=’<textarea id="notesText" class="form-textarea" style="min-height:150px">’+(c.notes||’’)+’</textarea>’;
+UI.modal(‘Notas’,html,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveClientNotes(\''+id+'\')">Guardar</button>’);
+}
+function saveClientNotes(id){var notes=document.getElementById(‘notesText’).value;DB.update(‘clients’,id,{notes:notes});UI.closeModal();render();UI.toast(‘Guardado’);}
+
+function showCalActionModal(aid){
+var html=’<form id="calForm"><div class="form-row"><div class="form-group"><label class="form-label">Tipo</label><select class="form-select" name="type"><option value="revision">Revision</option><option value="report">Informe</option><option value="optimization">Optimizacion</option><option value="meeting">Reunion</option></select></div><div class="form-group"><label class="form-label">Frecuencia</label><select class="form-select" name="frequency"><option value="daily">Diario</option><option value="weekly">Semanal</option><option value="biweekly">Quincenal</option><option value="monthly">Mensual</option></select></div></div><div class="form-group"><label class="form-label">Dia (1-31)</label><input type="number" class="form-input" name="day" value="1" min="1" max="31"></div><input type="hidden" name="aid" value="'+aid+'"></form>’;
+UI.modal(‘Accion calendario’,html,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveCalAction()">Guardar</button>’);
+}
+function saveCalAction(){var f=document.getElementById(‘calForm’);var d=Object.fromEntries(new FormData(f));var a=DB.get(‘accounts’,d.aid);if(a){if(!a.calendarActions)a.calendarActions=[];a.calendarActions.push({id:‘ca’+Date.now(),type:d.type,frequency:d.frequency,day:parseInt(d.day)||1});DB.update(‘accounts’,d.aid,{calendarActions:a.calendarActions});UI.closeModal();render();UI.toast(‘Guardado’);}}
+function delCalAction(aid,cid){var a=DB.get(‘accounts’,aid);if(a){a.calendarActions=(a.calendarActions||[]).filter(function(c){return c.id!==cid;});DB.update(‘accounts’,aid,{calendarActions:a.calendarActions});render();UI.toast(‘Eliminado’);}}
+
+function showCommissionModal(aid){
+var mgrOpts=’’;DB.data.managers.forEach(function(m){mgrOpts+=’<option value="'+m.id+'">’+m.name+’</option>’;});
+var html=’<form id="commForm"><div class="form-row"><div class="form-group"><label class="form-label">Tipo</label><select class="form-select" name="type" onchange="updateCommPerson(this.value)"><option value="manager">Manager</option><option value="comercial">Comercial</option><option value="referrer">Referidor</option></select></div><div class="form-group"><label class="form-label">Persona</label><select class="form-select" name="personId" id="commPersonSel">’+mgrOpts+’</select></div></div><div class="form-group"><label class="form-label">Porcentaje %</label><input type="number" class="form-input" name="percent" value="5"></div><input type="hidden" name="aid" value="'+aid+'"></form>’;
+UI.modal(‘Comision’,html,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveCommission()">Guardar</button>’);
+}
+function updateCommPerson(t){var s=document.getElementById(‘commPersonSel’);var opts=’’;if(t===‘comercial’){DB.data.comerciales.forEach(function(c){opts+=’<option value="'+c.id+'">’+c.name+’</option>’;});}else if(t===‘referrer’){DB.data.referrers.forEach(function(r){opts+=’<option value="'+r.id+'">’+r.name+’</option>’;});}else{DB.data.managers.forEach(function(m){opts+=’<option value="'+m.id+'">’+m.name+’</option>’;});}s.innerHTML=opts;}
+function saveCommission(){var f=document.getElementById(‘commForm’);var d=Object.fromEntries(new FormData(f));var a=DB.get(‘accounts’,d.aid);if(a){if(!a.commissions)a.commissions=[];a.commissions.push({type:d.type,personId:d.personId,percent:parseInt(d.percent)||5});DB.update(‘accounts’,d.aid,{commissions:a.commissions});UI.closeModal();render();UI.toast(‘Guardado’);}}
+function delCommission(aid,pid){var a=DB.get(‘accounts’,aid);if(a){a.commissions=(a.commissions||[]).filter(function(c){return c.personId!==pid;});DB.update(‘accounts’,aid,{commissions:a.commissions});render();UI.toast(‘Eliminado’);}}
+
+function showMetricModal(aid){
+var html=’<form id="metForm"><div class="form-group"><label class="form-label">Mes</label><input type="month" class="form-input" name="month" value="'+new Date().toISOString().slice(0,7)+'"></div><div class="form-row"><div class="form-group"><label class="form-label">Leads</label><input type="number" class="form-input" name="leads" value="0"></div><div class="form-group"><label class="form-label">CPL</label><input type="number" class="form-input" name="cpl" value="0"></div></div><div class="form-group"><label class="form-label">Inversion</label><input type="number" class="form-input" name="investment" value="0"></div><input type="hidden" name="aid" value="'+aid+'"></form>’;
+UI.modal(‘Metrica mensual’,html,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveMetric()">Guardar</button>’);
+}
+function saveMetric(){var f=document.getElementById(‘metForm’);var d=Object.fromEntries(new FormData(f));var a=DB.get(‘accounts’,d.aid);if(a){if(!a.metrics)a.metrics=[];a.metrics.unshift({month:d.month,leads:parseInt(d.leads)||0,cpl:parseInt(d.cpl)||0,investment:parseInt(d.investment)||0});DB.update(‘accounts’,d.aid,{metrics:a.metrics});UI.closeModal();render();UI.toast(‘Guardado’);}}
+
+function showScenarioModal(){
+var sc=DB.data.scenario;
+var html=’<form id="scForm"><div class="form-group"><label class="form-label">Nuevas cuentas/mes</label><input type="number" class="form-input" name="newAccMonth" value="'+sc.newAccMonth+'"></div><div class="form-group"><label class="form-label">Churn % mensual</label><input type="number" class="form-input" name="churn" value="'+sc.churn+'"></div><div class="form-group"><label class="form-label">Fee medio</label><input type="number" class="form-input" name="avgFee" value="'+sc.avgFee+'"></div></form>’;
+UI.modal(‘Escenario proyeccion’,html,’<button class="btn btn-secondary" onclick="UI.closeModal()">Cancelar</button><button class="btn btn-primary" onclick="saveScenario()">Guardar</button>’);
+}
+function saveScenario(){var f=document.getElementById(‘scForm’);var d=Object.fromEntries(new FormData(f));DB.data.scenario={newAccMonth:parseInt(d.newAccMonth)||5,churn:parseInt(d.churn)||3,avgFee:parseInt(d.avgFee)||350};DB.save();UI.closeModal();render();UI.toast(‘Guardado’);}
+
+function toggleMenu(){document.getElementById(‘sidebar’).classList.toggle(‘open’);document.getElementById(‘overlay’).classList.toggle(‘active’);}
+function closeMenu(){document.getElementById(‘sidebar’).classList.remove(‘open’);document.getElementById(‘overlay’).classList.remove(‘active’);}
+function navM(p){closeMenu();nav(p);}
+
+function init(){
+DB.init();
+var appHtml=’<div class="app">’;
+appHtml+=’<div class="overlay" id="overlay" onclick="closeMenu()"></div>’;
+appHtml+=’<div class="mobile-header"><button class="menu-btn" onclick="toggleMenu()">☰</button><span style="flex:1;font-weight:600">Sowper</span><button class="btn btn-primary btn-sm" onclick="showAccountModal()">+</button></div>’;
+appHtml+=’<aside class="sidebar" id="sidebar"><div class="sidebar-header"><div class="logo">S</div><div class="brand">’+DB.data.company.name+’<span>Command Center</span></div></div>’;
+appHtml+=’<nav class="nav">’;
+appHtml+=’<div class="nav-section"><div class="nav-label">General</div><div class="nav-item active" data-page="dashboard" onclick="navM(\'dashboard\')">Dashboard</div><div class="nav-item" data-page="clients" onclick="navM(\'clients\')">Clientes</div><div class="nav-item" data-page="accounts" onclick="navM(\'accounts\')">Cuentas</div></div>’;
+appHtml+=’<div class="nav-section"><div class="nav-label">Comercial</div><div class="nav-item" data-page="pipeline" onclick="navM(\'pipeline\')">Pipeline <span class="nav-badge" id="leadsBadge">0</span></div><div class="nav-item" data-page="comerciales" onclick="navM(\'comerciales\')">Comerciales</div><div class="nav-item" data-page="referrers" onclick="navM(\'referrers\')">Referidores</div></div>’;
+appHtml+=’<div class="nav-section"><div class="nav-label">Equipo</div><div class="nav-item" data-page="managers" onclick="navM(\'managers\')">Managers</div><div class="nav-item" data-page="tasks" onclick="navM(\'tasks\')">Tareas <span class="nav-badge" id="taskBadge">0</span></div></div>’;
+appHtml+=’<div class="nav-section"><div class="nav-label">Finanzas</div><div class="nav-item" data-page="finance" onclick="navM(\'finance\')">Finanzas</div><div class="nav-item" data-page="objectives" onclick="navM(\'objectives\')">Objetivos</div></div>’;
+appHtml+=’<div class="nav-section"><div class="nav-label">Estrategia</div><div class="nav-item" data-page="inbox" onclick="navM(\'inbox\')">Inbox <span class="nav-badge" id="inboxBadge">0</span></div><div class="nav-item" data-page="decisions" onclick="navM(\'decisions\')">Decisiones <span class="nav-badge" id="decBadge">0</span></div><div class="nav-item" data-page="opportunities" onclick="navM(\'opportunities\')">Oportunidades</div><div class="nav-item" data-page="projects" onclick="navM(\'projects\')">Proyectos</div></div>’;
+appHtml+=’<div class="nav-section"><div class="nav-label">Sistema</div><div class="nav-item" data-page="settings" onclick="navM(\'settings\')">Config</div></div>’;
+appHtml+=’</nav></aside>’;
+appHtml+=’<main class="main"><header class="header"><h2 class="page-title" id="pageTitle">Dashboard</h2></header><div class="content" id="pageContent"></div></main></div>’;
+appHtml+=’<div id="modals"></div><div class="toast-box" id="toasts"></div>’;
+document.getElementById(‘app’).innerHTML=appHtml;
+render();
+}
+init();
+</script></body></html>
