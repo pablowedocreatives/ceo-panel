@@ -110,72 +110,42 @@ const OBJ_AREAS=[
 ];
 let currentDash='ceo';
 
+// Supabase config
+const SUPABASE_URL='https://lluhhqleeyxbigbzkoll.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxsdWhocWxlZXl4YmlnYnprb2xsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNTMyMzAsImV4cCI6MjA4MzcyOTIzMH0.wLL0_L9DrUHBJi5FihEi8-BHDT9EKHCW9XOixAeBrSE';
+
 const DB={
 data:null,
 defaults:{
 company:{name:'WEDO',logo:'W'},currentUser:'u1',
-users:[{id:'u1',name:'Alex',initials:'A',role:'CEO',color:'linear-gradient(135deg,#8b5cf6,#ec4899)'},{id:'u2',name:'Fran',initials:'F',role:'Comercial',color:'linear-gradient(135deg,#3b82f6,#06b6d4)'},{id:'u3',name:'Sara',initials:'S',role:'Diseño',color:'linear-gradient(135deg,#ec4899,#f59e0b)'},{id:'u4',name:'David',initials:'D',role:'Dev',color:'linear-gradient(135deg,#10b981,#06b6d4)'}],
-tasks:[
-{id:'t1',title:'Definir pricing aitomeiton',assignee:'u1',priority:'urgent',status:'pending',due:'2024-10-30',oppId:'o1',projectId:null},
-{id:'t2',title:'Landing page aitomeiton',assignee:'u4',priority:'high',status:'in-progress',due:'2024-11-05',oppId:'o1',projectId:null},
-{id:'t3',title:'Estudiar competencia autoescuelas',assignee:'u1',priority:'medium',status:'pending',due:'2024-11-10',oppId:'o2',projectId:null},
-{id:'t4',title:'Llamar leads Amazonia',assignee:'u2',priority:'high',status:'pending',due:'2024-10-28',oppId:null,projectId:null},
-{id:'t5',title:'Diseñar nueva home',assignee:'u3',priority:'high',status:'in-progress',due:'2024-11-20',oppId:null,projectId:'pr2'},
-{id:'t6',title:'Maquetar secciones',assignee:'u4',priority:'medium',status:'pending',due:'2024-12-01',oppId:null,projectId:'pr2'}
-],
-leads:[{id:'l1',name:'Restaurante Marina',company:'Marina SL',stage:'proposal',value:3500,source:'web',referrerId:null,assignee:'u2'},{id:'l2',name:'Clínica Dental Sol',company:'Dental Sol',stage:'negotiation',value:8000,source:'referral',referrerId:'r1',assignee:'u2'},{id:'l3',name:'Gimnasio PowerFit',company:'PowerFit',stage:'new',value:4500,source:'social',referrerId:null,assignee:'u2'},{id:'l4',name:'Inmobiliaria Costa',company:'Costa Homes',stage:'contacted',value:12000,source:'referral',referrerId:'r2',assignee:'u2'},{id:'l5',name:'Autoescuela Express',company:'Express',stage:'won',value:5000,source:'web',referrerId:null,assignee:'u2'},{id:'l6',name:'Floristería Jardín',company:'Jardín',stage:'lost',value:2000,source:'cold',referrerId:null,assignee:'u2'}],
-referrers:[{id:'r1',name:'Antonio García',company:'Asesoría García',type:'partner'},{id:'r2',name:'Lucía Moreno',company:'Arco Arquitectos',type:'client'}],
-opportunities:[
-{id:'o1',title:'Servicio IA para clientes',desc:'Consultoría de automatización con IA. Aitomeiton como producto estrella.',status:'building',potential:50000,effort:'high',lead:'u1'},
-{id:'o2',title:'SaaS autoescuelas',desc:'Producto propio para gestión de autoescuelas',status:'idea',potential:100000,effort:'high',lead:'u1'},
-{id:'o3',title:'Expansión inmobiliario',desc:'Especialización en webs para inmobiliarias',status:'research',potential:30000,effort:'medium',lead:'u2'},
-{id:'o4',title:'Servicio foto/video',desc:'Producción audiovisual para clientes',status:'validated',potential:20000,effort:'low',lead:'u3'}
-],
-decisions:[{id:'d1',title:'¿Contratar developer senior?',context:'Carga alta, David saturado. ~35k/año',options:'1) Fijo 2) Freelance 3) Esperar',deadline:'2024-11-15',decided:false,decision:''},{id:'d2',title:'¿Subir precios 2025?',context:'No subimos en 2 años',options:'1) +15% 2) +10% nuevos 3) Mantener',deadline:'2024-12-01',decided:false,decision:''}],
-projects:[
-{id:'pr1',title:'Lanzamiento aitomeiton',desc:'Landing, pricing, primeros clientes beta',status:'active',progress:40,lead:'u1',due:'2024-12-15'},
-{id:'pr2',title:'Web WEDO 2.0',desc:'Rediseño completo web corporativa',status:'planning',progress:10,lead:'u3',due:'2025-01-30'}
-],
-inbox:[
-{id:'i1',text:'Revisar pricing de TODOCAMA - llevan 2 años igual',tags:['clientes','finanzas'],created:'2024-10-28',processed:false},
-{id:'i2',text:'¿Y si hacemos webinars sobre IA para clientes?',tags:['producto','comercial'],created:'2024-10-27',processed:false},
-{id:'i3',text:'Hablar con Sara sobre automatizar proceso de diseño',tags:['equipo','ops'],created:'2024-10-26',processed:false}
-],
-clients:[
-{id:'c1',name:'Enter Properties',status:'ok',services:['web','seo','paid'],mrr:2500,since:'2023-01',aiNeeds:'Chatbot WhatsApp en desarrollo',notes:'Cliente estrella, muy activo',risk:'low'},
-{id:'c2',name:'Aventura Amazonia',status:'review',services:['paid','social'],mrr:1800,since:'2023-06',aiNeeds:'Pendiente propuesta automatización emails',notes:'Lanzamiento Valencia pronto',risk:'low'},
-{id:'c3',name:'TODOCAMA',status:'review',services:['web','seo'],mrr:800,since:'2022-03',aiNeeds:'No explorado aún',notes:'Revisar si necesitan más servicios',risk:'medium'},
-{id:'c4',name:'Autoescuelas AVAE',status:'ok',services:['web','paid','social'],mrr:1500,since:'2023-09',aiNeeds:'Interesados en chatbot',notes:'Potencial para SaaS propio',risk:'low'},
-{id:'c5',name:'Restaurante Marina',status:'new',services:['social'],mrr:400,since:'2024-10',aiNeeds:'Por evaluar',notes:'Cliente nuevo, en onboarding',risk:'low'}
-],
-objectives:[
-{id:'obj1',title:'Alcanzar 15K MRR',area:'comercial',year:2024,target:15000,current:7000,unit:'€',keyResults:[
-{id:'kr1',title:'Cerrar 5 clientes nuevos',target:5,current:2},
-{id:'kr2',title:'Upsell a 3 clientes existentes',target:3,current:1},
-{id:'kr3',title:'Reducir churn a <5%',target:5,current:8}
-]},
-{id:'obj2',title:'Lanzar 2 productos propios',area:'producto',year:2024,target:2,current:0,unit:'productos',keyResults:[
-{id:'kr4',title:'Lanzar aitomeiton',target:1,current:0},
-{id:'kr5',title:'Validar SaaS autoescuelas',target:1,current:0}
-]},
-{id:'obj3',title:'Equipo de 6 personas',area:'equipo',year:2024,target:6,current:4,unit:'personas',keyResults:[
-{id:'kr6',title:'Contratar developer senior',target:1,current:0},
-{id:'kr7',title:'Contratar comercial',target:1,current:0}
-]},
-{id:'obj4',title:'Implementar IA en todos los clientes',area:'producto',year:2024,target:100,current:40,unit:'%',keyResults:[
-{id:'kr8',title:'Auditar necesidades IA',target:5,current:2},
-{id:'kr9',title:'Implementar 3 chatbots',target:3,current:1}
-]}
-],
-history:[
-{date:'2024-10',metrics:{mrr:7000,clients:5,leads:12,won:2,tasks:45}},
-{date:'2024-09',metrics:{mrr:6200,clients:4,leads:10,won:1,tasks:38}},
-{date:'2024-08',metrics:{mrr:5800,clients:4,leads:8,won:1,tasks:32}}
-]
+users:[{id:'u1',name:'Pablo',initials:'P',role:'CEO',color:'linear-gradient(135deg,#8b5cf6,#ec4899)'}],
+tasks:[],
+leads:[],
+referrers:[],
+opportunities:[],
+decisions:[],
+projects:[],
+inbox:[],
+clients:[],
+objectives:[],
+history:[]
 },
-init(){const s=localStorage.getItem('ceo_v9');if(s)try{this.data=JSON.parse(s)}catch(e){this.data=JSON.parse(JSON.stringify(this.defaults))}else this.data=JSON.parse(JSON.stringify(this.defaults));this.save()},
-save(){localStorage.setItem('ceo_v9',JSON.stringify(this.data))},
-reset(){this.data=JSON.parse(JSON.stringify(this.defaults));this.save()},
+async init(){
+try{
+const res=await fetch(SUPABASE_URL+'/rest/v1/wedo_data?id=eq.main',{headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}});
+const rows=await res.json();
+if(rows&&rows.length>0&&rows[0].data){this.data=rows[0].data}
+else{this.data=JSON.parse(JSON.stringify(this.defaults));await this.save()}
+}catch(e){console.error('Supabase error:',e);this.data=JSON.parse(JSON.stringify(this.defaults))}
+render();
+},
+async save(){
+try{
+await fetch(SUPABASE_URL+'/rest/v1/wedo_data?id=eq.main',{method:'DELETE',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY}});
+await fetch(SUPABASE_URL+'/rest/v1/wedo_data',{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Content-Type':'application/json','Prefer':'return=minimal'},body:JSON.stringify({id:'main',data:this.data,updated_at:new Date().toISOString()})});
+}catch(e){console.error('Save error:',e)}
+},
+async reset(){this.data=JSON.parse(JSON.stringify(this.defaults));await this.save();location.reload()},
 get(t,id){return this.data[t]?.find(x=>x.id===id)},
 me(){return this.get('users',this.data.currentUser)},
 byStage(s){return this.data.leads.filter(l=>l.stage===s)},
@@ -1081,7 +1051,10 @@ closeDashDropdown();
 if(page==='dashboard')render();
 }
 document.addEventListener('click',e=>{if(!e.target.closest('.dash-selector'))closeDashDropdown()});
-function init(){DB.init();const me=DB.me();const s=DB.stats();document.getElementById('app').innerHTML=`<div class="app">
+async function init(){
+document.getElementById('app').innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100vh;color:var(--text2)">Cargando...</div>';
+await DB.init();
+const me=DB.me();const s=DB.stats();document.getElementById('app').innerHTML=`<div class="app">
 <div class="overlay" id="overlay" onclick="closeMenu()"></div>
 <div class="mobile-header visible">
 <button class="menu-btn" onclick="toggleMenu()">☰</button>
