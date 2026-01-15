@@ -137,7 +137,6 @@ const rows=await res.json();
 if(rows&&rows.length>0&&rows[0].data){this.data=rows[0].data}
 else{this.data=JSON.parse(JSON.stringify(this.defaults));await this.save()}
 }catch(e){console.error('Supabase error:',e);this.data=JSON.parse(JSON.stringify(this.defaults))}
-render();
 },
 async save(){
 try{
